@@ -82,14 +82,23 @@
   .ph span { font-family: var(--font-en); font-size: 11px; letter-spacing: .2em; border: 1px solid rgba(0,0,0,.18); padding: 4px 12px; background: rgba(255,255,255,.5); }
 
   /* ====== Hero ====== */
-  .hero { position: relative; background: linear-gradient(90deg, #b8c1c6, #bdc7c9 50%, #b0bbc1); overflow: hidden; }
-  /* キャッチは写真の壁面と同色の帯に置き、写真に溶け込ませる */
-  .hero__photo {
-    width: 100%; height: clamp(400px, calc(100vh - 330px), 760px); object-fit: cover; object-position: center 45%;
-    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 10%); mask-image: linear-gradient(to bottom, transparent, #000 10%);
+  /* ファーストビュー：ヘッダーを除いた画面の高さに収める（1920×1080で1画面） */
+  .hero {
+    position: relative; overflow: hidden; display: flex; flex-direction: column;
+    height: calc(100svh - 107px); min-height: 560px; max-height: 1000px;
+    background: linear-gradient(90deg, #b8c1c6, #bdc7c9 50%, #b0bbc1);
   }
-  .hero__copy { display: flex; flex-direction: column; align-items: center; padding: clamp(48px, 6vw, 80px) 16px 0; text-align: center; }
-  .hero__title { margin: 0; font-size: clamp(44px, 7.4vw, 104px); line-height: 1.1; letter-spacing: .02em; }
+  .hero__copy { flex: none; display: flex; flex-direction: column; align-items: center; padding: clamp(32px, 6vh, 72px) 16px 0; text-align: center; }
+  .hero__visual { flex: 1; min-height: 0; display: flex; justify-content: center; }
+  /* 写真は高さ基準で表示し、左右は壁と同色の背景になじませる */
+  .hero__photo {
+    height: 100%; width: auto; max-width: none; object-fit: cover; object-position: center bottom;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 10%), linear-gradient(to right, transparent, #000 18%, #000 82%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to bottom, transparent, #000 10%), linear-gradient(to right, transparent, #000 18%, #000 82%, transparent);
+    mask-composite: intersect;
+  }
+  .hero__title { margin: 0; font-size: clamp(44px, min(7.4vw, 10vh), 104px); line-height: 1.1; letter-spacing: .02em; }
   .hero__title .free { font-weight: 300; color: #6c7175; font-style: italic; display: inline-block; transform: skewX(-8deg); margin-right: .05em; }
   .hero__title .live { font-weight: 900; color: #111; }
   .hero__en { margin: 14px 0 0; font-family: var(--font-en); font-weight: 600; font-size: 12px; letter-spacing: .5em; color: #4a5054; }
@@ -353,8 +362,10 @@
   @media (max-width: 680px) {
     /* スマホは写真を全幅で見せ、キャッチは写真の上の壁面に配置 */
     .hero { background: linear-gradient(180deg, #bec8cb, #bcc6ca); }
+    .hero { height: auto; min-height: 0; max-height: none; }
     .hero__copy { padding: 48px 16px 0; }
-    .hero__photo { height: auto; aspect-ratio: 1240 / 693; }
+    .hero__visual { display: block; }
+    .hero__photo { width: 100%; height: auto; -webkit-mask-image: linear-gradient(to bottom, transparent, #000 10%); mask-image: linear-gradient(to bottom, transparent, #000 10%); }
     .hero__scroll { display: none; }
     .points { grid-template-columns: repeat(2, 1fr); row-gap: 20px; }
     .points li { padding: 0 12px; }
@@ -407,7 +418,7 @@
       <h1 class="hero__title"><span class="free">自由に</span><span class="live">生きる</span></h1>
       <p class="hero__en">LIVE FREELY, LIVE YOUR LIFE.</p>
     </div>
-    <img class="hero__photo" src="images/hero-team.jpg" alt="株式会社Libertaのスタッフ">
+    <div class="hero__visual"><img class="hero__photo" src="images/hero-team.jpg" alt="株式会社Libertaのスタッフ"></div>
     <span class="hero__scroll" aria-hidden="true">SCROLL</span>
   </section>
 
