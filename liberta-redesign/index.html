@@ -4,305 +4,254 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>株式会社Liberta｜鎌倉・大船のリハビリ型デイサービス・訪問介護・介護タクシー</title>
-<meta name="description" content="鎌倉市・大船エリアでリハビリ型デイサービス、訪問介護、介護タクシーを運営する株式会社Libertaの公式サイトです。">
+<meta name="description" content="自由に生きる。鎌倉市・大船エリアでリハビリ型デイサービス、訪問介護、介護タクシーを運営する株式会社Libertaの公式サイトです。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@500;600;800&display=swap" rel="stylesheet">
 <style>
-  /* ====== Design tokens（現サイトの配色に合わせてここだけ差し替え可能） ====== */
+  /* ====== Design tokens（現サイトのモノトーンを踏襲） ====== */
   :root {
-    --brand: #2f7d6d;        /* メインカラー：信頼・安心のグリーン */
-    --brand-dark: #1f5a4e;
-    --brand-light: #e6f2ee;
-    --accent: #e8893a;       /* アクセント：あたたかみのオレンジ（CTA） */
-    --accent-dark: #c96f24;
-    --ink: #2b3330;
-    --ink-sub: #5d6763;
-    --line: #dde5e2;
+    --charcoal: #2e2f31;     /* 現サイトのヘッダー・フッター色 */
+    --charcoal-deep: #1f2022;
+    --ink: #222324;
+    --ink-sub: #63676b;
+    --gray: #8a9095;         /* キャッチ「自由に」のグレー */
+    --line: #dfe2e4;
     --bg: #ffffff;
-    --bg-soft: #f7f5ef;      /* 生成り系の背景 */
-    --radius: 14px;
-    --shadow: 0 6px 24px rgba(31, 90, 78, .08);
-    --max: 1120px;
-    --font-head: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
-    --font-body: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
-    --font-en: "Montserrat", sans-serif;
+    --bg-soft: #f2f4f5;      /* 写真の壁面に寄せたクールグレー */
+    --accent: #2c6683;       /* 写真のスーツの青。ごく一部の差し色のみ */
+    --radius: 2px;
+    --max: 1160px;
+    --font-jp: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+    --font-en: "Inter", "Helvetica Neue", Arial, sans-serif;
   }
 
   *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
   body {
     margin: 0; background: var(--bg); color: var(--ink);
-    font-family: var(--font-body); font-size: 16px; line-height: 1.9; letter-spacing: .03em;
-    -webkit-font-smoothing: antialiased;
+    font-family: var(--font-jp); font-size: 16px; line-height: 1.95; letter-spacing: .04em;
+    -webkit-font-smoothing: antialiased; overflow-x: clip;
   }
-  body { overflow-x: clip; }
   img { max-width: 100%; display: block; }
   a { color: inherit; text-decoration: none; }
   .container { width: min(100% - 32px, var(--max)); margin-inline: auto; }
 
-  /* ====== 提案用バナー ====== */
-  .proposal-note {
-    background: var(--ink); color: #fff; font-size: 12px; text-align: center; padding: 6px 16px; letter-spacing: .06em;
-  }
+  .proposal-note { background: #000; color: #bbb; font-size: 11px; text-align: center; padding: 5px 16px; letter-spacing: .1em; }
 
   /* ====== Header ====== */
-  .header {
-    position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.96);
-    backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
-  }
+  .header { position: sticky; top: 0; z-index: 50; background: var(--charcoal); color: #fff; }
   .header__inner { display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 24px; }
-  .logo { display: flex; align-items: center; gap: 12px; }
-  .logo__mark {
-    width: 40px; height: 40px; border-radius: 50%; background: var(--brand);
-    display: grid; place-items: center; color: #fff; font-family: var(--font-en); font-weight: 600; font-size: 18px;
-  }
-  .logo__text { line-height: 1.2; }
-  .logo__en { font-family: var(--font-en); font-weight: 600; font-size: 22px; color: var(--brand-dark); letter-spacing: .06em; }
-  .logo__ja { font-size: 11px; color: var(--ink-sub); }
-  .nav { display: flex; align-items: center; gap: 28px; }
-  .nav__list { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; font-size: 14px; font-weight: 500; white-space: nowrap; }
-  .nav .btn { white-space: nowrap; padding: 10px 20px; font-size: 14px; }
-  .nav__list a { position: relative; padding: 4px 0; }
+  .logo { font-family: var(--font-en); font-weight: 800; font-size: 30px; letter-spacing: -.01em; line-height: 1; }
+  .logo small { display: block; font-family: var(--font-jp); font-weight: 400; font-size: 10px; letter-spacing: .18em; color: #a9adb1; margin-top: 6px; }
+  .nav { display: flex; align-items: center; gap: 32px; }
+  .nav__list { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; font-size: 14px; white-space: nowrap; }
+  .nav__list a { position: relative; padding: 6px 0; color: #e6e7e8; transition: color .2s; }
   .nav__list a::after {
-    content: ""; position: absolute; left: 0; bottom: -2px; width: 100%; height: 2px; background: var(--brand);
-    transform: scaleX(0); transform-origin: left; transition: transform .25s;
+    content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: #fff;
+    transform: scaleX(0); transform-origin: right; transition: transform .3s;
   }
-  .nav__list a:hover::after { transform: scaleX(1); }
-  .header__tel { text-align: right; line-height: 1.3; white-space: nowrap; }
-  .header__tel-num { font-family: var(--font-en); font-weight: 600; font-size: 20px; color: var(--brand-dark); }
-  .header__tel-num::before { content: "☎ "; font-size: 15px; }
-  .header__tel-time { font-size: 11px; color: var(--ink-sub); }
+  .nav__list a:hover { color: #fff; }
+  .nav__list a:hover::after { transform: scaleX(1); transform-origin: left; }
+  .header__tel { font-family: var(--font-en); font-weight: 600; font-size: 18px; letter-spacing: .04em; white-space: nowrap; line-height: 1.3; text-align: right; }
+  .header__tel small { display: block; font-family: var(--font-jp); font-weight: 400; font-size: 10px; color: #a9adb1; letter-spacing: .1em; }
   .menu-btn { display: none; }
 
   /* ====== Buttons ====== */
   .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 14px 28px; border-radius: 999px; font-weight: 700; font-size: 15px;
-    transition: background .2s, transform .2s, box-shadow .2s;
+    display: inline-flex; align-items: center; justify-content: space-between; gap: 24px;
+    padding: 16px 28px; min-width: 240px; font-weight: 500; font-size: 14px; letter-spacing: .1em;
+    border: 1px solid currentColor; border-radius: var(--radius); transition: background .25s, color .25s, border-color .25s; white-space: nowrap;
   }
-  .btn--accent { background: var(--accent); color: #fff; box-shadow: 0 6px 16px rgba(232,137,58,.3); }
-  .btn--accent:hover { background: var(--accent-dark); transform: translateY(-2px); }
-  .btn--outline { border: 2px solid var(--brand); color: var(--brand-dark); background: #fff; }
-  .btn--outline:hover { background: var(--brand-light); }
-  .btn--white { background: #fff; color: var(--brand-dark); }
-  .btn--white:hover { transform: translateY(-2px); }
-  .btn .arrow { transition: transform .2s; }
-  .btn:hover .arrow { transform: translateX(4px); }
+  .btn::after { content: ""; width: 22px; height: 1px; background: currentColor; transition: width .25s; }
+  .btn:hover::after { width: 34px; }
+  .btn--line { color: var(--charcoal); }
+  .btn--line:hover { background: var(--charcoal); color: #fff; }
+  .btn--white { color: #fff; }
+  .btn--white:hover { background: #fff; color: var(--charcoal); border-color: #fff; }
+  .btn--accent { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn--accent:hover { background: #fff; color: var(--accent); }
+  .nav .btn { min-width: 0; padding: 10px 20px; gap: 14px; }
+  .nav .btn::after { width: 14px; }
 
   /* ====== Photo placeholder ====== */
   .ph {
-    position: relative; overflow: hidden; border-radius: var(--radius);
-    background:
-      radial-gradient(circle at 25% 30%, rgba(255,255,255,.55) 0 18%, transparent 19%),
-      radial-gradient(circle at 80% 75%, rgba(255,255,255,.35) 0 22%, transparent 23%),
-      linear-gradient(135deg, #cfe5dd, #f3e3cf);
-    display: grid; place-items: center; color: var(--brand-dark);
+    position: relative; overflow: hidden; background: linear-gradient(135deg, #e3e7e9, #c7cfd3);
+    display: grid; place-items: center; color: #5b6166;
   }
-  .ph span {
-    font-size: 12px; letter-spacing: .1em; background: rgba(255,255,255,.85); padding: 4px 12px; border-radius: 999px;
-  }
+  .ph span { font-family: var(--font-en); font-size: 11px; letter-spacing: .2em; border: 1px solid rgba(0,0,0,.18); padding: 4px 12px; background: rgba(255,255,255,.5); }
 
   /* ====== Hero ====== */
-  .hero { position: relative; padding: 56px 0 96px; background: linear-gradient(180deg, var(--bg-soft), #fff); overflow: hidden; }
-  .hero::before {
-    content: ""; position: absolute; right: -160px; top: -120px; width: 520px; height: 520px; border-radius: 50%;
-    background: var(--brand-light); z-index: 0;
+  .hero { position: relative; background: linear-gradient(90deg, #b8c1c6, #bdc7c9 50%, #b0bbc1); overflow: hidden; }
+  /* キャッチは写真の壁面と同色の帯に置き、写真に溶け込ませる */
+  .hero__photo {
+    width: 100%; height: clamp(400px, calc(100vh - 330px), 760px); object-fit: cover; object-position: center 45%;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 10%); mask-image: linear-gradient(to bottom, transparent, #000 10%);
   }
-  .hero__inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
-  .hero__label {
-    display: inline-block; font-size: 13px; font-weight: 700; color: var(--brand-dark);
-    background: #fff; border: 1px solid var(--line); padding: 4px 14px; border-radius: 999px; margin-bottom: 20px;
+  .hero__copy { display: flex; flex-direction: column; align-items: center; padding: clamp(48px, 6vw, 80px) 16px 0; text-align: center; }
+  .hero__title { margin: 0; font-size: clamp(44px, 7.4vw, 104px); line-height: 1.1; letter-spacing: .02em; }
+  .hero__title .free { font-weight: 300; color: #6c7175; font-style: italic; display: inline-block; transform: skewX(-8deg); margin-right: .05em; }
+  .hero__title .live { font-weight: 900; color: #111; }
+  .hero__en { margin: 14px 0 0; font-family: var(--font-en); font-weight: 600; font-size: 12px; letter-spacing: .5em; color: #4a5054; }
+  .hero__scroll {
+    position: absolute; left: 32px; bottom: 0; writing-mode: vertical-rl; font-family: var(--font-en); font-size: 10px; letter-spacing: .3em;
+    color: var(--charcoal); padding-bottom: 72px;
   }
-  .hero__title {
-    font-family: var(--font-head); font-size: clamp(30px, 4.4vw, 50px); line-height: 1.45; margin: 0 0 20px; letter-spacing: .06em;
-  }
-  .hero__title em { font-style: normal; color: var(--brand); }
-  .nw { display: inline-block; }
-  .hero__lead { color: var(--ink-sub); margin: 0 0 32px; }
-  .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; }
-  .hero__visual { position: relative; }
-  .hero__visual .ph { aspect-ratio: 4 / 3.3; border-radius: 120px 24px 120px 24px; }
-  .hero__badge {
-    position: absolute; left: -24px; bottom: -24px; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow);
-    padding: 16px 20px; display: flex; gap: 12px; align-items: center; font-size: 13px; line-height: 1.5;
-  }
-  .hero__badge strong { display: block; font-size: 15px; color: var(--brand-dark); }
-  .hero__badge-icon { width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font-size: 20px; flex-shrink: 0; }
+  .hero__scroll::after { content: ""; position: absolute; left: 50%; bottom: 0; width: 1px; height: 60px; background: var(--charcoal); animation: scroll 2s infinite; transform-origin: top; }
+  @keyframes scroll { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
 
-  /* ====== Trust points ====== */
-  .points { margin-top: -48px; position: relative; z-index: 2; }
-  .points__list {
-    display: grid; grid-template-columns: repeat(4, 1fr); background: #fff; border-radius: var(--radius);
-    box-shadow: var(--shadow); list-style: none; margin: 0; padding: 0;
-  }
-  .points__item { padding: 24px 20px; text-align: center; border-left: 1px solid var(--line); }
-  .points__item:first-child { border-left: 0; }
-  .points__num { font-family: var(--font-head); font-size: 26px; font-weight: 700; color: var(--brand); line-height: 1.3; }
-  .points__num small { font-size: 14px; margin-left: 2px; }
-  .points__label { font-size: 13px; color: var(--ink-sub); }
+  /* ====== Intro strip ====== */
+  .intro { background: var(--charcoal); color: #fff; }
+  .intro__inner { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; padding: 44px 0; }
+  .intro__lead { margin: 0; font-size: 17px; line-height: 1.9; letter-spacing: .08em; }
+  .points { display: grid; grid-template-columns: repeat(4, auto); list-style: none; margin: 0; padding: 0; }
+  .points li { padding: 0 24px; border-left: 1px solid rgba(255,255,255,.2); text-align: center; line-height: 1.5; }
+  .points b { display: block; font-size: 22px; font-weight: 700; letter-spacing: .04em; }
+  .points b small { font-size: 12px; margin-left: 2px; font-weight: 400; }
+  .points span { font-size: 11px; color: #a9adb1; }
 
   /* ====== Section common ====== */
-  .section { padding: 112px 0; }
+  .section { padding: 128px 0; }
   .section--soft { background: var(--bg-soft); }
-  .sec-head { text-align: center; margin-bottom: 56px; }
-  .sec-head__en {
-    font-family: var(--font-en); font-size: 13px; font-weight: 600; letter-spacing: .25em; color: var(--brand);
-    display: inline-flex; align-items: center; gap: 10px;
-  }
-  .sec-head__en::before, .sec-head__en::after { content: ""; width: 24px; height: 1px; background: currentColor; }
-  .sec-head__title { font-family: var(--font-head); font-size: clamp(24px, 3vw, 34px); margin: 8px 0 12px; letter-spacing: .08em; line-height: 1.5; }
-  .sec-head__lead { color: var(--ink-sub); margin: 0; }
+  .sec-head { margin-bottom: 64px; }
+  .sec-head--center { text-align: center; }
+  .sec-head__en { display: block; font-family: var(--font-en); font-weight: 800; font-size: clamp(40px, 6vw, 72px); line-height: 1; letter-spacing: -.01em; color: var(--ink); }
+  .sec-head__ja { display: inline-flex; align-items: center; gap: 12px; margin-top: 14px; font-size: 14px; font-weight: 500; letter-spacing: .16em; color: var(--ink-sub); }
+  .sec-head__ja::before { content: ""; width: 28px; height: 1px; background: var(--ink-sub); }
+  .sec-head--center .sec-head__ja::before { display: none; }
+  .sec-lead { color: var(--ink-sub); margin: 20px 0 0; }
 
-  /* ====== Philosophy ====== */
-  .about { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-  .about .ph { aspect-ratio: 5 / 4; }
-  .about__catch { font-family: var(--font-head); font-size: clamp(22px, 2.6vw, 30px); line-height: 1.7; margin: 0 0 24px; letter-spacing: .06em; }
-  .about__catch span { background: linear-gradient(transparent 62%, rgba(232,137,58,.28) 62%); }
-  .about p { color: var(--ink-sub); margin: 0 0 16px; }
-  .about__sign { margin-top: 24px; font-size: 14px; }
-  .about__sign strong { font-family: var(--font-head); font-size: 18px; margin-left: 8px; }
+  /* ====== About ====== */
+  .about { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about .ph { aspect-ratio: 4 / 5; }
+  .about__catch { font-size: clamp(24px, 2.8vw, 34px); font-weight: 700; line-height: 1.7; margin: 0 0 32px; letter-spacing: .06em; }
+  .about__catch .g { color: var(--gray); font-weight: 300; }
+  .about p { color: var(--ink-sub); margin: 0 0 18px; }
+  .about .about__sign { margin-top: 40px; font-size: 13px; color: var(--ink); }
+  .about__sign strong { font-size: 20px; margin-left: 12px; letter-spacing: .2em; }
 
   /* ====== Services ====== */
-  .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-  .service {
-    background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
-    display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s;
-  }
-  .service:hover { transform: translateY(-6px); box-shadow: 0 14px 32px rgba(31,90,78,.14); }
-  .service .ph { aspect-ratio: 16 / 10; border-radius: 0; }
-  .service__body { padding: 28px 28px 32px; display: flex; flex-direction: column; flex: 1; }
-  .service__tag { font-family: var(--font-en); font-size: 11px; letter-spacing: .2em; color: var(--accent-dark); font-weight: 600; }
-  .service__title { font-family: var(--font-head); font-size: 21px; margin: 4px 0 4px; }
-  .service__name { font-size: 13px; color: var(--brand-dark); font-weight: 700; margin-bottom: 12px; }
-  .service__text { font-size: 14px; color: var(--ink-sub); margin: 0 0 20px; flex: 1; }
-  .service__more { font-size: 14px; font-weight: 700; color: var(--brand); display: inline-flex; gap: 8px; }
-  .service__more::after { content: "→"; transition: transform .2s; }
-  .service:hover .service__more::after { transform: translateX(4px); }
+  .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .service { background: #fff; display: flex; flex-direction: column; }
+  .service__img { overflow: hidden; }
+  .service .ph { aspect-ratio: 4 / 3; transition: transform .6s ease; }
+  .service:hover .ph { transform: scale(1.04); }
+  .service__body { padding: 32px 32px 36px; display: flex; flex-direction: column; flex: 1; }
+  .service__no { font-family: var(--font-en); font-weight: 800; font-size: 13px; letter-spacing: .1em; color: var(--gray); }
+  .service__title { font-size: 21px; font-weight: 700; margin: 6px 0 2px; letter-spacing: .08em; }
+  .service__name { font-size: 12px; color: var(--ink-sub); letter-spacing: .1em; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+  .service__text { font-size: 14px; color: var(--ink-sub); margin: 0 0 24px; flex: 1; }
+  .service__more { font-family: var(--font-en); font-size: 12px; font-weight: 600; letter-spacing: .2em; display: inline-flex; align-items: center; gap: 12px; }
+  .service__more::after { content: ""; width: 24px; height: 1px; background: currentColor; transition: width .25s; }
+  .service:hover .service__more::after { width: 40px; }
 
-  /* ====== Day service feature ====== */
-  .feature-head { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-bottom: 64px; }
-  .feature-head .ph { aspect-ratio: 16 / 11; }
-  .feature-head__title { font-family: var(--font-head); font-size: clamp(22px, 2.6vw, 30px); line-height: 1.6; margin: 8px 0 16px; }
-  .feature-head p { color: var(--ink-sub); margin: 0 0 24px; }
-  .spec { display: grid; grid-template-columns: auto 1fr; gap: 6px 20px; font-size: 14px; margin: 0; padding: 20px 24px; background: #fff; border-radius: var(--radius); border: 1px solid var(--line); }
-  .spec dt { color: var(--brand-dark); font-weight: 700; }
-  .spec dd { margin: 0; }
-  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .feature { background: #fff; border-radius: var(--radius); padding: 36px 28px; position: relative; border: 1px solid var(--line); }
-  .feature__no { font-family: var(--font-en); font-size: 44px; font-weight: 600; color: var(--brand-light); position: absolute; top: 12px; right: 20px; line-height: 1; }
-  .feature__icon { width: 56px; height: 56px; border-radius: 50%; background: var(--brand-light); display: grid; place-items: center; margin-bottom: 16px; }
-  .feature__icon svg { width: 28px; height: 28px; stroke: var(--brand); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-  .feature h3 { font-family: var(--font-head); font-size: 19px; margin: 0 0 8px; }
+  /* ====== Day service ====== */
+  .feature-head { display: grid; grid-template-columns: 1.1fr 1fr; gap: 72px; align-items: center; margin-bottom: 80px; }
+  .feature-head .ph { aspect-ratio: 3 / 2; }
+  .feature-head__title { font-size: clamp(24px, 2.6vw, 32px); font-weight: 700; line-height: 1.6; margin: 0 0 20px; letter-spacing: .08em; }
+  .feature-head p { color: var(--ink-sub); margin: 0 0 32px; }
+  .spec { display: grid; grid-template-columns: 7em 1fr; margin: 0; font-size: 14px; border-top: 1px solid var(--ink); }
+  .spec dt, .spec dd { padding: 14px 0; border-bottom: 1px solid var(--line); margin: 0; }
+  .spec dt { font-weight: 700; }
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .feature { padding: 48px 40px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; }
+  .feature__no { font-family: var(--font-en); font-weight: 800; font-size: 48px; line-height: 1; color: var(--line); display: block; margin-bottom: 24px; }
+  .feature h3 { font-size: 18px; margin: 0 0 12px; letter-spacing: .08em; }
   .feature p { font-size: 14px; color: var(--ink-sub); margin: 0; }
 
-  /* ====== Schedule ====== */
-  .schedule { margin-top: 72px; background: #fff; border-radius: var(--radius); padding: 48px; box-shadow: var(--shadow); }
-  .schedule__title { font-family: var(--font-head); font-size: 22px; text-align: center; margin: 0 0 32px; }
-  .timeline { display: grid; grid-template-columns: repeat(6, 1fr); list-style: none; margin: 0; padding: 0; position: relative; }
-  .timeline::before { content: ""; position: absolute; left: 8%; right: 8%; top: 27px; height: 2px; background: var(--line); }
-  .timeline li { text-align: center; position: relative; padding: 0 6px; }
-  .timeline__time {
-    width: 56px; height: 56px; margin: 0 auto 12px; border-radius: 50%; background: var(--brand); color: #fff;
-    display: grid; place-items: center; font-family: var(--font-en); font-size: 13px; font-weight: 600; position: relative;
-  }
-  .timeline__label { font-weight: 700; font-size: 15px; }
-  .timeline__desc { font-size: 12px; color: var(--ink-sub); line-height: 1.6; }
+  .schedule { margin-top: 96px; }
+  .schedule__title { font-size: 18px; font-weight: 700; margin: 0 0 40px; letter-spacing: .1em; display: flex; align-items: center; gap: 16px; }
+  .schedule__title::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .timeline { display: grid; grid-template-columns: repeat(6, 1fr); list-style: none; margin: 0; padding: 0; }
+  .timeline li { padding: 20px 16px 0 0; border-top: 2px solid var(--charcoal); position: relative; }
+  .timeline li::before { content: ""; position: absolute; top: -6px; left: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--charcoal); }
+  .timeline__time { font-family: var(--font-en); font-weight: 600; font-size: 20px; line-height: 1.4; }
+  .timeline__label { font-weight: 700; font-size: 14px; margin: 4px 0; }
+  .timeline__desc { font-size: 12px; color: var(--ink-sub); line-height: 1.7; }
 
   /* ====== Flow ====== */
-  .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; list-style: none; margin: 0; padding: 0; counter-reset: flow; }
-  .flow li { background: #fff; border-radius: var(--radius); padding: 32px 24px; position: relative; border-top: 4px solid var(--brand); box-shadow: var(--shadow); }
-  .flow li:not(:last-child)::after {
-    content: ""; position: absolute; right: -14px; top: 50%; width: 0; height: 0;
-    border: 8px solid transparent; border-left-color: var(--brand); transform: translateY(-50%); z-index: 1;
-  }
-  .flow__step { font-family: var(--font-en); font-size: 12px; letter-spacing: .2em; color: var(--accent-dark); font-weight: 600; }
-  .flow h3 { font-family: var(--font-head); font-size: 18px; margin: 4px 0 8px; }
-  .flow p { font-size: 13px; color: var(--ink-sub); margin: 0; line-height: 1.8; }
-  .flow-note { text-align: center; margin-top: 32px; font-size: 14px; color: var(--ink-sub); }
+  .flow { display: grid; grid-template-columns: repeat(4, 1fr); list-style: none; margin: 0; padding: 0; background: #fff; }
+  .flow li { padding: 44px 32px; border-right: 1px solid var(--line); }
+  .flow li:last-child { border-right: 0; }
+  .flow__step { font-family: var(--font-en); font-size: 11px; font-weight: 600; letter-spacing: .25em; color: var(--gray); }
+  .flow__num { font-family: var(--font-en); font-weight: 800; font-size: 44px; line-height: 1.1; display: block; margin-bottom: 20px; }
+  .flow h3 { font-size: 17px; margin: 0 0 10px; letter-spacing: .08em; }
+  .flow p { font-size: 13px; color: var(--ink-sub); margin: 0; line-height: 1.85; }
+  .flow-note { margin-top: 28px; font-size: 13px; color: var(--ink-sub); }
 
   /* ====== News ====== */
-  .news-wrap { display: grid; grid-template-columns: 260px 1fr; gap: 48px; }
-  .news-wrap .sec-head { text-align: left; margin: 0; }
-  .news-wrap .sec-head__en::before { display: none; }
-  .news-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
-  .news-list a { display: grid; grid-template-columns: 110px 96px 1fr; gap: 16px; align-items: center; padding: 20px 8px; border-bottom: 1px solid var(--line); transition: background .2s; }
-  .news-list a:hover { background: var(--bg-soft); }
-  .news-list time { font-family: var(--font-en); font-size: 14px; color: var(--ink-sub); }
-  .news-cat { font-size: 11px; text-align: center; border-radius: 999px; padding: 2px 0; background: var(--brand-light); color: var(--brand-dark); font-weight: 700; }
-  .news-cat--recruit { background: #fbeadb; color: var(--accent-dark); }
-  .news-more { margin-top: 24px; }
+  .news-wrap { display: grid; grid-template-columns: 300px 1fr; gap: 56px; }
+  .news-wrap .sec-head { margin-bottom: 0; }
+  .news-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+  .news-list a { display: grid; grid-template-columns: 110px 110px 1fr; gap: 16px; align-items: center; padding: 24px 8px; border-bottom: 1px solid var(--line); transition: background .2s, padding .2s; }
+  .news-list a:hover { background: var(--bg-soft); padding-left: 16px; }
+  .news-list time { font-family: var(--font-en); font-size: 13px; color: var(--ink-sub); letter-spacing: .06em; }
+  .news-cat { font-size: 11px; text-align: center; border: 1px solid var(--ink-sub); padding: 1px 0; color: var(--ink-sub); }
+  .news-more { margin-top: 32px; }
 
   /* ====== Recruit ====== */
-  .recruit {
-    position: relative; border-radius: 24px; overflow: hidden; color: #fff;
-    background: linear-gradient(120deg, var(--brand-dark), var(--brand));
-    display: grid; grid-template-columns: 1.2fr 1fr; align-items: center;
-  }
-  .recruit__body { padding: 64px 56px; }
-  .recruit__en { font-family: var(--font-en); letter-spacing: .25em; font-size: 13px; opacity: .8; }
-  .recruit h2 { font-family: var(--font-head); font-size: clamp(22px, 2.8vw, 32px); margin: 8px 0 16px; line-height: 1.5; }
-  .recruit p { opacity: .9; margin: 0 0 28px; font-size: 15px; }
-  .recruit__jobs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
-  .recruit__jobs span { border: 1px solid rgba(255,255,255,.5); border-radius: 999px; padding: 2px 14px; font-size: 13px; }
-  .recruit .ph { height: 100%; min-height: 320px; border-radius: 0; opacity: .9; }
+  .recruit { position: relative; color: #fff; background: var(--charcoal-deep); overflow: hidden; }
+  .recruit__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 75%; opacity: .3; filter: grayscale(1); }
+  .recruit__inner { position: relative; padding: 140px 0; }
+  .recruit .sec-head { margin-bottom: 40px; }
+  .recruit .sec-head__en { color: #fff; }
+  .recruit .sec-head__ja { color: #c9ccce; }
+  .recruit .sec-head__ja::before { background: #c9ccce; }
+  .recruit h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 700; margin: 0 0 20px; line-height: 1.6; letter-spacing: .08em; }
+  .recruit p { color: #d3d6d8; margin: 0 0 32px; max-width: 34em; }
+  .recruit__jobs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+  .recruit__jobs span { border: 1px solid rgba(255,255,255,.4); padding: 3px 16px; font-size: 13px; }
 
-  /* ====== Company / Access ====== */
-  .company { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-  .company-table { width: 100%; border-collapse: collapse; font-size: 15px; }
-  .company-table th, .company-table td { padding: 18px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
-  .company-table th { width: 30%; color: var(--brand-dark); font-weight: 700; }
-  .company-table tr:first-child th, .company-table tr:first-child td { border-top: 2px solid var(--brand); }
-  .map { aspect-ratio: 4 / 3.2; }
-  .access-note { font-size: 14px; color: var(--ink-sub); margin-top: 12px; }
+  /* ====== Company ====== */
+  .company { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .company-table { width: 100%; border-collapse: collapse; font-size: 15px; border-top: 1px solid var(--ink); }
+  .company-table th, .company-table td { padding: 20px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  .company-table th { width: 30%; font-weight: 700; }
+  .map { aspect-ratio: 4 / 3.4; }
+  .access-note { font-size: 13px; color: var(--ink-sub); margin-top: 14px; }
 
-  /* ====== Contact CTA ====== */
-  .contact { background: var(--bg-soft); padding: 96px 0; }
-  .contact__box { background: #fff; border-radius: 24px; padding: 56px; text-align: center; box-shadow: var(--shadow); }
-  .contact__box h2 { font-family: var(--font-head); font-size: clamp(22px, 2.8vw, 30px); margin: 8px 0 12px; }
-  .contact__box > p { color: var(--ink-sub); margin: 0 0 40px; }
-  .contact__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .contact__item { border: 1px solid var(--line); border-radius: var(--radius); padding: 32px 24px; }
-  .contact__item-label { font-size: 14px; font-weight: 700; color: var(--brand-dark); margin-bottom: 8px; }
-  .contact__tel { font-family: var(--font-en); font-size: clamp(28px, 3.6vw, 38px); font-weight: 600; color: var(--brand-dark); line-height: 1.3; letter-spacing: .04em; }
-  .contact__time { font-size: 13px; color: var(--ink-sub); }
+  /* ====== Contact ====== */
+  .contact { background: var(--bg-soft); padding: 120px 0; }
+  .contact__grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); background: #fff; }
+  .contact__item { padding: 48px 40px; text-align: center; }
+  .contact__item + .contact__item { border-left: 1px solid var(--line); }
+  .contact__label { font-size: 14px; font-weight: 700; letter-spacing: .1em; margin-bottom: 12px; }
+  .contact__tel { font-family: var(--font-en); font-size: clamp(30px, 3.8vw, 42px); font-weight: 600; line-height: 1.3; letter-spacing: .04em; display: inline-block; }
+  .contact__sub { font-size: 13px; color: var(--ink-sub); margin: 4px 0 0; }
+  .contact__item .btn { margin-top: 20px; }
 
   /* ====== Footer ====== */
-  .footer { background: #23302c; color: rgba(255,255,255,.85); padding: 64px 0 28px; font-size: 14px; }
-  .footer__inner { display: grid; grid-template-columns: 1.2fr 2fr; gap: 48px; }
-  .footer .logo__en { color: #fff; }
-  .footer .logo__ja { color: rgba(255,255,255,.6); }
-  .footer__addr { margin-top: 16px; line-height: 1.9; }
+  .footer { background: var(--charcoal); color: #e6e7e8; padding: 80px 0 32px; font-size: 14px; }
+  .footer__inner { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; }
+  .footer__company { font-weight: 700; font-size: 16px; margin: 20px 0 8px; }
+  .footer__addr { margin: 0; line-height: 2; color: #c9ccce; }
+  .footer__addr a { text-decoration: underline; text-underline-offset: 3px; }
   .footer__nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .footer__nav h4 { color: #fff; font-size: 14px; margin: 0 0 10px; }
+  .footer__nav h4 { font-family: var(--font-en); font-size: 11px; letter-spacing: .25em; color: #8d9296; margin: 0 0 14px; font-weight: 600; }
   .footer__nav ul { list-style: none; margin: 0; padding: 0; }
-  .footer__nav li { margin-bottom: 4px; }
-  .footer__nav a { opacity: .75; transition: opacity .2s; }
-  .footer__nav a:hover { opacity: 1; }
-  .footer__copy { border-top: 1px solid rgba(255,255,255,.12); margin-top: 48px; padding-top: 24px; text-align: center; font-size: 12px; opacity: .6; font-family: var(--font-en); }
+  .footer__nav li { margin-bottom: 6px; }
+  .footer__nav a { color: #c9ccce; transition: color .2s; }
+  .footer__nav a:hover { color: #fff; }
+  .footer__copy { border-top: 1px solid rgba(255,255,255,.12); margin: 64px 0 0; padding-top: 28px; font-family: var(--font-en); font-size: 11px; letter-spacing: .1em; color: #8d9296; }
 
-  /* ====== Mobile fixed CTA ====== */
   .sp-cta { display: none; }
 
-  /* ====== Fade-in ====== */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+  /* ====== Reveal ====== */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 1s ease, transform 1s ease; }
   .reveal.is-visible { opacity: 1; transform: none; }
-  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } .hero__scroll::after { animation: none; } }
 
   /* ====== Responsive ====== */
-  @media (max-width: 1280px) {
-    .header__tel, .logo__ja { display: none; }
+  @media (max-width: 1240px) {
+    .header__tel { display: none; }
+    .intro__inner { grid-template-columns: 1fr; gap: 28px; }
+    .points li:first-child { padding-left: 0; border-left: 0; }
   }
-  @media (max-width: 1080px) {
-    .nav__list { gap: 16px; font-size: 13px; }
-  }
-  @media (max-width: 900px) {
+  @media (max-width: 1020px) {
     .menu-btn {
-      display: grid; place-items: center; width: 44px; height: 44px; border: 0; background: var(--brand); border-radius: 50%; cursor: pointer;
+      display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.4); background: transparent; cursor: pointer;
     }
-    .menu-btn span, .menu-btn span::before, .menu-btn span::after {
-      display: block; width: 18px; height: 2px; background: #fff; position: relative; transition: transform .25s, background .25s;
-    }
+    .menu-btn span, .menu-btn span::before, .menu-btn span::after { display: block; width: 18px; height: 1px; background: #fff; position: relative; transition: transform .25s, background .25s; }
     .menu-btn span::before, .menu-btn span::after { content: ""; position: absolute; left: 0; }
     .menu-btn span::before { top: -6px; }
     .menu-btn span::after { top: 6px; }
@@ -310,73 +259,73 @@
     .menu-open .menu-btn span::before { transform: translateY(6px) rotate(45deg); }
     .menu-open .menu-btn span::after { transform: translateY(-6px) rotate(-45deg); }
     .nav {
-      position: fixed; inset: 76px 0 0 0; background: #fff; flex-direction: column; align-items: stretch; padding: 24px 16px;
+      position: fixed; inset: 76px 0 0 0; background: var(--charcoal); flex-direction: column; align-items: stretch; padding: 16px 16px 32px;
       opacity: 0; transform: translateY(-12px); visibility: hidden; transition: opacity .25s, transform .25s, visibility .25s; overflow-y: auto;
     }
     .menu-open .nav { opacity: 1; transform: none; visibility: visible; }
     .nav__list { flex-direction: column; gap: 0; font-size: 16px; }
-    .nav__list a { display: block; padding: 16px 4px; border-bottom: 1px solid var(--line); }
+    .nav__list a { display: block; padding: 18px 4px; border-bottom: 1px solid rgba(255,255,255,.12); }
     .nav__list a::after { display: none; }
-    .nav .btn { margin-top: 24px; }
-
-    .hero { padding: 40px 0 88px; }
-    .hero__inner, .about, .feature-head, .company, .news-wrap, .recruit, .footer__inner { grid-template-columns: 1fr; }
-    .hero__inner { gap: 40px; }
-    .hero__visual { order: -1; }
-    .hero__badge { left: 12px; bottom: -20px; }
-    .points__list { grid-template-columns: repeat(2, 1fr); }
-    .points__item:nth-child(3) { border-left: 0; }
-    .points__item:nth-child(n+3) { border-top: 1px solid var(--line); }
-    .section { padding: 80px 0; }
-    .about, .feature-head { gap: 32px; }
+    .nav .btn { margin-top: 24px; padding: 16px 24px; }
+  }
+  @media (max-width: 900px) {
+    .section { padding: 88px 0; }
+    .sec-head { margin-bottom: 44px; }
+    .about, .feature-head, .company, .news-wrap, .footer__inner { grid-template-columns: 1fr; }
+    .about, .feature-head { gap: 40px; }
+    .about .ph { aspect-ratio: 4 / 3; }
     .services, .features { grid-template-columns: 1fr; }
-    .timeline { grid-template-columns: repeat(3, 1fr); row-gap: 28px; }
-    .timeline::before { display: none; }
-    .schedule { padding: 32px 20px; }
+    .services { gap: 24px; }
+    .feature { padding: 36px 28px; }
+    .timeline { grid-template-columns: repeat(3, 1fr); row-gap: 32px; }
     .flow { grid-template-columns: 1fr 1fr; }
-    .flow li::after { display: none; }
-    .recruit__body { padding: 40px 28px; }
-    .recruit .ph { min-height: 200px; order: -1; }
-    .contact__box { padding: 40px 20px; }
+    .flow li:nth-child(2) { border-right: 0; }
+    .flow li:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    .recruit__inner { padding: 96px 0; }
+    .contact { padding: 88px 0; }
     .contact__grid { grid-template-columns: 1fr; }
+    .contact__item + .contact__item { border-left: 0; border-top: 1px solid var(--line); }
     .footer__nav { grid-template-columns: 1fr 1fr; }
 
-    .sp-cta {
-      display: grid; grid-template-columns: 1fr 1fr; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
-      box-shadow: 0 -4px 16px rgba(0,0,0,.08);
-    }
-    .sp-cta a { padding: 14px 8px; text-align: center; font-weight: 700; font-size: 14px; color: #fff; }
-    .sp-cta a:first-child { background: var(--brand); }
+    .sp-cta { display: grid; grid-template-columns: 1fr 1fr; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; }
+    .sp-cta a { padding: 15px 8px; text-align: center; font-weight: 500; font-size: 14px; color: #fff; letter-spacing: .08em; }
+    .sp-cta a:first-child { background: var(--charcoal); border-right: 1px solid rgba(255,255,255,.15); }
     .sp-cta a:last-child { background: var(--accent); }
     body { padding-bottom: 52px; }
   }
+  @media (max-width: 680px) {
+    /* スマホは写真を全幅で見せ、キャッチは写真の上の壁面に配置 */
+    .hero { background: linear-gradient(180deg, #bec8cb, #bcc6ca); }
+    .hero__copy { padding: 48px 16px 0; }
+    .hero__photo { height: auto; aspect-ratio: 1240 / 693; }
+    .hero__scroll { display: none; }
+    .points { grid-template-columns: repeat(2, 1fr); row-gap: 20px; }
+    .points li { padding: 0 12px; }
+    .points li:nth-child(odd) { padding-left: 0; border-left: 0; }
+    .intro__lead { font-size: 15px; }
+  }
   @media (max-width: 560px) {
     body { font-size: 15px; }
-    .logo__ja { display: none; }
-    .hero__cta .btn { flex: 1 1 100%; }
-    .hero__lead br { display: none; }
+    .logo small { display: none; }
+    .btn { min-width: 0; width: 100%; }
     .flow { grid-template-columns: 1fr; }
+    .flow li { border-right: 0; border-bottom: 1px solid var(--line); }
     .timeline { grid-template-columns: repeat(2, 1fr); }
-    .news-list a { grid-template-columns: 96px 1fr; row-gap: 4px; }
+    .news-list a { grid-template-columns: 96px 100px; row-gap: 6px; }
     .news-list a > span:last-child { grid-column: 1 / -1; }
     .company-table th { width: 34%; }
+    .contact__item { padding: 40px 8px; }
     .footer__nav { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
-<div class="proposal-note">リニューアル提案用デザインカンプ ｜ 写真・一部文言は仮のものです</div>
+<div class="proposal-note">リニューアル提案用デザインカンプ ｜ メインビジュアル以外の写真・一部文言は仮のものです</div>
 
 <header class="header" id="top">
   <div class="container header__inner">
-    <a href="#top" class="logo" aria-label="株式会社Liberta トップへ">
-      <span class="logo__mark" aria-hidden="true">L</span>
-      <span class="logo__text">
-        <span class="logo__en">Liberta</span><br>
-        <span class="logo__ja">株式会社Liberta</span>
-      </span>
-    </a>
+    <a href="#top" class="logo" aria-label="株式会社Liberta トップへ">Liberta<small>株式会社Liberta</small></a>
     <nav class="nav" id="nav" aria-label="メインメニュー">
       <ul class="nav__list">
         <li><a href="#about">私たちについて</a></li>
@@ -386,12 +335,9 @@
         <li><a href="#recruit">採用情報</a></li>
         <li><a href="#company">企業概要</a></li>
       </ul>
-      <a href="#contact" class="btn btn--accent">見学・お問い合わせ</a>
+      <a href="#contact" class="btn btn--white">お問い合わせ</a>
     </nav>
-    <div class="header__tel">
-      <div class="header__tel-num">0467-80-2833</div>
-      <div class="header__tel-time">受付 平日 9:00〜18:00</div>
-    </div>
+    <a href="tel:0467802833" class="header__tel">0467-80-2833<small>受付 平日 9:00〜18:00</small></a>
     <button class="menu-btn" id="menuBtn" aria-label="メニューを開く" aria-controls="nav" aria-expanded="false"><span></span></button>
   </div>
 </header>
@@ -399,55 +345,42 @@
 <main>
   <!-- ====== Hero ====== -->
   <section class="hero">
-    <div class="container hero__inner">
-      <div>
-        <span class="hero__label">鎌倉市・大船エリアの介護サービス</span>
-        <h1 class="hero__title"><span class="nw">いくつになっても、</span><br><em><span class="nw">自分らしく、</span><span class="nw">自由に。</span></em></h1>
-        <p class="hero__lead">リハビリ型デイサービス・訪問介護・介護タクシー。<br>
-          専門スタッフが「できる」を増やすお手伝いで、<br>住み慣れた鎌倉での毎日を支えます。</p>
-        <div class="hero__cta">
-          <a href="#contact" class="btn btn--accent">無料見学・体験のお申し込み <span class="arrow">→</span></a>
-          <a href="#services" class="btn btn--outline">サービスを見る</a>
-        </div>
-      </div>
-      <div class="hero__visual">
-        <div class="ph"><span>PHOTO：利用者さまとスタッフの笑顔</span></div>
-        <div class="hero__badge">
-          <span class="hero__badge-icon" aria-hidden="true">🚐</span>
-          <div><strong>送迎つき・体験利用OK</strong>大船駅西口から徒歩5分</div>
-        </div>
-      </div>
+    <div class="hero__copy">
+      <h1 class="hero__title"><span class="free">自由に</span><span class="live">生きる</span></h1>
+      <p class="hero__en">LIVE FREELY, LIVE YOUR LIFE.</p>
+    </div>
+    <img class="hero__photo" src="images/hero-team.jpg" alt="株式会社Libertaのスタッフ">
+    <span class="hero__scroll" aria-hidden="true">SCROLL</span>
+  </section>
+
+  <!-- ====== Intro ====== -->
+  <section class="intro">
+    <div class="container intro__inner">
+      <p class="intro__lead">鎌倉・大船で、<strong>リハビリ型デイサービス・訪問介護・介護タクシー</strong>を運営しています。<br>
+        通う、暮らす、出かける。その人らしい毎日を、ひとつのチームで支えます。</p>
+      <ul class="points">
+        <li><b>徒歩5<small>分</small></b><span>大船駅西口から</span></li>
+        <li><b>定員18<small>名</small></b><span>少人数制のデイ</span></li>
+        <li><b>専門職</b><span>理学療法士 在籍</span></li>
+        <li><b>3<small>事業</small></b><span>ワンストップ</span></li>
+      </ul>
     </div>
   </section>
 
-  <!-- ====== Points ====== -->
-  <div class="points">
-    <div class="container">
-      <ul class="points__list reveal">
-        <li class="points__item"><div class="points__num">徒歩5<small>分</small></div><div class="points__label">大船駅西口から</div></li>
-        <li class="points__item"><div class="points__num">定員18<small>名</small></div><div class="points__label">目が届く少人数制</div></li>
-        <li class="points__item"><div class="points__num">専門職</div><div class="points__label">理学療法士・あん摩マッサージ指圧師</div></li>
-        <li class="points__item"><div class="points__num">3<small>事業</small></div><div class="points__label">通所・訪問・移動をワンストップで</div></li>
-      </ul>
-    </div>
-  </div>
-
   <!-- ====== About ====== -->
   <section class="section" id="about">
-    <div class="container">
-      <div class="sec-head reveal">
-        <span class="sec-head__en">ABOUT US</span>
-        <h2 class="sec-head__title">Libertaに込めた想い</h2>
-      </div>
-      <div class="about">
-        <div class="ph reveal"><span>PHOTO：施設外観 / スタッフ集合</span></div>
-        <div class="reveal">
-          <p class="about__catch"><span>「Liberta」はイタリア語で</span><br><span>「自由」という意味です。</span></p>
-          <p>年齢を重ねても、身体が思うように動かなくなっても、行きたい場所へ出かけ、やりたいことを続けられる。そんな“自由な毎日”を一人ひとりに届けたい──。その想いから、私たちは鎌倉・大船の地で介護サービスを始めました。</p>
-          <p>リハビリで身体を整え、ご自宅での生活を支え、外出の足となる。地域に根ざした3つのサービスで、ご本人とご家族の「これから」に寄り添います。</p>
-          <p class="about__sign">株式会社Liberta 代表取締役<strong>〇〇 〇〇</strong></p>
+    <div class="container about">
+      <div class="reveal">
+        <div class="sec-head">
+          <span class="sec-head__en">About</span>
+          <span class="sec-head__ja">私たちについて</span>
         </div>
+        <p class="about__catch"><span class="g">Libertaとは、</span><br>イタリア語で「自由」。</p>
+        <p>年齢を重ねても、身体が思うように動かなくなっても、行きたい場所へ出かけ、やりたいことを続けられる。そんな“自由に生きる”毎日を、一人ひとりに届けたい。その想いから、私たちは鎌倉・大船の地で介護サービスを始めました。</p>
+        <p>リハビリで身体を整え、ご自宅での生活を支え、外出の足となる。地域に根ざした3つのサービスで、ご本人とご家族の「これから」に寄り添います。</p>
+        <p class="about__sign">株式会社Liberta 代表取締役<strong>〇〇 〇〇</strong></p>
       </div>
+      <div class="ph reveal"><span>PHOTO / 代表ポートレート</span></div>
     </div>
   </section>
 
@@ -455,39 +388,39 @@
   <section class="section section--soft" id="services">
     <div class="container">
       <div class="sec-head reveal">
-        <span class="sec-head__en">SERVICE</span>
-        <h2 class="sec-head__title">事業内容</h2>
-        <p class="sec-head__lead">通う・暮らす・出かける。<br>ご利用者さまの生活全体を、ひとつの会社でサポートします。</p>
+        <span class="sec-head__en">Service</span>
+        <span class="sec-head__ja">事業内容</span>
+        <p class="sec-lead">通う・暮らす・出かける。ご利用者さまの生活全体を、ひとつの会社でサポートします。</p>
       </div>
       <div class="services">
         <a href="#dayservice" class="service reveal">
-          <div class="ph"><span>PHOTO：機能訓練の様子</span></div>
+          <div class="service__img"><div class="ph"><span>PHOTO / 機能訓練</span></div></div>
           <div class="service__body">
-            <span class="service__tag">DAY SERVICE</span>
+            <span class="service__no">01 — DAY SERVICE</span>
             <h3 class="service__title">リハビリ型デイサービス</h3>
             <div class="service__name">リハビリ型デイサービス大船西口</div>
             <p class="service__text">理学療法士による個別の機能訓練と最新のリハビリマシンで、「歩く」「立つ」など日常生活に必要な力を維持・向上します。</p>
-            <span class="service__more">詳しく見る</span>
+            <span class="service__more">VIEW MORE</span>
           </div>
         </a>
         <a href="#services" class="service reveal">
-          <div class="ph"><span>PHOTO：訪問介護の様子</span></div>
+          <div class="service__img"><div class="ph"><span>PHOTO / 訪問介護</span></div></div>
           <div class="service__body">
-            <span class="service__tag">HOME CARE</span>
+            <span class="service__no">02 — HOME CARE</span>
             <h3 class="service__title">訪問介護・居宅介護</h3>
             <div class="service__name">訪問介護 ALPHA</div>
             <p class="service__text">ヘルパーがご自宅を訪問し、身体介護や生活援助を行います。住み慣れたご自宅での暮らしを、ご家族とともに支えます。</p>
-            <span class="service__more">詳しく見る</span>
+            <span class="service__more">VIEW MORE</span>
           </div>
         </a>
         <a href="#services" class="service reveal">
-          <div class="ph"><span>PHOTO：介護タクシー車両</span></div>
+          <div class="service__img"><div class="ph"><span>PHOTO / 車両</span></div></div>
           <div class="service__body">
-            <span class="service__tag">CARE TAXI</span>
+            <span class="service__no">03 — CARE TAXI</span>
             <h3 class="service__title">介護タクシー</h3>
             <div class="service__name">介護タクシー ALPHA</div>
             <p class="service__text">車いすのまま乗車できる車両で、通院・入退院・お買い物などの外出をサポート。乗降時の介助も安心してお任せください。</p>
-            <span class="service__more">詳しく見る</span>
+            <span class="service__more">VIEW MORE</span>
           </div>
         </a>
       </div>
@@ -497,11 +430,15 @@
   <!-- ====== Day service ====== -->
   <section class="section" id="dayservice">
     <div class="container">
+      <div class="sec-head reveal">
+        <span class="sec-head__en">Day Service</span>
+        <span class="sec-head__ja">リハビリ型デイサービス大船西口</span>
+      </div>
       <div class="feature-head">
+        <div class="ph reveal"><span>PHOTO / フロア・リハビリマシン</span></div>
         <div class="reveal">
-          <span class="sec-head__en">REHABILITATION DAY SERVICE</span>
-          <h2 class="feature-head__title">リハビリ型デイサービス<br>大船西口</h2>
-          <p>半日型のリハビリ特化デイサービスです。専門職が一人ひとりの身体の状態と目標をお聞きし、無理なく続けられる個別プログラムをご提案します。</p>
+          <h2 class="feature-head__title">「できる」を増やす、<br>半日型のリハビリ特化デイ。</h2>
+          <p>専門職が一人ひとりの身体の状態と目標をお聞きし、無理なく続けられる個別プログラムをご提案します。</p>
           <dl class="spec">
             <dt>所在地</dt><dd>神奈川県鎌倉市岡本2-1-17</dd>
             <dt>アクセス</dt><dd>JR大船駅 西口より徒歩5分</dd>
@@ -510,25 +447,21 @@
             <dt>対象</dt><dd>要支援1・2、要介護1〜5の方</dd>
           </dl>
         </div>
-        <div class="ph reveal"><span>PHOTO：リハビリマシンのあるフロア</span></div>
       </div>
 
       <div class="features">
         <div class="feature reveal">
           <span class="feature__no">01</span>
-          <div class="feature__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><path d="M12 8v6m0 0-3 6m3-6 3 6M7 11h10"/></svg></div>
           <h3>専門職による機能訓練</h3>
           <p>理学療法士・あん摩マッサージ指圧師が在籍。身体の状態を評価したうえで、目標に合わせた訓練を行います。</p>
         </div>
         <div class="feature reveal">
           <span class="feature__no">02</span>
-          <div class="feature__icon"><svg viewBox="0 0 24 24"><rect x="3" y="9" width="4" height="6" rx="1"/><rect x="17" y="9" width="4" height="6" rx="1"/><path d="M7 12h10M1 12h2m18 0h2"/></svg></div>
           <h3>最新のリハビリマシン</h3>
           <p>身体への負担が少ないマシンを導入。筋力やバランス能力を、安全に・効率よく高めていきます。</p>
         </div>
         <div class="feature reveal">
           <span class="feature__no">03</span>
-          <div class="feature__icon"><svg viewBox="0 0 24 24"><path d="M3 16V8a2 2 0 0 1 2-2h9l4 4h1a2 2 0 0 1 2 2v4h-2"/><circle cx="7" cy="17" r="2"/><circle cx="16" cy="17" r="2"/><path d="M9 17h5"/></svg></div>
           <h3>ご自宅まで送迎</h3>
           <p>ご自宅から施設まで送迎いたします。介護タクシーとの連携で、通院などの外出もまとめてご相談いただけます。</p>
         </div>
@@ -537,12 +470,12 @@
       <div class="schedule reveal">
         <h3 class="schedule__title">1日の流れ（午前の部の例）</h3>
         <ol class="timeline">
-          <li><div class="timeline__time">9:00</div><div class="timeline__label">お迎え</div><div class="timeline__desc">ご自宅まで<br>送迎します</div></li>
-          <li><div class="timeline__time">9:30</div><div class="timeline__label">バイタル測定</div><div class="timeline__desc">体温・血圧で<br>体調を確認</div></li>
-          <li><div class="timeline__time">9:45</div><div class="timeline__label">準備体操</div><div class="timeline__desc">全身を<br>ほぐします</div></li>
-          <li><div class="timeline__time">10:00</div><div class="timeline__label">個別機能訓練</div><div class="timeline__desc">マシン・<br>個別プログラム</div></li>
-          <li><div class="timeline__time">11:30</div><div class="timeline__label">脳トレ・休憩</div><div class="timeline__desc">お茶を飲みながら<br>交流タイム</div></li>
-          <li><div class="timeline__time">12:15</div><div class="timeline__label">お送り</div><div class="timeline__desc">ご自宅まで<br>お送りします</div></li>
+          <li><div class="timeline__time">9:00</div><div class="timeline__label">お迎え</div><div class="timeline__desc">ご自宅まで送迎します</div></li>
+          <li><div class="timeline__time">9:30</div><div class="timeline__label">バイタル測定</div><div class="timeline__desc">体温・血圧で体調を確認</div></li>
+          <li><div class="timeline__time">9:45</div><div class="timeline__label">準備体操</div><div class="timeline__desc">全身をほぐします</div></li>
+          <li><div class="timeline__time">10:00</div><div class="timeline__label">個別機能訓練</div><div class="timeline__desc">マシン・個別プログラム</div></li>
+          <li><div class="timeline__time">11:30</div><div class="timeline__label">脳トレ・休憩</div><div class="timeline__desc">お茶を飲みながら交流</div></li>
+          <li><div class="timeline__time">12:15</div><div class="timeline__label">お送り</div><div class="timeline__desc">ご自宅までお送りします</div></li>
         </ol>
       </div>
     </div>
@@ -552,15 +485,14 @@
   <section class="section section--soft" id="flow">
     <div class="container">
       <div class="sec-head reveal">
-        <span class="sec-head__en">FLOW</span>
-        <h2 class="sec-head__title">ご利用までの流れ</h2>
-        <p class="sec-head__lead">はじめての方も安心してご相談ください。</p>
+        <span class="sec-head__en">Flow</span>
+        <span class="sec-head__ja">ご利用までの流れ</span>
       </div>
-      <ol class="flow">
-        <li class="reveal"><span class="flow__step">STEP 01</span><h3>お問い合わせ</h3><p>お電話またはフォームからお気軽にご連絡ください。ご家族・ケアマネジャーさまからのご相談も承ります。</p></li>
-        <li class="reveal"><span class="flow__step">STEP 02</span><h3>見学・無料体験</h3><p>実際の雰囲気やリハビリ内容をご覧いただけます。送迎つきでの体験も可能です。</p></li>
-        <li class="reveal"><span class="flow__step">STEP 03</span><h3>ご契約・計画作成</h3><p>担当ケアマネジャーさまと連携し、目標に合わせた個別計画を作成します。</p></li>
-        <li class="reveal"><span class="flow__step">STEP 04</span><h3>ご利用開始</h3><p>定期的に評価を行い、状態に合わせてプログラムを見直していきます。</p></li>
+      <ol class="flow reveal">
+        <li><span class="flow__step">STEP</span><span class="flow__num">01</span><h3>お問い合わせ</h3><p>お電話またはフォームからご連絡ください。ご家族・ケアマネジャーさまからのご相談も承ります。</p></li>
+        <li><span class="flow__step">STEP</span><span class="flow__num">02</span><h3>見学・無料体験</h3><p>実際の雰囲気やリハビリ内容をご覧いただけます。送迎つきでの体験も可能です。</p></li>
+        <li><span class="flow__step">STEP</span><span class="flow__num">03</span><h3>ご契約・計画作成</h3><p>担当ケアマネジャーさまと連携し、目標に合わせた個別計画を作成します。</p></li>
+        <li><span class="flow__step">STEP</span><span class="flow__num">04</span><h3>ご利用開始</h3><p>定期的に評価を行い、状態に合わせてプログラムを見直していきます。</p></li>
       </ol>
       <p class="flow-note">※ 要介護認定をお持ちでない方も、まずはお気軽にご相談ください。申請のご案内もいたします。</p>
     </div>
@@ -569,14 +501,16 @@
   <!-- ====== News ====== -->
   <section class="section" id="news">
     <div class="container news-wrap">
-      <div class="sec-head reveal">
-        <span class="sec-head__en">NEWS</span>
-        <h2 class="sec-head__title">お知らせ</h2>
-        <a href="#news" class="btn btn--outline news-more">一覧を見る</a>
+      <div class="reveal">
+        <div class="sec-head">
+          <span class="sec-head__en">News</span>
+          <span class="sec-head__ja">お知らせ</span>
+        </div>
+        <a href="#news" class="btn btn--line news-more">一覧を見る</a>
       </div>
       <ul class="news-list reveal">
         <li><a href="#news"><time datetime="2026-10-01">2026.10.01</time><span class="news-cat">お知らせ</span><span>ホームページをリニューアルしました</span></a></li>
-        <li><a href="#news"><time datetime="2026-09-15">2026.09.15</time><span class="news-cat news-cat--recruit">採用</span><span>介護職員（パート）を募集しています</span></a></li>
+        <li><a href="#news"><time datetime="2026-09-15">2026.09.15</time><span class="news-cat">採用</span><span>介護職員（パート）を募集しています</span></a></li>
         <li><a href="#news"><time datetime="2026-09-01">2026.09.01</time><span class="news-cat">デイサービス</span><span>秋の無料体験会のご案内</span></a></li>
         <li><a href="#news"><time datetime="2026-08-10">2026.08.10</time><span class="news-cat">お知らせ</span><span>夏季休業日のお知らせ</span></a></li>
       </ul>
@@ -584,27 +518,26 @@
   </section>
 
   <!-- ====== Recruit ====== -->
-  <section class="section" id="recruit" style="padding-top:0">
-    <div class="container">
-      <div class="recruit reveal">
-        <div class="recruit__body">
-          <span class="recruit__en">RECRUIT</span>
-          <h2>地域の「自由な毎日」を、<br>一緒につくりませんか。</h2>
-          <p>未経験の方もブランクのある方も歓迎します。<br>資格取得支援など、長く働ける環境づくりに取り組んでいます。</p>
-          <div class="recruit__jobs"><span>介護職員</span><span>理学療法士</span><span>ドライバー</span><span>ヘルパー</span></div>
-          <a href="#contact" class="btn btn--white">採用情報を見る <span class="arrow">→</span></a>
-        </div>
-        <div class="ph"><span>PHOTO：スタッフの働く様子</span></div>
+  <section class="recruit" id="recruit">
+    <img class="recruit__bg" src="images/hero-team.jpg" alt="" aria-hidden="true">
+    <div class="container recruit__inner reveal">
+      <div class="sec-head">
+        <span class="sec-head__en">Recruit</span>
+        <span class="sec-head__ja">採用情報</span>
       </div>
+      <h2>私たちも、自由に生きる。<br>一緒に働く仲間を募集しています。</h2>
+      <p>未経験の方もブランクのある方も歓迎します。資格取得支援など、一人ひとりが自分らしく長く働ける環境づくりに取り組んでいます。</p>
+      <div class="recruit__jobs"><span>介護職員</span><span>理学療法士</span><span>ドライバー</span><span>ヘルパー</span></div>
+      <a href="#contact" class="btn btn--white">採用情報を見る</a>
     </div>
   </section>
 
   <!-- ====== Company ====== -->
-  <section class="section section--soft" id="company">
+  <section class="section" id="company">
     <div class="container">
       <div class="sec-head reveal">
-        <span class="sec-head__en">COMPANY</span>
-        <h2 class="sec-head__title">企業概要・アクセス</h2>
+        <span class="sec-head__en">Company</span>
+        <span class="sec-head__ja">企業概要・アクセス</span>
       </div>
       <div class="company">
         <table class="company-table reveal">
@@ -612,12 +545,12 @@
           <tr><th>設立</th><td>2019年4月</td></tr>
           <tr><th>代表者</th><td>代表取締役 〇〇 〇〇</td></tr>
           <tr><th>所在地</th><td>〒247-0072<br>神奈川県鎌倉市岡本2-1-17</td></tr>
-          <tr><th>電話番号</th><td>0467-80-2833</td></tr>
+          <tr><th>連絡先</th><td>TEL 0467-80-2833<br>FAX 0467-33-6239<br>info@liberta-kanagawa.com</td></tr>
           <tr><th>事業内容</th><td>リハビリ型デイサービス大船西口<br>訪問介護 ALPHA／居宅介護<br>介護タクシー ALPHA</td></tr>
           <tr><th>サービス地域</th><td>鎌倉市、藤沢市の一部</td></tr>
         </table>
         <div class="reveal">
-          <div class="ph map"><span>Googleマップ埋め込み</span></div>
+          <div class="ph map"><span>GOOGLE MAP</span></div>
           <p class="access-note">JR東海道線・横須賀線・根岸線／湘南モノレール「大船駅」西口より徒歩5分</p>
         </div>
       </div>
@@ -627,21 +560,21 @@
   <!-- ====== Contact ====== -->
   <section class="contact" id="contact">
     <div class="container">
-      <div class="contact__box reveal">
-        <span class="sec-head__en">CONTACT</span>
-        <h2>見学・体験・ご相談はお気軽に</h2>
-        <p>ご本人さま、ご家族さま、ケアマネジャーさま、どなたからのご連絡も歓迎です。</p>
-        <div class="contact__grid">
-          <div class="contact__item">
-            <div class="contact__item-label">お電話でのお問い合わせ</div>
-            <a href="tel:0467802833" class="contact__tel">0467-80-2833</a>
-            <div class="contact__time">受付時間 平日 9:00〜18:00</div>
-          </div>
-          <div class="contact__item">
-            <div class="contact__item-label">メールフォーム（24時間受付）</div>
-            <p class="contact__time" style="margin:0 0 16px">2営業日以内にご返信いたします</p>
-            <a href="#contact" class="btn btn--accent">お問い合わせフォーム <span class="arrow">→</span></a>
-          </div>
+      <div class="sec-head sec-head--center reveal">
+        <span class="sec-head__en">Contact</span>
+        <span class="sec-head__ja">見学・体験・ご相談はお気軽に</span>
+        <p class="sec-lead">ご本人さま、ご家族さま、ケアマネジャーさま、どなたからのご連絡も歓迎です。</p>
+      </div>
+      <div class="contact__grid reveal">
+        <div class="contact__item">
+          <div class="contact__label">お電話でのお問い合わせ</div>
+          <a href="tel:0467802833" class="contact__tel">0467-80-2833</a>
+          <p class="contact__sub">受付時間 平日 9:00〜18:00 ／ FAX 0467-33-6239</p>
+        </div>
+        <div class="contact__item">
+          <div class="contact__label">メールフォーム（24時間受付）</div>
+          <p class="contact__sub">2営業日以内にご返信いたします</p>
+          <a href="#contact" class="btn btn--accent">お問い合わせフォーム</a>
         </div>
       </div>
     </div>
@@ -652,15 +585,15 @@
   <div class="container">
     <div class="footer__inner">
       <div>
-        <a href="#top" class="logo">
-          <span class="logo__mark" aria-hidden="true">L</span>
-          <span class="logo__text"><span class="logo__en">Liberta</span><br><span class="logo__ja">株式会社Liberta</span></span>
-        </a>
-        <p class="footer__addr">〒247-0072 神奈川県鎌倉市岡本2-1-17<br>TEL 0467-80-2833</p>
+        <a href="#top" class="logo">Liberta</a>
+        <p class="footer__company">株式会社Liberta</p>
+        <p class="footer__addr">〒247-0072 神奈川県鎌倉市岡本2-1-17<br>
+          TEL <a href="tel:0467802833">0467-80-2833</a>　FAX 0467-33-6239<br>
+          E-MAIL <a href="mailto:info@liberta-kanagawa.com">info@liberta-kanagawa.com</a></p>
       </div>
       <nav class="footer__nav" aria-label="フッターメニュー">
         <div>
-          <h4>事業内容</h4>
+          <h4>SERVICE</h4>
           <ul>
             <li><a href="#dayservice">リハビリ型デイサービス</a></li>
             <li><a href="#services">訪問介護・居宅介護</a></li>
@@ -668,7 +601,7 @@
           </ul>
         </div>
         <div>
-          <h4>Libertaについて</h4>
+          <h4>ABOUT</h4>
           <ul>
             <li><a href="#about">私たちについて</a></li>
             <li><a href="#company">企業概要</a></li>
@@ -676,7 +609,7 @@
           </ul>
         </div>
         <div>
-          <h4>その他</h4>
+          <h4>OTHERS</h4>
           <ul>
             <li><a href="#recruit">採用情報</a></li>
             <li><a href="#contact">お問い合わせ</a></li>
@@ -690,12 +623,11 @@
 </footer>
 
 <div class="sp-cta">
-  <a href="tel:0467802833">☎ 電話する</a>
+  <a href="tel:0467802833">電話する</a>
   <a href="#contact">見学・体験を申し込む</a>
 </div>
 
 <script>
-  // Mobile menu
   const btn = document.getElementById('menuBtn');
   btn.addEventListener('click', () => {
     const open = document.body.classList.toggle('menu-open');
@@ -707,7 +639,6 @@
     btn.setAttribute('aria-expanded', false);
   }));
 
-  // Fade-in on scroll
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
   }, { threshold: 0.12 });
