@@ -182,7 +182,7 @@
   .facility__grid--4 { grid-template-columns: repeat(4, 1fr); }
   .facility figure { margin: 0; }
   .facility .ph { aspect-ratio: 4 / 3; }
-  .facility .ph img, .feature-head .ph img, .service .ph img { width: 100%; height: 100%; object-fit: cover; }
+  .ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .facility figcaption { font-size: 14px; font-weight: 700; margin-top: 10px; line-height: 1.6; }
   .facility figcaption small { display: block; font-size: 12px; font-weight: 400; color: var(--ink-sub); }
   .charge__lead { color: var(--ink-sub); font-size: 14px; margin: 0 0 32px; }
@@ -452,7 +452,7 @@
       </div>
       <div class="services">
         <a href="#dayservice" class="service reveal">
-          <div class="service__img"><div class="ph"><span>PHOTO / 大船西口</span></div></div>
+          <div class="service__img"><div class="ph"><img src="images/facility/zenshin.jpg" alt="大船西口での全身運動の様子" loading="lazy"></div></div>
           <div class="service__body">
             <span class="service__no">01 — OFUNA NISHIGUCHI</span>
             <h3 class="service__title">リハビリ型デイサービス大船西口</h3>
@@ -483,7 +483,7 @@
         <span class="sec-head__ja">リハビリ型デイサービス大船西口</span>
       </div>
       <div class="feature-head">
-        <div class="ph reveal" data-photo="ds-hero"><span>PHOTO / 自分の足で歩く</span></div>
+        <div class="ph reveal"><img src="images/ds-walk.jpg" alt="杖をついて歩道を歩く男性の後ろ姿"></div>
         <div class="reveal">
           <h2 class="feature-head__title"><span class="g">自分の足で</span>歩く。</h2>
           <p>「全ての利用者様がいつまでも自分の足で歩き続ける」ことを目指す、リハビリ特化型のデイサービスです。マシンを使った運動と、専門スタッフによるボディケアを組み合わせ、歩く力を維持・向上します。</p>
@@ -535,22 +535,22 @@
         <div class="facility__area">
           <h4 class="facility__name"><span>BODY CARE AREA</span>ボディケアエリア</h4>
           <div class="facility__grid">
-            <figure><div class="ph" data-photo="momihogushi"><span>PHOTO</span></div><figcaption>もみほぐし</figcaption></figure>
-            <figure><div class="ph" data-photo="stretch"><span>PHOTO</span></div><figcaption>ストレッチ</figcaption></figure>
-            <figure><div class="ph" data-photo="footcare"><span>PHOTO</span></div><figcaption>フットケア</figcaption></figure>
+            <figure><div class="ph"><img src="images/facility/momihogushi.jpg" alt="もみほぐし" loading="lazy"></div><figcaption>もみほぐし</figcaption></figure>
+            <figure><div class="ph"><img src="images/facility/stretch.jpg" alt="ストレッチ" loading="lazy"></div><figcaption>ストレッチ</figcaption></figure>
+            <figure><div class="ph"><img src="images/facility/footcare.jpg" alt="フットケア" loading="lazy"></div><figcaption>フットケア</figcaption></figure>
           </div>
         </div>
         <div class="facility__area">
           <h4 class="facility__name"><span>MACHINE EXERCISE AREA</span>マシンエクササイズエリア</h4>
           <div class="facility__grid facility__grid--4">
-            <figure><div class="ph" data-photo="zenshin"><span>PHOTO</span></div><figcaption>全身運動・脳トレ</figcaption></figure>
-            <figure><div class="ph" data-photo="theraband"><span>PHOTO</span></div><figcaption>セラバンドトレーニング</figcaption></figure>
-            <figure><div class="ph" data-photo="heikobo"><span>PHOTO</span></div><figcaption>平行棒</figcaption></figure>
-            <figure><div class="ph" data-photo="coxia"><span>PHOTO</span></div><figcaption>コキシアリンク<small>膝・股関節・内腿</small></figcaption></figure>
-            <figure><div class="ph" data-photo="chest"><span>PHOTO</span></div><figcaption>チェストリンク<small>肩・胸・股関節・膝・足関節</small></figcaption></figure>
-            <figure><div class="ph" data-photo="walking"><span>PHOTO</span></div><figcaption>ウォーキングマシン</figcaption></figure>
-            <figure><div class="ph" data-photo="vibration"><span>PHOTO</span></div><figcaption>振動マシン</figcaption></figure>
-            <figure><div class="ph" data-photo="bike"><span>PHOTO</span></div><figcaption>バイク</figcaption></figure>
+            <figure><div class="ph"><img src="images/facility/zenshin.jpg" alt="全身運動・脳トレ" loading="lazy"></div><figcaption>全身運動・脳トレ</figcaption></figure>
+            <figure><div class="ph"><img src="images/facility/theraband.jpg" alt="セラバンドトレーニング" loading="lazy"></div><figcaption>セラバンドトレーニング</figcaption></figure>
+            <figure><div class="ph"><img src="images/facility/heikobo.jpg" alt="平行棒" loading="lazy"></div><figcaption>平行棒</figcaption></figure>
+            <figure><div class="ph"><img src="images/facility/coxia.jpg" alt="コキシアリンク" loading="lazy"></div><figcaption>コキシアリンク<small>膝・股関節・内腿</small></figcaption></figure>
+            <figure><div class="ph"><img src="images/facility/chest.jpg" alt="チェストリンク" loading="lazy"></div><figcaption>チェストリンク<small>肩・胸・股関節・膝・足関節</small></figcaption></figure>
+            <figure><div class="ph"><span>NO PHOTO</span></div><figcaption>ウォーキングマシン</figcaption></figure>
+            <figure><div class="ph"><span>NO PHOTO</span></div><figcaption>振動マシン</figcaption></figure>
+            <figure><div class="ph"><span>NO PHOTO</span></div><figcaption>バイク</figcaption></figure>
           </div>
         </div>
       </div>
