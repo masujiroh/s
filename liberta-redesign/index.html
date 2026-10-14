@@ -1,0 +1,1115 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>株式会社Liberta｜鎌倉・大船のリハビリ型デイサービス</title>
+<meta name="description" content="自由に生きる。鎌倉市・大船エリアでリハビリ型デイサービス（大船西口・AXIS大船）を運営する株式会社Libertaの公式サイトです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   Design tokens
+   ブランド：現サイトのモノトーン（チャコール×グレー）を軸に、
+   スーツの青を差し色に。ベースは温かみのあるアイボリー。
+   ========================================================= */
+:root {
+  --ink: #232527;
+  --ink-2: #4f5458;
+  --ink-3: #8a8f93;
+  --charcoal: #2b2d30;
+  --charcoal-2: #1d1f21;
+  --ivory: #f6f4ef;
+  --sand: #ece8df;
+  --mist: #e9edef;
+  --white: #ffffff;
+  --line: #e3dfd6;
+  --accent: #2c6683;
+  --accent-2: #1f4f68;
+  --accent-soft: #e3edf2;
+  --radius-s: 10px;
+  --radius: 18px;
+  --radius-l: 28px;
+  --shadow: 0 10px 30px rgba(35, 37, 39, .07);
+  --shadow-l: 0 24px 60px rgba(35, 37, 39, .12);
+  --max: 1200px;
+  --header-h: 84px;
+  --serif: "Shippori Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+  --sans: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --en: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 8px); }
+body {
+  margin: 0; background: var(--ivory); color: var(--ink);
+  font-family: var(--sans); font-size: 16px; line-height: 2; letter-spacing: .06em;
+  -webkit-font-smoothing: antialiased; overflow-x: clip;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; }
+.container { width: min(100% - 48px, var(--max)); margin-inline: auto; }
+
+/* ---------- Loader ---------- */
+.loader {
+  position: fixed; inset: 0; z-index: 200; background: var(--charcoal);
+  display: grid; place-items: center; color: #fff;
+  transition: opacity .8s var(--ease) .2s, visibility .8s .2s;
+}
+.loader__inner { text-align: center; }
+.loader__logo { font-family: var(--en); font-weight: 800; font-size: 44px; letter-spacing: -.01em; opacity: 0; transform: translateY(10px); animation: loaderIn 1s var(--ease) .1s forwards; }
+.loader__sub { margin-top: 10px; font-size: 11px; letter-spacing: .4em; color: #9ba0a4; opacity: 0; animation: loaderIn 1s var(--ease) .35s forwards; }
+.loader__bar { width: 120px; height: 1px; margin: 22px auto 0; background: rgba(255,255,255,.15); overflow: hidden; }
+.loader__bar::after { content: ""; display: block; height: 100%; background: #fff; transform: scaleX(0); transform-origin: left; animation: loaderBar 1.1s var(--ease) .3s forwards; }
+@keyframes loaderIn { to { opacity: 1; transform: none; } }
+@keyframes loaderBar { to { transform: scaleX(1); } }
+.is-loaded .loader { opacity: 0; visibility: hidden; }
+
+/* ---------- Progress bar ---------- */
+.progress { position: fixed; top: 0; left: 0; height: 3px; width: 100%; z-index: 120; background: var(--accent); transform-origin: left; transform: scaleX(0); }
+
+/* ---------- Header ---------- */
+.header { position: fixed; inset: 0 0 auto 0; z-index: 100; height: var(--header-h); transition: background .4s, box-shadow .4s; }
+.header.is-scrolled { background: rgba(246,244,239,.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 0 rgba(0,0,0,.05); }
+.header__inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 0 40px; }
+.logo { display: flex; flex-direction: column; line-height: 1; }
+.logo__sub { font-size: 10px; letter-spacing: .3em; color: var(--ink-2); margin-bottom: 6px; }
+.logo__main { font-family: var(--en); font-weight: 800; font-size: 30px; letter-spacing: -.01em; }
+.nav { display: flex; align-items: center; gap: 36px; }
+.nav__list { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
+.nav__list a { display: flex; flex-direction: column; align-items: center; line-height: 1.4; position: relative; padding: 6px 0; }
+.nav__list a small { font-family: var(--en); font-size: 9.5px; font-weight: 600; letter-spacing: .22em; color: var(--ink-3); }
+.nav__list a span { font-size: 14px; font-weight: 500; letter-spacing: .08em; }
+.nav__list a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px; background: var(--accent); transform: scaleX(0); transition: transform .35s var(--ease); }
+.nav__list a:hover::after, .nav__list a.is-current::after { transform: scaleX(1); }
+.tel-pill { display: flex; align-items: center; gap: 12px; padding: 10px 24px 10px 18px; border-radius: 999px; background: var(--accent); color: #fff; box-shadow: 0 8px 20px rgba(44,102,131,.28); transition: transform .3s var(--ease), background .3s; }
+.tel-pill:hover { transform: translateY(-2px); background: var(--accent-2); }
+.tel-pill svg { width: 20px; height: 20px; flex: none; }
+.tel-pill small { display: block; font-size: 10px; letter-spacing: .1em; opacity: .85; line-height: 1.3; }
+.tel-pill b { display: block; font-family: var(--en); font-size: 19px; font-weight: 600; letter-spacing: .04em; line-height: 1.2; }
+.menu-btn { display: none; }
+
+/* ---------- Buttons ---------- */
+.btn { display: inline-flex; align-items: center; gap: 18px; padding: 18px 34px; border-radius: 999px; font-weight: 700; font-size: 15px; letter-spacing: .1em; transition: transform .3s var(--ease), background .3s, color .3s, box-shadow .3s; white-space: nowrap; cursor: pointer; border: 0; }
+.btn .arr { display: inline-block; width: 22px; height: 1px; background: currentColor; position: relative; transition: width .3s var(--ease); }
+.btn .arr::after { content: ""; position: absolute; right: 0; top: -4px; width: 9px; height: 9px; border-top: 1px solid currentColor; border-right: 1px solid currentColor; transform: rotate(45deg); }
+.btn:hover .arr { width: 32px; }
+.btn--accent { background: var(--accent); color: #fff; box-shadow: 0 10px 24px rgba(44,102,131,.28); }
+.btn--accent:hover { background: var(--accent-2); transform: translateY(-2px); }
+.btn--dark { background: var(--charcoal); color: #fff; }
+.btn--dark:hover { background: #000; transform: translateY(-2px); }
+.btn--ghost { border: 1px solid currentColor; color: var(--ink); background: transparent; }
+.btn--ghost:hover { background: var(--ink); color: #fff; }
+.btn--ghost-w { border: 1px solid rgba(255,255,255,.6); color: #fff; background: transparent; }
+.btn--ghost-w:hover { background: #fff; color: var(--ink); }
+
+/* ---------- Section heading ---------- */
+.section { padding: 150px 0; position: relative; }
+.eyebrow { display: inline-flex; align-items: center; gap: 14px; font-family: var(--en); font-size: 12px; font-weight: 600; letter-spacing: .3em; color: var(--accent); }
+.eyebrow::before { content: ""; width: 32px; height: 1px; background: currentColor; }
+.eyebrow--center::after { content: ""; width: 32px; height: 1px; background: currentColor; }
+.h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.6; letter-spacing: .1em; margin: 18px 0 0; }
+.lead { color: var(--ink-2); margin: 22px 0 0; }
+.head-center { text-align: center; }
+.watermark { position: absolute; pointer-events: none; user-select: none; font-family: var(--en); font-weight: 800; line-height: .8; font-size: clamp(90px, 15vw, 230px); color: rgba(35,37,39,.035); letter-spacing: -.02em; white-space: nowrap; }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; height: 100svh; min-height: 640px; max-height: 1100px; overflow: hidden; background: linear-gradient(90deg, #b8c1c6, #bdc7c9 50%, #b0bbc1); display: flex; flex-direction: column; }
+.hero__copy { position: relative; z-index: 2; padding: calc(var(--header-h) + clamp(28px, 5vh, 64px)) 24px 0; text-align: center; }
+.hero__eyebrow { margin: 0; font-family: var(--en); font-size: 12px; font-weight: 600; letter-spacing: .45em; color: #4a5155; }
+.hero__title { margin: 14px 0 0; font-size: clamp(52px, min(8vw, 11vh), 120px); line-height: 1.1; letter-spacing: .02em; }
+.hero__title .free { font-weight: 300; color: #6a7074; font-style: italic; display: inline-block; transform: skewX(-8deg); margin-right: .04em; }
+.hero__title .live { font-weight: 900; color: #141516; }
+.hero__title .ch { display: inline-block; opacity: 0; transform: translateY(40%); filter: blur(8px); }
+.is-loaded .hero__title .ch { animation: chIn 1.1s var(--ease) forwards; }
+@keyframes chIn { to { opacity: 1; transform: none; filter: blur(0); } }
+.hero__sub { margin: 18px 0 0; font-size: 15px; color: #3d4347; letter-spacing: .14em; opacity: 0; }
+.is-loaded .hero__sub { animation: fadeUp 1s var(--ease) 1.1s forwards; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.hero__visual { flex: 1; min-height: 0; display: flex; justify-content: center; position: relative; }
+.hero__photo {
+  height: 100%; width: auto; max-width: none; object-fit: cover; object-position: center bottom;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 12%), linear-gradient(to right, transparent, #000 16%, #000 84%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to bottom, transparent, #000 12%), linear-gradient(to right, transparent, #000 16%, #000 84%, transparent);
+  mask-composite: intersect;
+  transform: scale(1.06); transition: transform 2.4s var(--ease);
+}
+.is-loaded .hero__photo { transform: none; }
+.hero__badges { position: absolute; right: 40px; top: 50%; z-index: 3; display: flex; flex-direction: column; gap: 14px; transform: translateY(-10%); }
+.badge { width: 112px; height: 112px; border-radius: 50%; display: grid; place-content: center; text-align: center; background: rgba(43,45,48,.55); border: 1px solid rgba(255,255,255,.45); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #fff; line-height: 1.4; }
+.badge b { font-size: 17px; font-weight: 700; letter-spacing: .06em; }
+.badge small { font-size: 11px; }
+.hero__cta { display: flex; justify-content: center; gap: 14px; margin-top: 26px; opacity: 0; }
+.is-loaded .hero__cta { animation: fadeUp 1s var(--ease) 1.3s forwards; }
+.hero__cta .btn { padding: 15px 30px; font-size: 14px; }
+.hero__cta .btn--ghost { background: rgba(255,255,255,.35); border-color: rgba(35,37,39,.5); }
+.hero__scroll { position: absolute; left: 50%; bottom: 0; z-index: 3; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; font-family: var(--en); font-size: 10px; letter-spacing: .3em; color: #fff; }
+.hero__scroll i { display: block; width: 1px; height: 56px; background: rgba(255,255,255,.4); position: relative; overflow: hidden; }
+.hero__scroll i::after { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 40%; background: #fff; animation: scrollLine 2s var(--ease) infinite; }
+@keyframes scrollLine { from { transform: translateY(-100%); } to { transform: translateY(260%); } }
+
+/* ---------- Marquee ---------- */
+.marquee { overflow: hidden; padding: 56px 0 0; }
+.marquee__track { display: flex; width: max-content; animation: marquee 40s linear infinite; }
+.marquee__item { display: flex; align-items: center; gap: 48px; padding-right: 48px; font-size: clamp(56px, 7vw, 104px); line-height: 1.2; white-space: nowrap; }
+.marquee__item .jp { font-family: var(--serif); font-weight: 600; color: transparent; -webkit-text-stroke: 1px rgba(35,37,39,.22); }
+.marquee__item .en { font-family: var(--en); font-weight: 600; color: transparent; -webkit-text-stroke: 1px rgba(35,37,39,.22); letter-spacing: .02em; }
+.marquee__item .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); flex: none; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* ---------- About ---------- */
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: center; }
+.about__photo { position: relative; margin: 0; }
+.about__photo img { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; object-position: 42% center; border-radius: var(--radius-l); position: relative; z-index: 1; }
+.about__photo::before { content: ""; position: absolute; inset: 28px -28px -28px 28px; border-radius: var(--radius-l); background: var(--sand); }
+.about__text p { color: var(--ink-2); margin: 0 0 18px; }
+.about__text p.about__name { margin-top: 28px; color: var(--ink); font-size: 13px; }
+.about__name b { font-family: var(--serif); font-size: 20px; font-weight: 600; margin-left: 14px; letter-spacing: .2em; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 40px; }
+.stat { background: var(--white); border-radius: var(--radius); padding: 22px; display: flex; align-items: center; gap: 12px; box-shadow: var(--shadow); }
+.stat b { font-family: var(--en); font-weight: 800; font-size: 46px; line-height: 1; color: var(--accent); }
+.stat span { font-size: 14px; font-weight: 700; line-height: 1.4; }
+.stat small { display: block; font-size: 11px; font-weight: 400; color: var(--ink-3); }
+
+/* ---------- Services ---------- */
+.services { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 64px; position: relative; z-index: 1; }
+.card { background: var(--white); border-radius: var(--radius-l); overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
+.card:hover { transform: translateY(-8px); box-shadow: var(--shadow-l); }
+.card__img { position: relative; aspect-ratio: 16 / 10; }
+.card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.card__img .clip { position: absolute; inset: 0; overflow: hidden; }
+.card:hover .card__img img { transform: scale(1.06); }
+.card__num { position: absolute; right: 28px; bottom: -34px; width: 76px; height: 76px; border-radius: 50%; display: grid; place-items: center; background: var(--charcoal); color: #fff; font-family: var(--en); font-weight: 800; font-size: 22px; border: 6px solid #fff; z-index: 2; }
+.card__body { padding: 42px 40px 44px; display: flex; flex-direction: column; flex: 1; }
+.card__tag { font-family: var(--en); font-size: 11px; font-weight: 600; letter-spacing: .25em; color: var(--accent); }
+.card__title { font-family: var(--serif); font-weight: 600; font-size: 26px; line-height: 1.5; margin: 10px 0 6px; letter-spacing: .08em; }
+.card__meta { font-size: 13px; color: var(--ink-3); margin-bottom: 18px; }
+.card__text { color: var(--ink-2); font-size: 15px; margin: 0 0 28px; flex: 1; }
+.card__more { display: inline-flex; align-items: center; gap: 14px; font-family: var(--en); font-size: 12px; font-weight: 600; letter-spacing: .25em; }
+.card__more i { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; transition: background .3s, border-color .3s, color .3s; }
+.card__more i::after { content: "→"; font-style: normal; font-size: 14px; letter-spacing: 0; }
+.card:hover .card__more i { background: var(--charcoal); border-color: var(--charcoal); color: #fff; }
+
+/* ---------- Day service (Ofuna) ---------- */
+.ds-intro { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center; }
+.ds-intro__photo { margin: 0; }
+.ds-intro__photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-l); }
+.ds-intro__title { font-family: var(--serif); font-weight: 600; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.55; letter-spacing: .12em; margin: 18px 0 24px; }
+.spec { margin: 32px 0 0; background: var(--white); border-radius: var(--radius); padding: 10px 28px; box-shadow: var(--shadow); }
+.spec div { display: grid; grid-template-columns: 7em 1fr; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.spec div:last-child { border-bottom: 0; }
+.spec dt { font-weight: 700; color: var(--ink); }
+.spec dd { margin: 0; color: var(--ink-2); }
+
+.features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 110px; position: relative; }
+.feature { background: var(--white); border-radius: var(--radius-l); overflow: hidden; box-shadow: var(--shadow); position: relative; z-index: 1; }
+.feature__img { position: relative; aspect-ratio: 4 / 3; }
+.feature__img img { width: 100%; height: 100%; object-fit: cover; }
+.feature__num { position: absolute; right: 24px; bottom: -32px; width: 70px; height: 70px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: #fff; font-family: var(--en); font-weight: 800; font-size: 20px; border: 6px solid #fff; }
+.feature__body { padding: 40px 34px; }
+.feature h3 { font-family: var(--serif); font-weight: 600; font-size: 22px; line-height: 1.6; margin: 0 0 14px; letter-spacing: .08em; }
+.feature p { color: var(--ink-2); font-size: 14px; margin: 0; line-height: 2; }
+.features .watermark { right: -40px; bottom: -110px; z-index: 0; }
+
+/* Schedule */
+.schedule { display: grid; grid-template-columns: 1fr 1.25fr; gap: 80px; margin-top: 150px; align-items: start; }
+.tabs { display: inline-flex; padding: 6px; border-radius: 999px; background: var(--white); box-shadow: var(--shadow); margin-top: 32px; }
+.tab { border: 0; background: transparent; padding: 12px 24px; border-radius: 999px; cursor: pointer; line-height: 1.4; transition: background .3s, color .3s; text-align: center; }
+.tab small { display: block; font-size: 10px; letter-spacing: .1em; opacity: .75; }
+.tab b { font-family: var(--en); font-size: 16px; font-weight: 600; letter-spacing: .04em; }
+.tab[aria-selected="true"] { background: var(--charcoal); color: #fff; }
+.schedule__note { margin-top: 24px; font-size: 13px; color: var(--ink-3); }
+.timeline { list-style: none; margin: 0; padding: 0; position: relative; }
+.timeline::before { content: ""; position: absolute; left: 27px; top: 28px; bottom: 28px; width: 1px; background: var(--line); }
+.timeline li { display: grid; grid-template-columns: 56px 1fr; gap: 24px; padding: 14px 0; position: relative; }
+.timeline__dot { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: var(--white); border: 1px solid var(--line); font-family: var(--en); font-weight: 600; font-size: 14px; color: var(--ink-2); position: relative; z-index: 1; transition: background .4s, color .4s, border-color .4s; }
+.timeline li.is-loop .timeline__dot { border-color: var(--accent); color: var(--accent); }
+.timeline li.is-active .timeline__dot { background: var(--charcoal); border-color: var(--charcoal); color: #fff; }
+.timeline h4 { margin: 4px 0 2px; font-size: 17px; letter-spacing: .08em; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.timeline p { margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.9; }
+.time-tag { font-family: var(--en); font-size: 11px; font-weight: 600; letter-spacing: .06em; padding: 2px 12px; border-radius: 999px; background: var(--accent); color: #fff; }
+.loop-tag { font-size: 11px; font-weight: 500; padding: 1px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-2); }
+
+/* Facility */
+.facility { margin-top: 150px; }
+.gallery-area + .gallery-area { margin-top: 64px; }
+.gallery-area__head { display: flex; align-items: baseline; gap: 16px; margin: 0 0 24px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.gallery-area__head h3 { font-family: var(--serif); font-weight: 600; font-size: 22px; margin: 0; letter-spacing: .1em; }
+.gallery-area__head span { font-family: var(--en); font-size: 11px; font-weight: 600; letter-spacing: .25em; color: var(--accent); }
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.gallery--4 { grid-template-columns: repeat(4, 1fr); }
+.shot { position: relative; margin: 0; border-radius: var(--radius); overflow: hidden; cursor: zoom-in; aspect-ratio: 4 / 3.2; background: var(--sand); }
+.shot img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
+.shot::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(20,22,24,.72), rgba(20,22,24,0) 55%); }
+.shot figcaption { position: absolute; left: 20px; right: 20px; bottom: 16px; z-index: 1; color: #fff; line-height: 1.5; }
+.shot figcaption b { display: block; font-size: 16px; letter-spacing: .1em; }
+.shot figcaption small { display: block; font-size: 11.5px; opacity: .85; max-height: 0; overflow: hidden; transition: max-height .5s var(--ease); }
+.shot:hover img { transform: scale(1.07); }
+.shot:hover figcaption small, .shot:focus-visible figcaption small { max-height: 40px; }
+.shot:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.shot__zoom { position: absolute; top: 14px; right: 14px; z-index: 1; width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.9); display: grid; place-items: center; opacity: 0; transform: scale(.8); transition: opacity .3s, transform .3s; }
+.shot__zoom::before { content: "+"; font-family: var(--en); font-size: 18px; color: var(--ink); line-height: 1; }
+.shot:hover .shot__zoom { opacity: 1; transform: none; }
+
+/* ---------- Price ---------- */
+.price-sec { background: var(--mist); }
+.price-ui { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 56px; }
+.seg { display: inline-flex; padding: 6px; border-radius: 999px; background: var(--white); box-shadow: var(--shadow); }
+.seg button { white-space: nowrap; border: 0; background: transparent; padding: 12px 28px; border-radius: 999px; cursor: pointer; font-weight: 700; font-size: 14px; letter-spacing: .08em; line-height: 1.4; transition: background .3s, color .3s; }
+.seg button small { display: block; font-size: 10px; font-weight: 400; opacity: .75; }
+.seg button[aria-pressed="true"] { background: var(--charcoal); color: #fff; }
+.ratio { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--ink-2); }
+.ratio .seg button { padding: 10px 18px; font-family: var(--en); }
+.ratio .seg button[aria-pressed="true"] { background: var(--accent); }
+.price-cards { display: grid; gap: 16px; margin-top: 28px; }
+.price-cards.is-2 { grid-template-columns: repeat(2, 1fr); }
+.price-cards.is-5 { grid-template-columns: repeat(5, 1fr); }
+.pcard { background: var(--white); border-radius: var(--radius); padding: 26px 24px; box-shadow: var(--shadow); position: relative; overflow: hidden; animation: pIn .5s var(--ease) both; }
+@keyframes pIn { from { opacity: 0; transform: translateY(10px); } }
+.pcard__name { font-size: 14px; font-weight: 700; letter-spacing: .08em; display: flex; justify-content: space-between; gap: 8px; line-height: 1.6; }
+.pcard__name em { font-style: normal; font-family: var(--en); font-size: 11px; font-weight: 600; color: var(--accent); white-space: nowrap; }
+.pcard__price { font-family: var(--en); font-weight: 800; font-size: clamp(28px, 2.6vw, 38px); line-height: 1.2; margin: 10px 0 6px; letter-spacing: .01em; }
+.pcard__price small { font-family: var(--sans); font-size: 13px; font-weight: 500; margin-left: 4px; }
+.pcard__per { display: inline-block; font-size: 11px; padding: 1px 10px; border-radius: 999px; background: var(--mist); color: var(--ink-2); }
+.pcard__base { display: block; font-size: 11px; color: var(--ink-3); margin-top: 12px; }
+.accordion { margin-top: 28px; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.accordion summary { list-style: none; cursor: pointer; padding: 22px 30px; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 15px; letter-spacing: .08em; }
+.accordion summary::-webkit-details-marker { display: none; }
+.accordion summary i { width: 30px; height: 30px; border-radius: 50%; background: var(--mist); position: relative; flex: none; }
+.accordion summary i::before, .accordion summary i::after { content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 1.5px; background: var(--ink); transform: translate(-50%, -50%); transition: transform .3s; }
+.accordion summary i::after { transform: translate(-50%, -50%) rotate(90deg); }
+.accordion[open] summary i::after { transform: translate(-50%, -50%) rotate(0); }
+.accordion__body { padding: 0 30px 30px; }
+.accordion h4 { font-size: 14px; margin: 18px 0 10px; letter-spacing: .08em; }
+.table-wrap { overflow-x: auto; }
+.ptable { width: 100%; min-width: 680px; border-collapse: collapse; font-size: 13px; }
+.ptable th, .ptable td { padding: 12px 10px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+.ptable thead th { font-size: 11px; color: var(--ink-3); font-weight: 500; letter-spacing: .1em; }
+.ptable th:first-child { text-align: left; }
+.ptable tbody th { font-weight: 700; }
+.ptable td[colspan] { text-align: center; color: var(--ink-3); }
+.price-notes { margin: 24px 0 0; padding-left: 1.2em; font-size: 12.5px; color: var(--ink-2); line-height: 1.9; }
+
+/* ---------- AXIS ---------- */
+.axis { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: center; }
+.axis__photo { margin: 0; }
+.axis__photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-l); }
+.axis__photo figcaption { font-size: 11px; color: var(--ink-3); margin-top: 8px; text-align: right; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.chips span { font-size: 13px; padding: 6px 16px; border-radius: 999px; background: var(--white); box-shadow: var(--shadow); }
+
+/* ---------- Flow ---------- */
+.flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; list-style: none; margin: 64px 0 0; padding: 0; }
+.flow li { background: var(--white); border-radius: var(--radius); padding: 34px 28px; box-shadow: var(--shadow); position: relative; }
+.flow li:not(:last-child)::after { content: ""; position: absolute; right: -17px; top: 50%; width: 10px; height: 10px; border-top: 2px solid var(--accent); border-right: 2px solid var(--accent); transform: translateY(-50%) rotate(45deg); }
+.flow__step { font-family: var(--en); font-size: 11px; font-weight: 600; letter-spacing: .25em; color: var(--accent); }
+.flow__num { font-family: var(--en); font-weight: 800; font-size: 48px; line-height: 1; display: block; margin: 6px 0 18px; color: var(--ink); }
+.flow h3 { font-family: var(--serif); font-weight: 600; font-size: 19px; margin: 0 0 10px; letter-spacing: .08em; }
+.flow p { font-size: 13.5px; color: var(--ink-2); margin: 0; line-height: 1.9; }
+.flow-note { margin-top: 26px; font-size: 13px; color: var(--ink-3); text-align: center; }
+
+/* ---------- News ---------- */
+.news { display: grid; grid-template-columns: 320px 1fr; gap: 64px; }
+.news-list { list-style: none; margin: 0; padding: 0; }
+.news-list a { display: grid; grid-template-columns: 110px 110px 1fr 30px; gap: 18px; align-items: center; padding: 26px 10px; border-bottom: 1px solid var(--line); transition: padding .4s var(--ease), background .4s; }
+.news-list li:first-child a { border-top: 1px solid var(--line); }
+.news-list a:hover { padding-left: 22px; background: rgba(255,255,255,.6); }
+.news-list time { font-family: var(--en); font-size: 13px; color: var(--ink-3); }
+.news-cat { font-size: 11px; text-align: center; padding: 2px 0; border-radius: 999px; background: var(--white); color: var(--ink-2); }
+.news-list a::after { content: "→"; color: var(--ink-3); transition: transform .3s; }
+.news-list a:hover::after { transform: translateX(4px); color: var(--accent); }
+
+/* ---------- Recruit ---------- */
+.recruit { background: var(--charcoal); color: #fff; overflow: hidden; }
+.recruit__inner { display: grid; grid-template-columns: 1fr 1.05fr; gap: 80px; align-items: center; position: relative; z-index: 1; }
+.recruit .eyebrow { color: #9fc3d6; }
+.recruit p { color: #cfd2d4; margin: 24px 0 0; }
+.recruit__photo { margin: 0; }
+.recruit__photo img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; object-position: center 70%; border-radius: var(--radius-l); }
+.bonus { display: flex; align-items: center; gap: 22px; margin: 34px 0 36px; padding: 22px 26px; border-radius: var(--radius); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); }
+.bonus__amount { white-space: nowrap; font-weight: 700; letter-spacing: .06em; }
+.bonus__amount em { font-style: normal; font-family: var(--en); font-weight: 800; font-size: 50px; line-height: 1; margin: 0 2px 0 8px; color: #9fc3d6; }
+.bonus small { font-size: 12px; color: #b9bdc0; line-height: 1.8; border-left: 1px solid rgba(255,255,255,.18); padding-left: 22px; }
+.recruit__jobs { display: flex; gap: 8px; margin-top: 22px; flex-wrap: wrap; }
+.recruit__jobs span { font-size: 13px; padding: 5px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.3); }
+.recruit .watermark { color: rgba(255,255,255,.04); left: -20px; bottom: -30px; }
+
+/* ---------- Contact ---------- */
+.contact { position: relative; color: #fff; overflow: hidden; }
+.contact__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.contact::before { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, rgba(29,31,33,.94) 30%, rgba(29,31,33,.78)); z-index: 1; }
+.contact__inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1.1fr; gap: 72px; align-items: center; padding: 140px 0; }
+.contact .eyebrow { color: #9fc3d6; }
+.contact p { color: #cfd2d4; margin: 22px 0 0; }
+.ccard { display: grid; grid-template-columns: 64px 1fr 30px; gap: 22px; align-items: center; padding: 28px 32px; border-radius: var(--radius); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: background .3s, transform .4s var(--ease); }
+.ccard + .ccard { margin-top: 16px; }
+.ccard:hover { background: rgba(255,255,255,.12); transform: translateX(6px); }
+.ccard__icon { width: 64px; height: 64px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; }
+.ccard__icon svg { width: 24px; height: 24px; }
+.ccard small { display: block; font-size: 12px; color: #cfd2d4; letter-spacing: .1em; }
+.ccard b { display: block; font-family: var(--en); font-weight: 700; font-size: clamp(22px, 2.4vw, 32px); letter-spacing: .03em; line-height: 1.35; word-break: break-all; }
+.ccard div > span { display: block; font-size: 12px; color: #b9bdc0; }
+.ccard::after { content: "→"; font-size: 20px; color: #cfd2d4; }
+.ccard--mail b { font-size: clamp(18px, 1.9vw, 25px); word-break: normal; overflow-wrap: anywhere; }
+.ccard__sub { margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.ccard__sub a { display: block; padding: 14px 20px; border-radius: var(--radius-s); background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); font-size: 12px; color: #cfd2d4; line-height: 1.6; transition: background .3s; }
+.ccard__sub a:hover { background: rgba(255,255,255,.12); }
+.ccard__sub a b { display: block; font-family: var(--en); font-size: 17px; color: #fff; letter-spacing: .03em; }
+
+/* Form */
+.form-sec { padding: 130px 0; }
+.form-wrap { display: grid; grid-template-columns: 1fr 1.6fr; gap: 72px; }
+.form { background: var(--white); border-radius: var(--radius-l); padding: 52px; box-shadow: var(--shadow); }
+.form__row { display: block; margin-bottom: 22px; }
+.form__row > span { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+.form__row em { font-style: normal; font-size: 10px; font-weight: 500; color: #fff; background: var(--accent); padding: 1px 8px; border-radius: 999px; }
+.form input:not([type="radio"]), .form select, .form textarea { width: 100%; font: inherit; font-size: 15px; padding: 15px 18px; border: 1px solid var(--line); border-radius: var(--radius-s); background: var(--ivory); color: var(--ink); transition: border-color .3s, background .3s, box-shadow .3s; }
+.form input:focus, .form select:focus, .form textarea:focus { outline: none; border-color: var(--accent); background: #fff; box-shadow: 0 0 0 4px var(--accent-soft); }
+.form__2col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.radio-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.radio-row label { position: relative; }
+.radio-row input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.radio-row span { display: inline-block; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line); font-size: 13px; cursor: pointer; background: var(--ivory); transition: background .3s, color .3s, border-color .3s; }
+.radio-row input:checked + span { background: var(--charcoal); border-color: var(--charcoal); color: #fff; }
+.radio-row input:focus-visible + span { box-shadow: 0 0 0 4px var(--accent-soft); }
+.form .btn { margin-top: 8px; }
+
+/* ---------- Company ---------- */
+.company-sec { background: var(--white); }
+.company { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-top: 56px; }
+.ctable { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.ctable th, .ctable td { padding: 20px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; line-height: 1.9; }
+.ctable th { width: 30%; font-weight: 700; }
+.ctable td { color: var(--ink-2); }
+.ctable tr.is-hl th, .ctable tr.is-hl td { background: var(--ivory); }
+.map { border-radius: var(--radius-l); overflow: hidden; box-shadow: var(--shadow); background: var(--sand); aspect-ratio: 4 / 3.6; position: relative; }
+.map iframe { width: 100%; height: 100%; border: 0; display: block; filter: grayscale(.35); }
+.map__btn.btn { position: absolute; left: 20px; bottom: 20px; padding: 12px 22px; font-size: 13px; }
+.access-note { font-size: 13px; color: var(--ink-3); margin: 14px 0 0; }
+
+/* ---------- Footer ---------- */
+.footer { background: var(--charcoal-2); color: #d9dcde; padding: 90px 0 36px; font-size: 14px; }
+.footer__inner { display: grid; grid-template-columns: 1.2fr 2fr; gap: 64px; }
+.footer .logo__main { color: #fff; }
+.footer .logo__sub { color: #8d9296; }
+.footer__addr { margin: 22px 0 0; color: #a9adb1; line-height: 2; font-size: 13px; }
+.footer__nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.footer__nav h4 { font-family: var(--en); font-size: 11px; letter-spacing: .25em; color: #7d8286; margin: 0 0 14px; font-weight: 600; }
+.footer__nav ul { list-style: none; margin: 0; padding: 0; }
+.footer__nav li { margin-bottom: 6px; }
+.footer__nav a { color: #c9ccce; transition: color .2s; }
+.footer__nav a:hover { color: #fff; }
+.footer__copy { margin: 72px 0 0; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.08); font-family: var(--en); font-size: 11px; letter-spacing: .12em; color: #7d8286; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+/* ---------- Floating ---------- */
+.float-cta { position: fixed; right: 28px; bottom: 104px; z-index: 90; width: 112px; height: 112px; border-radius: 50%; display: grid; place-content: center; text-align: center; background: var(--accent); color: #fff; font-weight: 700; font-size: 13px; line-height: 1.5; letter-spacing: .06em; box-shadow: 0 14px 30px rgba(44,102,131,.35); transition: transform .4s var(--ease), opacity .4s; opacity: 0; transform: scale(.6); pointer-events: none; }
+.float-cta::before { content: ""; position: absolute; inset: -7px; border-radius: 50%; border: 1px dashed rgba(44,102,131,.55); animation: spin 18s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.float-cta.is-show { opacity: 1; transform: none; pointer-events: auto; }
+.float-cta.is-show:hover { transform: scale(1.06); }
+.to-top { position: fixed; right: 56px; bottom: 32px; z-index: 90; width: 56px; height: 56px; border-radius: 50%; background: var(--white); box-shadow: var(--shadow-l); display: grid; place-items: center; border: 0; cursor: pointer; opacity: 0; transform: translateY(10px); transition: opacity .4s, transform .4s; pointer-events: none; }
+.to-top.is-show { opacity: 1; transform: none; pointer-events: auto; }
+.to-top::before { content: ""; width: 10px; height: 10px; border-left: 2px solid var(--ink); border-top: 2px solid var(--ink); transform: translateY(2px) rotate(45deg); }
+
+/* ---------- Lightbox ---------- */
+.lightbox { position: fixed; inset: 0; z-index: 150; background: rgba(15,16,17,.92); display: grid; place-items: center; padding: 40px; opacity: 0; visibility: hidden; transition: opacity .4s, visibility .4s; }
+.lightbox.is-open { opacity: 1; visibility: visible; }
+.lightbox figure { margin: 0; max-width: min(1000px, 92vw); text-align: center; color: #fff; }
+.lightbox img { max-height: 78vh; width: auto; margin: 0 auto; border-radius: var(--radius); }
+.lightbox figcaption { margin-top: 16px; font-size: 15px; letter-spacing: .1em; }
+.lightbox__close, .lightbox__nav { position: absolute; border: 0; background: rgba(255,255,255,.1); color: #fff; width: 56px; height: 56px; border-radius: 50%; cursor: pointer; font-size: 20px; display: grid; place-items: center; transition: background .3s; }
+.lightbox__close:hover, .lightbox__nav:hover { background: rgba(255,255,255,.22); }
+.lightbox__close { top: 24px; right: 24px; }
+.lightbox__nav--prev { left: 24px; top: 50%; transform: translateY(-50%); }
+.lightbox__nav--next { right: 24px; top: 50%; transform: translateY(-50%); }
+
+/* ---------- Cursor ---------- */
+.cursor { position: fixed; left: 0; top: 0; z-index: 300; width: 40px; height: 40px; margin: -20px 0 0 -20px; border-radius: 50%; border: 1px solid rgba(44,102,131,.7); pointer-events: none; transition: width .3s, height .3s, margin .3s, background .3s, opacity .3s; opacity: 0; }
+.cursor.is-hover { width: 64px; height: 64px; margin: -32px 0 0 -32px; background: rgba(44,102,131,.12); }
+@media (hover: none) { .cursor { display: none; } }
+
+/* ---------- Reveal ---------- */
+.rv { opacity: 0; transform: translateY(36px); transition: opacity 1.1s var(--ease), transform 1.1s var(--ease); }
+.rv.is-in { opacity: 1; transform: none; }
+.rv-blur { opacity: 0; filter: blur(10px); transform: translateY(16px); transition: opacity 1.3s var(--ease), filter 1.3s var(--ease), transform 1.3s var(--ease); }
+.rv-blur.is-in { opacity: 1; filter: blur(0); transform: none; }
+.rv-d1 { transition-delay: .12s; } .rv-d2 { transition-delay: .24s; } .rv-d3 { transition-delay: .36s; }
+.rv-img { clip-path: inset(0 0 100% 0); transition: clip-path 1.4s var(--ease); }
+.rv-img.is-in { clip-path: inset(0 0 0 0); }
+
+.sp-cta { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  html { scroll-behavior: auto; }
+  .rv, .rv-blur, .rv-img, .hero__title .ch, .hero__sub, .hero__cta { opacity: 1 !important; transform: none !important; filter: none !important; clip-path: none !important; }
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width: 1320px) {
+  .header__inner { padding: 0 24px; }
+  .nav { gap: 22px; }
+  .nav__list { gap: 18px; }
+  .tel-pill small { display: none; }
+}
+@media (max-width: 1120px) {
+  :root { --header-h: 72px; }
+  .menu-btn { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; border: 0; background: var(--charcoal); cursor: pointer; }
+  .menu-btn span, .menu-btn span::before, .menu-btn span::after { display: block; width: 18px; height: 1.5px; background: #fff; position: relative; transition: transform .3s, background .3s; }
+  .menu-btn span::before, .menu-btn span::after { content: ""; position: absolute; left: 0; }
+  .menu-btn span::before { top: -6px; } .menu-btn span::after { top: 6px; }
+  .menu-open .menu-btn span { background: transparent; }
+  .menu-open .menu-btn span::before { transform: translateY(6px) rotate(45deg); }
+  .menu-open .menu-btn span::after { transform: translateY(-6px) rotate(-45deg); }
+  .nav { position: fixed; inset: var(--header-h) 0 0 0; background: var(--ivory); flex-direction: column; align-items: stretch; padding: 24px 24px 40px; gap: 24px; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: opacity .3s, visibility .3s, transform .3s; overflow-y: auto; }
+  .menu-open .nav { opacity: 1; visibility: visible; transform: none; }
+  .menu-open .header { background: var(--ivory); }
+  .nav__list { flex-direction: column; gap: 0; }
+  .nav__list a { flex-direction: row-reverse; justify-content: space-between; align-items: baseline; padding: 18px 4px; border-bottom: 1px solid var(--line); }
+  .nav__list a span { font-size: 16px; }
+  .nav__list a::after { display: none; }
+  .tel-pill { justify-content: center; }
+  .tel-pill small { display: block; }
+  .badge { width: 96px; height: 96px; }
+  .badge b { font-size: 15px; }
+}
+@media (max-width: 960px) {
+  .section { padding: 100px 0; }
+  .about, .ds-intro, .schedule, .axis, .recruit__inner, .contact__inner, .form-wrap, .company, .news, .footer__inner { grid-template-columns: 1fr; gap: 48px; }
+  .about__photo { order: -1; margin-right: 28px; }
+  .services, .features { grid-template-columns: 1fr; gap: 56px; }
+  .features { margin-top: 80px; }
+  .schedule, .facility { margin-top: 100px; }
+  .gallery, .gallery--4 { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .price-cards.is-5 { grid-template-columns: repeat(3, 1fr); }
+  .flow { grid-template-columns: 1fr 1fr; }
+  .flow li:nth-child(2)::after { display: none; }
+  .contact__inner { padding: 100px 0; }
+  .form { padding: 36px 24px; }
+  .footer__nav { grid-template-columns: 1fr 1fr; }
+  .hero__cta .btn--ghost { display: none; }
+  .sp-cta { display: grid; grid-template-columns: 1fr 1fr; position: fixed; left: 0; right: 0; bottom: 0; z-index: 95; }
+  .sp-cta a { padding: 16px 8px; text-align: center; font-weight: 700; font-size: 14px; color: #fff; letter-spacing: .08em; }
+  .sp-cta a:first-child { background: var(--charcoal); }
+  .sp-cta a:last-child { background: var(--accent); }
+  body { padding-bottom: 54px; }
+  .float-cta { display: none; }
+  .to-top { right: 16px; bottom: 70px; width: 48px; height: 48px; }
+}
+@media (max-width: 680px) {
+  body { font-size: 15px; }
+  .container { width: min(100% - 32px, var(--max)); }
+  .header__inner { padding: 0 16px; }
+  .logo__main { font-size: 26px; }
+  .hero { height: auto; min-height: 0; max-height: none; }
+  .hero__copy { padding: calc(var(--header-h) + 36px) 16px 0; }
+  .hero__eyebrow { font-size: 10px; letter-spacing: .3em; }
+  .hero__visual { display: block; }
+  .hero__photo { width: 100%; height: auto; -webkit-mask-image: linear-gradient(to bottom, transparent, #000 12%); mask-image: linear-gradient(to bottom, transparent, #000 12%); }
+  .hero__badges { position: static; flex-direction: row; transform: none; justify-content: center; padding: 20px 0 28px; background: var(--charcoal); gap: 10px; }
+  .hero__cta { margin-top: 20px; }
+  .hero__cta .btn { padding: 14px 24px; font-size: 13px; }
+  .badge { width: 88px; height: 88px; background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.25); }
+  .hero__scroll { display: none; }
+  .marquee { padding-top: 40px; }
+  .stats { grid-template-columns: 1fr; }
+  .stat { padding: 18px 20px; }
+  .card__body, .feature__body { padding: 40px 24px 32px; }
+  .card__title { font-size: 22px; }
+  .tabs { display: flex; }
+  .tab { flex: 1; padding: 10px 8px; }
+  .shot figcaption { left: 12px; right: 12px; bottom: 10px; }
+  .shot figcaption b { font-size: 13px; }
+  .price-ui { flex-direction: column; align-items: stretch; }
+  .ratio { justify-content: space-between; }
+  .seg { display: flex; }
+  .seg button { flex: 1; padding: 10px 8px; }
+  .price-cards.is-2, .price-cards.is-5 { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .pcard { padding: 20px 16px; }
+  .pcard__name { flex-direction: column; gap: 0; }
+  .pcard__per { white-space: nowrap; }
+  .pcard__base { font-size: 10px; letter-spacing: .02em; }
+  .accordion summary, .accordion__body { padding-left: 18px; padding-right: 18px; }
+  .flow { grid-template-columns: 1fr; }
+  .flow li::after { display: none; }
+  .news-list a { grid-template-columns: 96px 1fr; row-gap: 6px; }
+  .news-list a > span:nth-of-type(2) { grid-column: 1 / -1; }
+  .news-list a::after { display: none; }
+  .bonus { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .bonus small { border-left: 0; padding-left: 0; }
+  .ccard { grid-template-columns: 52px 1fr; padding: 22px 20px; gap: 16px; }
+  .ccard::after { display: none; }
+  .ccard__icon { width: 52px; height: 52px; }
+  .ccard__sub { grid-template-columns: 1fr; }
+  .form__2col { grid-template-columns: 1fr; gap: 0; }
+  .ctable th { width: 34%; }
+  .footer__nav { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <div class="loader__logo">Liberta</div>
+    <div class="loader__sub">自由に生きる</div>
+    <div class="loader__bar"></div>
+  </div>
+</div>
+<div class="progress" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"></div>
+
+<header class="header" id="top">
+  <div class="header__inner">
+    <a href="#top" class="logo" aria-label="株式会社Liberta トップへ">
+      <span class="logo__sub">株式会社リベルタ</span>
+      <span class="logo__main">Liberta</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="メインメニュー">
+      <ul class="nav__list">
+        <li><a href="#about"><small>ABOUT</small><span>私たちについて</span></a></li>
+        <li><a href="#service"><small>SERVICE</small><span>事業所</span></a></li>
+        <li><a href="#facility"><small>FACILITY</small><span>設備紹介</span></a></li>
+        <li><a href="#price"><small>PRICE</small><span>ご利用料金</span></a></li>
+        <li><a href="#flow"><small>START</small><span>ご利用まで</span></a></li>
+        <li><a href="#recruit"><small>RECRUIT</small><span>採用情報</span></a></li>
+        <li><a href="#company"><small>COMPANY</small><span>会社概要</span></a></li>
+      </ul>
+      <a href="tel:0467802833" class="tel-pill">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+        <span><small>見学・体験のご予約</small><b>0467-80-2833</b></span>
+      </a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="メニューを開く" aria-controls="nav" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+
+<main>
+  <!-- ===================== Hero ===================== -->
+  <section class="hero" aria-label="メインビジュアル">
+    <div class="hero__copy">
+      <p class="hero__eyebrow">REHABILITATION DAY SERVICE IN KAMAKURA</p>
+      <h1 class="hero__title" aria-label="自由に生きる"><span class="free" aria-hidden="true"><span class="ch">自</span><span class="ch">由</span><span class="ch">に</span></span><span class="live" aria-hidden="true"><span class="ch">生</span><span class="ch">き</span><span class="ch">る</span></span></h1>
+      <p class="hero__sub">鎌倉・大船で、いつまでも自分の足で歩ける毎日を。</p>
+      <div class="hero__cta"><a href="#form" class="btn btn--accent">見学・無料体験を申し込む <span class="arr"></span></a><a href="#price" class="btn btn--ghost">料金を見る <span class="arr"></span></a></div>
+    </div>
+    <div class="hero__visual"><img class="hero__photo" src="images/hero-team.jpg" alt="株式会社Libertaのスタッフ"></div>
+    <div class="hero__badges" aria-label="特長">
+      <div class="badge"><b>2施設</b><small>大船エリア</small></div>
+      <div class="badge"><b>1日2部制</b><small>午前・午後</small></div>
+      <div class="badge"><b>送迎</b><small>付き</small></div>
+    </div>
+    <div class="hero__scroll" aria-hidden="true">SCROLL<i></i></div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <div class="marquee__item"><span class="jp">自由に生きる</span><span class="dot"></span><span class="en">Live Freely</span><span class="dot"></span><span class="jp">自分の足で、歩きつづける</span><span class="dot"></span><span class="en">Liberta</span><span class="dot"></span></div>
+      <div class="marquee__item"><span class="jp">自由に生きる</span><span class="dot"></span><span class="en">Live Freely</span><span class="dot"></span><span class="jp">自分の足で、歩きつづける</span><span class="dot"></span><span class="en">Liberta</span><span class="dot"></span></div>
+    </div>
+  </div>
+
+  <!-- ===================== About ===================== -->
+  <section class="section" id="about">
+    <div class="container about">
+      <div class="about__text">
+        <span class="eyebrow rv">ABOUT US</span>
+        <h2 class="h2 rv-blur">Libertaとは、<br>イタリア語で「自由」。</h2>
+        <p class="rv" style="margin-top:32px">年齢を重ねても、身体が思うように動かなくなっても、行きたい場所へ出かけ、やりたいことを続けられる。そんな“自由に生きる”毎日を、一人ひとりに届けたい。その想いから、私たちは鎌倉・大船の地でリハビリ型デイサービスを始めました。</p>
+        <p class="rv">専門職によるリハビリで「歩く」「立つ」といった毎日の動作を支え、行きたい場所へ出かけられる身体づくりをお手伝いします。</p>
+        <p class="about__name rv">株式会社Liberta 代表取締役<b>福嶋 雄一朗</b><b>松原 佑樹</b></p>
+        <div class="stats">
+          <div class="stat rv"><b>2</b><span>施設<small>大船エリア</small></span></div>
+          <div class="stat rv rv-d1"><b>2</b><span>部制<small>午前・午後</small></span></div>
+          <div class="stat rv rv-d2"><b>11</b><span>種類<small>設備・ケア</small></span></div>
+        </div>
+      </div>
+      <figure class="about__photo rv"><img src="images/about-hands.jpg" alt="手をつなぐ高齢者と子ども" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- ===================== Service ===================== -->
+  <section class="section" id="service" style="background:var(--sand)">
+    <span class="watermark" style="left:-20px; top:60px">SERVICE</span>
+    <div class="container">
+      <div class="head-center">
+        <span class="eyebrow eyebrow--center rv">SERVICE</span>
+        <h2 class="h2 rv-blur">2つのリハビリ型デイサービス</h2>
+        <p class="lead rv">大船駅から通いやすい場所で、短時間型のリハビリ特化デイサービスを運営しています。</p>
+      </div>
+      <div class="services">
+        <a href="#ofuna" class="card rv">
+          <div class="card__img"><div class="clip"><img src="images/facility/heikobo.jpg" alt="大船西口のマシンエクササイズエリア" loading="lazy"></div><span class="card__num">01</span></div>
+          <div class="card__body">
+            <span class="card__tag">OFUNA NISHIGUCHI</span>
+            <h3 class="card__title">リハビリ型デイサービス<br>大船西口</h3>
+            <div class="card__meta">JR大船駅 西口より徒歩5分／1日2部制</div>
+            <p class="card__text">マシンを使った運動と、専門スタッフによるもみほぐし・ストレッチ・フットケアを組み合わせた、半日3時間のリハビリ特化型デイサービスです。</p>
+            <span class="card__more">VIEW MORE <i></i></span>
+          </div>
+        </a>
+        <a href="#axis" class="card rv rv-d1">
+          <div class="card__img"><div class="clip"><img src="images/axis-walk.jpg" alt="カートを押して歩く高齢女性（イメージ）" loading="lazy"></div><span class="card__num">02</span></div>
+          <div class="card__body">
+            <span class="card__tag">AXIS OFUNA</span>
+            <h3 class="card__title">リハビリ型デイサービス<br>AXIS大船</h3>
+            <div class="card__meta">鎌倉市岡本／定員10名の少人数制</div>
+            <p class="card__text">病院のリハビリ基準の体操に加え、太極拳・ヨガ・ボールトレーニング・パワーリハビリなど、楽しみながら続けられるプログラムをご用意しています。</p>
+            <span class="card__more">VIEW MORE <i></i></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Ofuna Nishiguchi ===================== -->
+  <section class="section" id="ofuna">
+    <div class="container">
+      <div class="ds-intro">
+        <figure class="ds-intro__photo rv-img"><img src="images/ds-walk.jpg" alt="杖をついて歩道を歩く男性の後ろ姿" loading="lazy"></figure>
+        <div>
+          <span class="eyebrow rv">OFUNA NISHIGUCHI</span>
+          <h2 class="ds-intro__title rv-blur">自分の足で、<br>歩きつづける。</h2>
+          <p class="rv" style="color:var(--ink-2); margin:0">リハビリ型デイサービス大船西口は、半日3時間のリハビリ特化型デイサービス。専用マシンでの運動と、スタッフによるボディケアを組み合わせ、毎日の「できる」を守ります。</p>
+          <dl class="spec rv">
+            <div><dt>所在地</dt><dd>神奈川県鎌倉市岡本2-1-17</dd></div>
+            <div><dt>アクセス</dt><dd>JR大船駅 西口より徒歩5分</dd></div>
+            <div><dt>提供時間</dt><dd>午前の部 9:00〜12:00／午後の部 13:30〜16:30</dd></div>
+            <div><dt>定員</dt><dd>18名</dd></div>
+            <div><dt>電話</dt><dd>0467-33-6161（大船西口直通）</dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="features">
+        <span class="watermark">FEATURE</span>
+        <article class="feature rv">
+          <div class="feature__img"><img src="images/facility/coxia.jpg" alt="コキシアリンク" loading="lazy"><span class="feature__num">01</span></div>
+          <div class="feature__body"><h3>半日3時間、<br>リハビリに集中</h3><p>午前の部・午後の部の1日2部制。長時間の滞在で疲れてしまう方も、短時間で集中して取り組めます。</p></div>
+        </article>
+        <article class="feature rv rv-d1">
+          <div class="feature__img"><img src="images/facility/momihogushi.jpg" alt="もみほぐしの様子" loading="lazy"><span class="feature__num">02</span></div>
+          <div class="feature__body"><h3>鍛える × ほぐす、<br>両方できる</h3><p>マシンや体操で筋力・バランスを鍛えたあとは、もみほぐし・ストレッチ・フットケアでからだを整えます。</p></div>
+        </article>
+        <article class="feature rv rv-d2">
+          <div class="feature__img"><img src="images/facility/zenshin.jpg" alt="全身運動の様子" loading="lazy"><span class="feature__num">03</span></div>
+          <div class="feature__body"><h3>ご自宅まで<br>送迎つき</h3><p>行き帰りはスタッフがお送りします。到着後はバイタルチェックで体調を確認してから始めるので安心です。</p></div>
+        </article>
+      </div>
+
+      <div class="schedule" id="schedule">
+        <div>
+          <span class="eyebrow rv">SCHEDULE</span>
+          <h2 class="h2 rv-blur">1日の流れ</h2>
+          <p class="lead rv">1日2部制で、ご都合のよい時間帯をお選びいただけます。</p>
+          <div class="tabs rv" role="tablist" aria-label="時間帯">
+            <button class="tab" role="tab" aria-selected="true" data-start="9:00" data-end="12:00"><small>午前の部</small><b>9:00〜12:00</b></button>
+            <button class="tab" role="tab" aria-selected="false" data-start="13:30" data-end="16:30"><small>午後の部</small><b>13:30〜16:30</b></button>
+          </div>
+          <p class="schedule__note rv">※ 運動とボディケアは、交互に繰り返し行います。</p>
+        </div>
+        <ol class="timeline">
+          <li class="rv"><span class="timeline__dot">01</span><div><h4>お迎え <span class="time-tag" data-time="start">開始 9:00</span></h4><p>ご自宅までスタッフがお迎えにあがります。</p></div></li>
+          <li class="rv"><span class="timeline__dot">02</span><div><h4>バイタルチェック</h4><p>血圧・体温などを測り、その日の体調を確認します。</p></div></li>
+          <li class="rv is-loop"><span class="timeline__dot">03</span><div><h4>運動 <span class="loop-tag">交互に</span></h4><p>マシンエクササイズで、歩くために必要な筋力・バランスを鍛えます。</p></div></li>
+          <li class="rv is-loop"><span class="timeline__dot">04</span><div><h4>ボディケア <span class="loop-tag">交互に</span></h4><p>もみほぐし・ストレッチ・フットケアで、使った筋肉をしっかりほぐします。</p></div></li>
+          <li class="rv"><span class="timeline__dot">05</span><div><h4>体操</h4><p>全身をほぐして、リハビリを仕上げます。</p></div></li>
+          <li class="rv"><span class="timeline__dot">06</span><div><h4>お送り <span class="time-tag" data-time="end">終了 12:00</span></h4><p>ご自宅までお送りします。</p></div></li>
+        </ol>
+      </div>
+
+      <div class="facility" id="facility">
+        <div class="head-center">
+          <span class="eyebrow eyebrow--center rv">FACILITY</span>
+          <h2 class="h2 rv-blur">設備紹介</h2>
+          <p class="lead rv">写真をクリックすると大きく表示されます。</p>
+        </div>
+        <div class="gallery-area" style="margin-top:56px">
+          <div class="gallery-area__head rv"><h3>ボディケアエリア</h3><span>BODY CARE AREA</span></div>
+          <div class="gallery">
+            <figure class="shot rv" tabindex="0"><img src="images/facility/momihogushi.jpg" alt="もみほぐし" loading="lazy"><span class="shot__zoom"></span><figcaption><b>もみほぐし</b><small>専門スタッフが全身をほぐします</small></figcaption></figure>
+            <figure class="shot rv rv-d1" tabindex="0"><img src="images/facility/stretch.jpg" alt="ストレッチ" loading="lazy"><span class="shot__zoom"></span><figcaption><b>ストレッチ</b><small>関節の動く範囲を広げます</small></figcaption></figure>
+            <figure class="shot rv rv-d2" tabindex="0"><img src="images/facility/footcare.jpg" alt="フットケア" loading="lazy"><span class="shot__zoom"></span><figcaption><b>フットケア</b><small>足元からからだを整えます</small></figcaption></figure>
+          </div>
+        </div>
+        <div class="gallery-area">
+          <div class="gallery-area__head rv"><h3>マシン・運動エリア</h3><span>MACHINE EXERCISE AREA</span></div>
+          <div class="gallery gallery--4">
+            <figure class="shot rv" tabindex="0"><img src="images/facility/zenshin.jpg" alt="全身運動・脳トレ" loading="lazy"><span class="shot__zoom"></span><figcaption><b>全身運動・脳トレ</b><small>からだと頭を一緒に動かします</small></figcaption></figure>
+            <figure class="shot rv rv-d1" tabindex="0"><img src="images/facility/theraband.jpg" alt="セラバンドトレーニング" loading="lazy"><span class="shot__zoom"></span><figcaption><b>セラバンド</b><small>ゴムバンドで筋力アップ</small></figcaption></figure>
+            <figure class="shot rv rv-d2" tabindex="0"><img src="images/facility/heikobo.jpg" alt="平行棒" loading="lazy"><span class="shot__zoom"></span><figcaption><b>平行棒</b><small>安全に歩行練習ができます</small></figcaption></figure>
+            <figure class="shot rv rv-d3" tabindex="0"><img src="images/facility/coxia.jpg" alt="コキシアリンク" loading="lazy"><span class="shot__zoom"></span><figcaption><b>コキシアリンク</b><small>膝・股関節・内腿</small></figcaption></figure>
+            <figure class="shot rv" tabindex="0"><img src="images/facility/chest.jpg" alt="チェストリンク" loading="lazy"><span class="shot__zoom"></span><figcaption><b>チェストリンク</b><small>肩・胸・股関節・膝・足関節</small></figcaption></figure>
+            <figure class="shot rv rv-d1" tabindex="0"><img src="images/facility/walking.jpg" alt="ウォーキングマシン" loading="lazy"><span class="shot__zoom"></span><figcaption><b>ウォーキングマシン</b><small>天候に左右されず歩く練習</small></figcaption></figure>
+            <figure class="shot rv rv-d2" tabindex="0"><img src="images/facility/vibration.jpg" alt="振動マシン" loading="lazy"><span class="shot__zoom"></span><figcaption><b>振動マシン</b><small>立ったまま全身を刺激</small></figcaption></figure>
+            <figure class="shot rv rv-d3" tabindex="0"><img src="images/facility/bike.jpg" alt="バイク" loading="lazy"><span class="shot__zoom"></span><figcaption><b>バイク</b><small>座ったまま脚の運動</small></figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Price ===================== -->
+  <section class="section price-sec" id="price">
+    <div class="container">
+      <div class="head-center">
+        <span class="eyebrow eyebrow--center rv">PRICE</span>
+        <h2 class="h2 rv-blur">ご利用料金</h2>
+        <p class="lead rv">大船西口の料金です。介護度と負担割合を選ぶと、自己負担額が切り替わります。</p>
+      </div>
+      <div class="price-ui rv">
+        <div class="seg" id="careSeg">
+          <button type="button" data-care="kaigo" aria-pressed="true">要介護の方<small>地域密着型通所介護</small></button>
+          <button type="button" data-care="shien" aria-pressed="false">要支援の方<small>通所型独自サービス</small></button>
+        </div>
+        <div class="ratio">負担割合
+          <div class="seg" id="ratioSeg">
+            <button type="button" data-ratio="0" aria-pressed="true">1割</button>
+            <button type="button" data-ratio="1" aria-pressed="false">2割</button>
+            <button type="button" data-ratio="2" aria-pressed="false">3割</button>
+          </div>
+        </div>
+      </div>
+      <div class="price-cards is-5" id="priceCards" aria-live="polite"></div>
+
+      <details class="accordion rv">
+        <summary>加算項目・基本料金の詳細を見る <i></i></summary>
+        <div class="accordion__body">
+          <h4>要介護1〜5の方（地域密着型通所介護）</h4>
+          <div class="table-wrap"><table class="ptable">
+            <thead><tr><th>項目</th><th>基本単位／料金</th><th>1割負担</th><th>2割負担</th><th>3割負担</th></tr></thead>
+            <tbody>
+              <tr><th>要介護1</th><td>415単位／4,432円（日）</td><td>444円</td><td>887円</td><td>1,330円</td></tr>
+              <tr><th>要介護2</th><td>476単位／5,083円（日）</td><td>509円</td><td>1,017円</td><td>1,525円</td></tr>
+              <tr><th>要介護3</th><td>538単位／5,745円（日）</td><td>575円</td><td>1,149円</td><td>1,724円</td></tr>
+              <tr><th>要介護4</th><td>598単位／6,386円（日）</td><td>639円</td><td>1,278円</td><td>1,916円</td></tr>
+              <tr><th>要介護5</th><td>661単位／7,059円（日）</td><td>706円</td><td>1,412円</td><td>2,118円</td></tr>
+              <tr><th>個別機能訓練加算Ⅰ2（ロ）</th><td>85単位／907円（日）</td><td>91円</td><td>182円</td><td>273円</td></tr>
+              <tr><th>個別機能訓練加算Ⅱ</th><td>20単位／213円（月）</td><td>22円</td><td>43円</td><td>64円</td></tr>
+              <tr><th>科学的介護推進体制加算</th><td>40単位／427円（月）</td><td>43円</td><td>86円</td><td>129円</td></tr>
+              <tr><th>口腔機能向上加算Ⅱ（月2回限度）</th><td>160単位／1,708円（回）</td><td>171円</td><td>342円</td><td>513円</td></tr>
+              <tr><th>介護職員処遇改善加算Ⅰ</th><td colspan="4">所定単位数×5.9％の1割または2割または3割相当額</td></tr>
+              <tr><th>介護職員特定処遇改善加算Ⅱ</th><td colspan="4">所定単位数×1.0％の1割または2割または3割相当額</td></tr>
+              <tr><th>介護職員ベースアップ等支援加算</th><td colspan="4">所定単位数×1.1％の1割または2割または3割相当額</td></tr>
+            </tbody>
+          </table></div>
+          <h4>要支援1・2、事業対象者の方（通所型独自サービス）</h4>
+          <div class="table-wrap"><table class="ptable">
+            <thead><tr><th>項目</th><th>基本単位／料金</th><th>1割負担</th><th>2割負担</th><th>3割負担</th></tr></thead>
+            <tbody>
+              <tr><th>要支援1・事業対象者</th><td>1,672単位／17,856円（月）</td><td>1,786円</td><td>3,572円</td><td>5,357円</td></tr>
+              <tr><th>要支援2</th><td>3,428単位／36,611円（月）</td><td>3,662円</td><td>7,323円</td><td>10,984円</td></tr>
+              <tr><th>運動器機能向上加算</th><td>225単位／2,403円（月）</td><td>241円</td><td>481円</td><td>721円</td></tr>
+              <tr><th>口腔機能向上加算Ⅱ</th><td>160単位／1,708円（月）</td><td>171円</td><td>342円</td><td>513円</td></tr>
+              <tr><th>科学的介護推進体制加算</th><td>40単位／427円（月）</td><td>43円</td><td>86円</td><td>129円</td></tr>
+              <tr><th>介護職員処遇改善加算Ⅰ</th><td colspan="4">所定単位数×5.9％の1割または2割または3割相当額</td></tr>
+              <tr><th>介護職員特定処遇改善加算Ⅱ</th><td colspan="4">所定単位数×1.0％の1割または2割または3割相当額</td></tr>
+              <tr><th>介護職員ベースアップ等支援加算</th><td colspan="4">所定単位数×1.1％の1割または2割または3割相当額</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </details>
+      <ul class="price-notes rv">
+        <li>この金額は、介護保険法の法定利用料に基づく金額です。</li>
+        <li>費用合計をもとに利用者負担額を算定する際の端数処理の結果、若干差異が生じる場合があります。</li>
+        <li>1単位10.68円で計算しています（鎌倉市：地域区分3級地）。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== AXIS ===================== -->
+  <section class="section" id="axis">
+    <div class="container axis">
+      <div>
+        <span class="eyebrow rv">AXIS OFUNA</span>
+        <h2 class="h2 rv-blur">少人数だから、<br>目が届く。</h2>
+        <p class="lead rv">リハビリ型デイサービスAXIS大船は、定員10名の少人数制。病院のリハビリ基準の体操に、さまざまなプログラムを組み合わせ、楽しみながら続けられるリハビリをご提供します。</p>
+        <div class="chips rv"><span>リハビリ体操</span><span>太極拳</span><span>ヨガ</span><span>ボールトレーニング</span><span>パワーリハビリ</span></div>
+        <dl class="spec rv">
+          <div><dt>所在地</dt><dd>神奈川県鎌倉市岡本1-21-24</dd></div>
+          <div><dt>定員</dt><dd>10名</dd></div>
+          <div><dt>電話</dt><dd>0467-80-2831（AXIS大船直通）</dd></div>
+        </dl>
+      </div>
+      <figure class="axis__photo rv-img"><img src="images/axis-walk.jpg" alt="カートを押して歩く高齢女性（イメージ）" loading="lazy"><figcaption>※ 写真はイメージです</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ===================== Flow ===================== -->
+  <section class="section" id="flow" style="background:var(--sand)">
+    <div class="container">
+      <div class="head-center">
+        <span class="eyebrow eyebrow--center rv">HOW TO START</span>
+        <h2 class="h2 rv-blur">ご利用開始までの流れ</h2>
+      </div>
+      <ol class="flow">
+        <li class="rv"><span class="flow__step">STEP</span><span class="flow__num">01</span><h3>お問い合わせ</h3><p>お電話またはフォームからお気軽にご連絡ください。ご家族・ケアマネジャーさまからのご相談も歓迎です。</p></li>
+        <li class="rv rv-d1"><span class="flow__step">STEP</span><span class="flow__num">02</span><h3>見学・無料体験</h3><p>実際の雰囲気やマシンをご覧いただき、運動もお試しいただけます。</p></li>
+        <li class="rv rv-d2"><span class="flow__step">STEP</span><span class="flow__num">03</span><h3>ご相談・ご契約</h3><p>担当のケアマネジャーさまと相談のうえ、ご利用内容を決めていきます。</p></li>
+        <li class="rv rv-d3"><span class="flow__step">STEP</span><span class="flow__num">04</span><h3>ご利用開始</h3><p>ご自宅までお迎えにあがります。一緒に「歩ける毎日」をつくりましょう。</p></li>
+      </ol>
+      <p class="flow-note rv">※ 要介護認定をお持ちでない方も、まずはお気軽にご相談ください。</p>
+    </div>
+  </section>
+
+  <!-- ===================== News ===================== -->
+  <section class="section" id="news">
+    <div class="container news">
+      <div>
+        <span class="eyebrow rv">NEWS</span>
+        <h2 class="h2 rv-blur">お知らせ</h2>
+        <a href="#news" class="btn btn--ghost rv" style="margin-top:32px">一覧を見る <span class="arr"></span></a>
+      </div>
+      <ul class="news-list rv">
+        <li><a href="#news"><time datetime="2026-10-01">2026.10.01</time><span class="news-cat">お知らせ</span><span>ホームページをリニューアルしました</span></a></li>
+        <li><a href="#news"><time datetime="2026-09-15">2026.09.15</time><span class="news-cat">採用</span><span>理学療法士・機能訓練指導員を募集しています</span></a></li>
+        <li><a href="#news"><time datetime="2026-09-01">2026.09.01</time><span class="news-cat">デイサービス</span><span>見学・無料体験を随時受け付けています</span></a></li>
+        <li><a href="#news"><time datetime="2026-08-10">2026.08.10</time><span class="news-cat">お知らせ</span><span>夏季休業日のお知らせ</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== Recruit ===================== -->
+  <section class="section recruit" id="recruit">
+    <span class="watermark">RECRUIT</span>
+    <div class="container recruit__inner">
+      <div>
+        <span class="eyebrow rv">RECRUIT</span>
+        <h2 class="h2 rv-blur">私たちと一緒に<br>働きませんか？</h2>
+        <p class="rv">「自由に生きる」を、利用者さまにも、働く仲間にも。未経験の方やブランクのある方も歓迎します。一人ひとりが自分らしく長く働ける環境づくりに取り組んでいます。</p>
+        <div class="recruit__jobs rv"><span>理学療法士</span><span>機能訓練指導員</span></div>
+        <div class="bonus rv">
+          <div class="bonus__amount">入職支度金<em>5</em>万円</div>
+          <small>当サイト経由でご応募いただき、採用となった方限定。<br>応募時または面接時にお申し出ください。</small>
+        </div>
+        <a href="https://liberta-kanagawa.jbplt.jp/" class="btn btn--ghost-w rv" target="_blank" rel="noopener">採用情報詳細ページ <span class="arr"></span></a>
+      </div>
+      <figure class="recruit__photo rv-img"><img src="images/recruit-team.jpg" alt="株式会社Libertaのスタッフ" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- ===================== Contact ===================== -->
+  <section class="contact" id="contact">
+    <img class="contact__bg" src="images/facility/theraband.jpg" alt="" aria-hidden="true" loading="lazy">
+    <div class="container contact__inner">
+      <div>
+        <span class="eyebrow rv">CONTACT</span>
+        <h2 class="h2 rv-blur">見学・無料体験、<br>受け付けています。</h2>
+        <p class="rv">「どんなところか見てみたい」だけでも大丈夫です。<br>ご本人・ご家族・ケアマネジャーさま、どなたからでもどうぞ。</p>
+      </div>
+      <div>
+        <a href="tel:0467802833" class="ccard rv">
+          <span class="ccard__icon"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></span>
+          <div><small>お電話でのお問い合わせ（本社）</small><b>0467-80-2833</b><span>受付 平日 9:00〜18:00／FAX 0467-33-6239</span></div>
+        </a>
+        <a href="#form" class="ccard ccard--mail rv rv-d1">
+          <span class="ccard__icon"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1.4 2L12 12.2 19.6 7H4.4zM20 8.7l-7.4 5.1a1 1 0 0 1-1.2 0L4 8.7V17h16V8.7z"/></svg></span>
+          <div><small>メールでのお問い合わせ</small><b>info@liberta-kanagawa.com</b><span>フォームは24時間受付</span></div>
+        </a>
+        <div class="ccard__sub rv rv-d2">
+          <a href="tel:0467336161">大船西口 直通<b>0467-33-6161</b></a>
+          <a href="tel:0467802831">AXIS大船 直通<b>0467-80-2831</b></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="form-sec" id="form">
+    <div class="container form-wrap">
+      <div>
+        <span class="eyebrow rv">FORM</span>
+        <h2 class="h2 rv-blur">お問い合わせ<br>フォーム</h2>
+        <p class="lead rv">内容を確認のうえ、2営業日以内に担当よりご連絡いたします。お急ぎの方はお電話ください。</p>
+      </div>
+      <form class="form rv" onsubmit="event.preventDefault(); alert('デザインカンプのため送信されません');">
+        <div class="form__row"><span>お問い合わせ種別<em>必須</em></span>
+          <div class="radio-row">
+            <label><input type="radio" name="kind" checked><span>見学・無料体験</span></label>
+            <label><input type="radio" name="kind"><span>ご利用のご相談</span></label>
+            <label><input type="radio" name="kind"><span>採用について</span></label>
+            <label><input type="radio" name="kind"><span>その他</span></label>
+          </div>
+        </div>
+        <label class="form__row"><span>ご希望の施設</span>
+          <select><option>どちらでも</option><option>リハビリ型デイサービス大船西口</option><option>リハビリ型デイサービスAXIS大船</option></select>
+        </label>
+        <div class="form__2col">
+          <label class="form__row"><span>お名前<em>必須</em></span><input type="text" required placeholder="例）鎌倉 太郎"></label>
+          <label class="form__row"><span>電話番号<em>必須</em></span><input type="tel" required placeholder="例）0467-00-0000"></label>
+        </div>
+        <label class="form__row"><span>メールアドレス</span><input type="email" placeholder="例）info@example.com"></label>
+        <label class="form__row"><span>お問い合わせ内容</span><textarea rows="5" placeholder="ご希望の日時やご相談内容などをご記入ください"></textarea></label>
+        <button type="submit" class="btn btn--accent">送信する <span class="arr"></span></button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===================== Company ===================== -->
+  <section class="section company-sec" id="company">
+    <div class="container">
+      <span class="eyebrow rv">COMPANY / ACCESS</span>
+      <h2 class="h2 rv-blur">会社概要・アクセス</h2>
+      <div class="company">
+        <table class="ctable rv">
+          <tr><th>会社名</th><td>株式会社Liberta</td></tr>
+          <tr><th>設立</th><td>2019年（平成31年）4月</td></tr>
+          <tr><th>代表者</th><td>代表取締役 福嶋 雄一朗<br>代表取締役 松原 佑樹</td></tr>
+          <tr><th>本社所在地</th><td>〒247-0072<br>神奈川県鎌倉市岡本2-1-17</td></tr>
+          <tr><th>TEL／FAX</th><td>0467-80-2833／0467-33-6239</td></tr>
+          <tr><th>E-MAIL</th><td>info@liberta-kanagawa.com</td></tr>
+          <tr class="is-hl"><th>運営施設</th><td>リハビリ型デイサービス大船西口<br>リハビリ型デイサービスAXIS大船</td></tr>
+          <tr><th>取引銀行</th><td>みずほ銀行 大船支店<br>湘南信用金庫 大船支店 鎌倉営業部<br>楽天銀行 第四営業支店</td></tr>
+        </table>
+        <div class="rv">
+          <div class="map">
+            <iframe title="株式会社Liberta 本社の地図" src="https://maps.google.com/maps?q=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E9%8E%8C%E5%80%89%E5%B8%82%E5%B2%A1%E6%9C%AC2-1-17&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <a class="btn btn--dark map__btn" href="https://maps.google.com/?q=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E9%8E%8C%E5%80%89%E5%B8%82%E5%B2%A1%E6%9C%AC2-1-17" target="_blank" rel="noopener">Googleマップで開く <span class="arr"></span></a>
+          </div>
+          <p class="access-note">JR東海道線・横須賀線・根岸線／湘南モノレール「大船駅」西口より徒歩5分</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div>
+        <a href="#top" class="logo"><span class="logo__sub">株式会社リベルタ</span><span class="logo__main">Liberta</span></a>
+        <p class="footer__addr">〒247-0072 神奈川県鎌倉市岡本2-1-17<br>TEL 0467-80-2833／FAX 0467-33-6239<br>info@liberta-kanagawa.com</p>
+      </div>
+      <nav class="footer__nav" aria-label="フッターメニュー">
+        <div><h4>DAY SERVICE</h4><ul><li><a href="#ofuna">大船西口</a></li><li><a href="#axis">AXIS大船</a></li><li><a href="#facility">設備紹介</a></li><li><a href="#price">ご利用料金</a></li></ul></div>
+        <div><h4>ABOUT</h4><ul><li><a href="#about">私たちについて</a></li><li><a href="#flow">ご利用までの流れ</a></li><li><a href="#news">お知らせ</a></li><li><a href="#company">会社概要</a></li></ul></div>
+        <div><h4>CONTACT</h4><ul><li><a href="#recruit">採用情報</a></li><li><a href="#form">お問い合わせ</a></li><li><a href="#top">プライバシーポリシー</a></li></ul></div>
+      </nav>
+    </div>
+    <p class="footer__copy"><span>&copy; Liberta Co., Ltd.</span><span>リニューアル提案用デザインカンプ</span></p>
+  </div>
+</footer>
+
+<a href="#form" class="float-cta" aria-label="見学・体験を申し込む">見学・体験<br>受付中</a>
+<button class="to-top" aria-label="ページの先頭へ"></button>
+
+<div class="sp-cta">
+  <a href="tel:0467802833">電話する</a>
+  <a href="#form">見学・体験を申し込む</a>
+</div>
+
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="写真の拡大表示">
+  <button class="lightbox__close" aria-label="閉じる">✕</button>
+  <button class="lightbox__nav lightbox__nav--prev" aria-label="前の写真">←</button>
+  <figure><img alt=""><figcaption></figcaption></figure>
+  <button class="lightbox__nav lightbox__nav--next" aria-label="次の写真">→</button>
+</div>
+
+<script>
+(() => {
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Loader */
+  const done = () => document.body.classList.add('is-loaded');
+  $$('.hero__title .ch').forEach((c, i) => c.style.animationDelay = (0.25 + i * 0.09) + 's');
+  if (reduce) done(); else addEventListener('load', () => setTimeout(done, 900));
+  setTimeout(done, 3000);
+
+  /* Header / progress / floating buttons */
+  const header = $('.header'), progress = $('.progress'), floatCta = $('.float-cta'), toTop = $('.to-top');
+  const onScroll = () => {
+    const y = scrollY, h = document.documentElement.scrollHeight - innerHeight;
+    header.classList.toggle('is-scrolled', y > 40);
+    progress.style.transform = `scaleX(${h > 0 ? y / h : 0})`;
+    floatCta.classList.toggle('is-show', y > innerHeight * .8);
+    toTop.classList.toggle('is-show', y > innerHeight * .8);
+  };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  toTop.addEventListener('click', () => scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }));
+
+  /* Current section in nav */
+  const links = $$('.nav__list a');
+  const secObs = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) links.forEach(a => a.classList.toggle('is-current', a.getAttribute('href') === '#' + e.target.id));
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  links.forEach(a => { const t = $(a.getAttribute('href')); if (t) secObs.observe(t); });
+
+  /* Mobile menu */
+  const btn = $('#menuBtn');
+  btn.addEventListener('click', () => {
+    const open = document.body.classList.toggle('menu-open');
+    btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+  });
+  $$('.nav a').forEach(a => a.addEventListener('click', () => { document.body.classList.remove('menu-open'); btn.setAttribute('aria-expanded', false); }));
+
+  /* Reveal */
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { threshold: .15, rootMargin: '0px 0px -40px 0px' });
+  $$('.rv, .rv-blur, .rv-img').forEach(el => io.observe(el));
+
+  /* Timeline highlight */
+  const tlObs = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('is-active', e.isIntersecting)), { rootMargin: '-40% 0px -45% 0px' });
+  $$('.timeline li').forEach(s => tlObs.observe(s));
+
+  /* Schedule tabs */
+  $$('.tab').forEach(t => t.addEventListener('click', () => {
+    $$('.tab').forEach(x => x.setAttribute('aria-selected', x === t));
+    $('[data-time="start"]').textContent = '開始 ' + t.dataset.start;
+    $('[data-time="end"]').textContent = '終了 ' + t.dataset.end;
+  }));
+
+  /* Price switcher（金額は現サイトの料金表より） */
+  const PRICE = {
+    kaigo: { per: '1回あたり', rows: [
+      ['要介護1', 415, 4432, [444, 887, 1330]], ['要介護2', 476, 5083, [509, 1017, 1525]], ['要介護3', 538, 5745, [575, 1149, 1724]],
+      ['要介護4', 598, 6386, [639, 1278, 1916]], ['要介護5', 661, 7059, [706, 1412, 2118]] ] },
+    shien: { per: '1か月あたり', rows: [
+      ['要支援1・事業対象者', 1672, 17856, [1786, 3572, 5357]], ['要支援2', 3428, 36611, [3662, 7323, 10984]] ] }
+  };
+  let care = 'kaigo', ratio = 0;
+  const cards = $('#priceCards'), fmt = n => n.toLocaleString('ja-JP');
+  const render = () => {
+    const d = PRICE[care];
+    cards.className = 'price-cards ' + (d.rows.length === 5 ? 'is-5' : 'is-2');
+    cards.innerHTML = d.rows.map((r, i) => `<div class="pcard" style="animation-delay:${i * .05}s">
+      <div class="pcard__name">${r[0]}<em>${ratio + 1}割負担</em></div>
+      <div class="pcard__price">${fmt(r[3][ratio])}<small>円</small></div>
+      <span class="pcard__per">${d.per}</span>
+      <span class="pcard__base">基本 ${fmt(r[1])}単位／${fmt(r[2])}円</span></div>`).join('');
+  };
+  $$('#careSeg button').forEach(b => b.addEventListener('click', () => { care = b.dataset.care; $$('#careSeg button').forEach(x => x.setAttribute('aria-pressed', x === b)); render(); }));
+  $$('#ratioSeg button').forEach(b => b.addEventListener('click', () => { ratio = +b.dataset.ratio; $$('#ratioSeg button').forEach(x => x.setAttribute('aria-pressed', x === b)); render(); }));
+  render();
+
+  /* Lightbox */
+  const shots = $$('.shot'), lb = $('.lightbox'), lbImg = $('img', lb), lbCap = $('figcaption', lb);
+  let cur = 0, lastFocus = null;
+  const show = i => { cur = (i + shots.length) % shots.length; const img = $('img', shots[cur]); lbImg.src = img.src; lbImg.alt = img.alt; lbCap.textContent = $('figcaption b', shots[cur]).textContent; };
+  const open = i => { lastFocus = document.activeElement; show(i); lb.classList.add('is-open'); $('.lightbox__close').focus(); };
+  const close = () => { lb.classList.remove('is-open'); if (lastFocus) lastFocus.focus(); };
+  shots.forEach((s, i) => { s.addEventListener('click', () => open(i)); s.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); } }); });
+  $('.lightbox__close').addEventListener('click', close);
+  $('.lightbox__nav--prev').addEventListener('click', () => show(cur - 1));
+  $('.lightbox__nav--next').addEventListener('click', () => show(cur + 1));
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+  addEventListener('keydown', e => { if (!lb.classList.contains('is-open')) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') show(cur - 1); if (e.key === 'ArrowRight') show(cur + 1); });
+
+  /* Cursor */
+  const cursor = $('.cursor');
+  if (!reduce && matchMedia('(hover: hover)').matches) {
+    let x = 0, y = 0, cx = 0, cy = 0;
+    addEventListener('mousemove', e => { x = e.clientX; y = e.clientY; cursor.style.opacity = 1; });
+    const loop = () => { cx += (x - cx) * .2; cy += (y - cy) * .2; cursor.style.transform = `translate(${cx}px, ${cy}px)`; requestAnimationFrame(loop); };
+    loop();
+    $$('a, button, .shot').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('is-hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('is-hover')); });
+  }
+})();
+</script>
+</body>
+</html>
