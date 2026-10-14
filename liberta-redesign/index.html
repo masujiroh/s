@@ -169,6 +169,20 @@
   .timeline__label { font-weight: 700; font-size: 14px; margin: 4px 0; }
   .timeline__desc { font-size: 12px; color: var(--ink-sub); line-height: 1.7; }
 
+  .facility, .charge { margin-top: 96px; }
+  .facility__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .facility figure { margin: 0; }
+  .facility .ph { aspect-ratio: 4 / 3; }
+  .facility figcaption { font-size: 13px; color: var(--ink-sub); margin-top: 10px; line-height: 1.7; }
+  .charge__lead { color: var(--ink-sub); font-size: 14px; margin: 0 0 20px; }
+  .charge__scroll { overflow-x: auto; }
+  .charge-table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 14px; text-align: center; border-top: 1px solid var(--ink); }
+  .charge-table th, .charge-table td { padding: 16px 8px; border-bottom: 1px solid var(--line); }
+  .charge-table thead th { background: var(--bg-soft); font-weight: 700; }
+  .charge-table tbody th { text-align: left; font-weight: 700; white-space: nowrap; }
+  .charge-table td { font-family: var(--font-en); font-weight: 600; }
+  .charge__notes { margin: 20px 0 0; padding-left: 1.2em; font-size: 13px; color: var(--ink-sub); }
+
   /* ====== Flow ====== */
   .flow { display: grid; grid-template-columns: repeat(4, 1fr); list-style: none; margin: 0; padding: 0; background: #fff; }
   .flow li { padding: 44px 32px; border-right: 1px solid var(--line); }
@@ -278,6 +292,8 @@
     .services { gap: 24px; }
     .feature { padding: 36px 28px; }
     .timeline { grid-template-columns: repeat(3, 1fr); row-gap: 32px; }
+    .facility__grid { grid-template-columns: 1fr 1fr; }
+    .facility, .charge { margin-top: 72px; }
     .flow { grid-template-columns: 1fr 1fr; }
     .flow li:nth-child(2) { border-right: 0; }
     .flow li:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
@@ -331,7 +347,7 @@
         <li><a href="#about">私たちについて</a></li>
         <li><a href="#services">事業内容</a></li>
         <li><a href="#dayservice">デイサービス</a></li>
-        <li><a href="#flow">ご利用の流れ</a></li>
+        <li><a href="#charge">料金</a></li>
         <li><a href="#recruit">採用情報</a></li>
         <li><a href="#company">企業概要</a></li>
       </ul>
@@ -378,7 +394,7 @@
         <p class="about__catch"><span class="g">Libertaとは、</span><br>イタリア語で「自由」。</p>
         <p>年齢を重ねても、身体が思うように動かなくなっても、行きたい場所へ出かけ、やりたいことを続けられる。そんな“自由に生きる”毎日を、一人ひとりに届けたい。その想いから、私たちは鎌倉・大船の地で介護サービスを始めました。</p>
         <p>リハビリで身体を整え、ご自宅での生活を支え、外出の足となる。地域に根ざした3つのサービスで、ご本人とご家族の「これから」に寄り添います。</p>
-        <p class="about__sign">株式会社Liberta 代表取締役<strong>〇〇 〇〇</strong></p>
+        <p class="about__sign">株式会社Liberta 代表取締役<strong>福嶋 雄一朗</strong></p>
       </div>
       <div class="ph reveal"><span>PHOTO / 代表ポートレート</span></div>
     </div>
@@ -437,14 +453,16 @@
       <div class="feature-head">
         <div class="ph reveal"><span>PHOTO / フロア・リハビリマシン</span></div>
         <div class="reveal">
-          <h2 class="feature-head__title">「できる」を増やす、<br>半日型のリハビリ特化デイ。</h2>
-          <p>専門職が一人ひとりの身体の状態と目標をお聞きし、無理なく続けられる個別プログラムをご提案します。</p>
+          <h2 class="feature-head__title">いつまでも、<br>自分の足で歩き続ける。</h2>
+          <p>「全ての利用者様がいつまでも自分の足で歩き続ける」ことを運営方針に、2019年8月に開所したリハビリ特化型のデイサービスです。専門職が一人ひとりの身体の状態と目標をお聞きし、無理なく続けられる個別プログラムをご提案します。</p>
           <dl class="spec">
             <dt>所在地</dt><dd>神奈川県鎌倉市岡本2-1-17</dd>
             <dt>アクセス</dt><dd>JR大船駅 西口より徒歩5分</dd>
+            <dt>営業日</dt><dd>月〜金曜日</dd>
+            <dt>営業時間</dt><dd>8:30〜17:30</dd>
             <dt>定員</dt><dd>18名</dd>
-            <dt>営業日</dt><dd>月〜土曜日（日・祝・年末年始休み）</dd>
-            <dt>対象</dt><dd>要支援1・2、要介護1〜5の方</dd>
+            <dt>送迎</dt><dd>あり（送迎車4台）</dd>
+            <dt>電話</dt><dd>0467-33-6161（デイサービス直通）</dd>
           </dl>
         </div>
       </div>
@@ -463,7 +481,7 @@
         <div class="feature reveal">
           <span class="feature__no">03</span>
           <h3>ご自宅まで送迎</h3>
-          <p>ご自宅から施設まで送迎いたします。介護タクシーとの連携で、通院などの外出もまとめてご相談いただけます。</p>
+          <p>送迎車4台でご自宅から施設まで送迎いたします。介護タクシーとの連携で、通院などの外出もまとめてご相談いただけます。</p>
         </div>
       </div>
 
@@ -477,6 +495,32 @@
           <li><div class="timeline__time">11:30</div><div class="timeline__label">脳トレ・休憩</div><div class="timeline__desc">お茶を飲みながら交流</div></li>
           <li><div class="timeline__time">12:15</div><div class="timeline__label">お送り</div><div class="timeline__desc">ご自宅までお送りします</div></li>
         </ol>
+      </div>
+
+      <div class="facility reveal" id="facility">
+        <h3 class="schedule__title">施設紹介</h3>
+        <div class="facility__grid">
+          <figure><div class="ph"><span>PHOTO / 外観</span></div><figcaption>大船駅西口から徒歩5分の通いやすい立地</figcaption></figure>
+          <figure><div class="ph"><span>PHOTO / 訓練フロア</span></div><figcaption>明るく開放的な訓練フロア</figcaption></figure>
+          <figure><div class="ph"><span>PHOTO / リハビリマシン</span></div><figcaption>身体にやさしい最新のリハビリマシン</figcaption></figure>
+          <figure><div class="ph"><span>PHOTO / 送迎車</span></div><figcaption>送迎車4台でご自宅までお迎え</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="charge reveal" id="charge">
+        <h3 class="schedule__title">ご利用料金</h3>
+        <p class="charge__lead">介護保険が適用され、自己負担は1〜3割です（負担割合証に記載の割合）。下表は1割負担・1回あたりの目安です。</p>
+        <div class="charge__scroll">
+          <table class="charge-table">
+            <thead><tr><th>区分</th><th>要支援1</th><th>要支援2</th><th>要介護1</th><th>要介護2</th><th>要介護3</th><th>要介護4</th><th>要介護5</th></tr></thead>
+            <tbody><tr><th>自己負担（1割）</th><td>—円/月</td><td>—円/月</td><td>—円</td><td>—円</td><td>—円</td><td>—円</td><td>—円</td></tr></tbody>
+          </table>
+        </div>
+        <ul class="charge__notes">
+          <li>食費・日常生活費はいただいておりません。</li>
+          <li>各種加算により金額が変わる場合があります。詳しくはお問い合わせください。</li>
+          <li>キャンセルはご利用の24時間前までにご連絡ください。</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -527,8 +571,8 @@
       </div>
       <h2>私たちも、自由に生きる。<br>一緒に働く仲間を募集しています。</h2>
       <p>未経験の方もブランクのある方も歓迎します。資格取得支援など、一人ひとりが自分らしく長く働ける環境づくりに取り組んでいます。</p>
-      <div class="recruit__jobs"><span>介護職員</span><span>理学療法士</span><span>ドライバー</span><span>ヘルパー</span></div>
-      <a href="#contact" class="btn btn--white">採用情報を見る</a>
+      <div class="recruit__jobs"><span>理学療法士</span><span>機能訓練指導員</span><span>介護タクシー運転手</span></div>
+      <a href="https://liberta-kanagawa.jbplt.jp/" class="btn btn--white" target="_blank" rel="noopener">採用サイトを見る</a>
     </div>
   </section>
 
@@ -543,7 +587,7 @@
         <table class="company-table reveal">
           <tr><th>会社名</th><td>株式会社Liberta</td></tr>
           <tr><th>設立</th><td>2019年4月</td></tr>
-          <tr><th>代表者</th><td>代表取締役 〇〇 〇〇</td></tr>
+          <tr><th>代表者</th><td>代表取締役 福嶋 雄一朗</td></tr>
           <tr><th>所在地</th><td>〒247-0072<br>神奈川県鎌倉市岡本2-1-17</td></tr>
           <tr><th>連絡先</th><td>TEL 0467-80-2833<br>FAX 0467-33-6239<br>info@liberta-kanagawa.com</td></tr>
           <tr><th>事業内容</th><td>リハビリ型デイサービス大船西口<br>訪問介護 ALPHA／居宅介護<br>介護タクシー ALPHA</td></tr>
@@ -570,6 +614,7 @@
           <div class="contact__label">お電話でのお問い合わせ</div>
           <a href="tel:0467802833" class="contact__tel">0467-80-2833</a>
           <p class="contact__sub">受付時間 平日 9:00〜18:00 ／ FAX 0467-33-6239</p>
+          <p class="contact__sub">デイサービス直通 <a href="tel:0467336161">0467-33-6161</a></p>
         </div>
         <div class="contact__item">
           <div class="contact__label">メールフォーム（24時間受付）</div>
@@ -596,6 +641,9 @@
           <h4>SERVICE</h4>
           <ul>
             <li><a href="#dayservice">リハビリ型デイサービス</a></li>
+            <li><a href="#facility">施設紹介</a></li>
+            <li><a href="#charge">ご利用料金</a></li>
+            <li><a href="#flow">ご利用の流れ</a></li>
             <li><a href="#services">訪問介護・居宅介護</a></li>
             <li><a href="#services">介護タクシー</a></li>
           </ul>
