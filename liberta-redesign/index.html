@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>株式会社Liberta｜鎌倉・大船のリハビリ型デイサービス・訪問介護・介護タクシー</title>
-<meta name="description" content="自由に生きる。鎌倉市・大船エリアでリハビリ型デイサービス、訪問介護、介護タクシーを運営する株式会社Libertaの公式サイトです。">
+<title>株式会社Liberta｜鎌倉・大船のリハビリ型デイサービス</title>
+<meta name="description" content="自由に生きる。鎌倉市・大船エリアでリハビリ型デイサービス（大船西口・AXIS大船）を運営する株式会社Libertaの公式サイトです。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@500;600;800&display=swap" rel="stylesheet">
@@ -131,7 +131,7 @@
   .about__sign strong { font-size: 20px; margin-left: 12px; letter-spacing: .2em; }
 
   /* ====== Services ====== */
-  .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
   .service { background: #fff; display: flex; flex-direction: column; }
   .service__img { overflow: hidden; }
   .service .ph { aspect-ratio: 4 / 3; transition: transform .6s ease; }
@@ -148,6 +148,7 @@
   /* ====== Day service ====== */
   .feature-head { display: grid; grid-template-columns: 1.1fr 1fr; gap: 72px; align-items: center; margin-bottom: 80px; }
   .feature-head .ph { aspect-ratio: 3 / 2; }
+  .feature-head--rev { grid-template-columns: 1fr 1.1fr; margin-bottom: 0; }
   .feature-head__title { font-size: clamp(24px, 2.6vw, 32px); font-weight: 700; line-height: 1.6; margin: 0 0 20px; letter-spacing: .08em; }
   .feature-head p { color: var(--ink-sub); margin: 0 0 32px; }
   .spec { display: grid; grid-template-columns: 7em 1fr; margin: 0; font-size: 14px; border-top: 1px solid var(--ink); }
@@ -170,21 +171,44 @@
   .timeline__desc { font-size: 12px; color: var(--ink-sub); line-height: 1.7; }
 
   .facility, .charge { margin-top: 96px; }
-  .facility__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .feature-head__title .g { color: var(--gray); font-weight: 300; font-style: italic; display: inline-block; transform: skewX(-8deg); }
+  .schedule__lead { margin: -24px 0 32px; font-size: 14px; color: var(--ink-sub); }
+  .timeline__loop .timeline__time { color: var(--accent); }
+  .timeline__note { margin: 24px 0 0; font-size: 13px; color: var(--ink-sub); }
+  .facility__area + .facility__area { margin-top: 56px; }
+  .facility__name { font-size: 15px; margin: 0 0 20px; letter-spacing: .1em; }
+  .facility__name span { display: block; font-family: var(--font-en); font-size: 11px; font-weight: 600; letter-spacing: .25em; color: var(--gray); }
+  .facility__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .facility__grid--4 { grid-template-columns: repeat(4, 1fr); }
   .facility figure { margin: 0; }
   .facility .ph { aspect-ratio: 4 / 3; }
-  .facility figcaption { font-size: 13px; color: var(--ink-sub); margin-top: 10px; line-height: 1.7; }
-  .charge__lead { color: var(--ink-sub); font-size: 14px; margin: 0 0 20px; }
+  .facility .ph img, .feature-head .ph img, .service .ph img { width: 100%; height: 100%; object-fit: cover; }
+  .facility figcaption { font-size: 14px; font-weight: 700; margin-top: 10px; line-height: 1.6; }
+  .facility figcaption small { display: block; font-size: 12px; font-weight: 400; color: var(--ink-sub); }
+  .charge__lead { color: var(--ink-sub); font-size: 14px; margin: 0 0 32px; }
+  .charge__cat { font-size: 16px; margin: 40px 0 12px; letter-spacing: .06em; }
+  .charge__cat small { font-size: 12px; font-weight: 400; color: var(--ink-sub); margin-left: 12px; }
+  .charge__sub { font-size: 14px; margin: 28px 0 10px; }
   .charge__scroll { overflow-x: auto; }
-  .charge-table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 14px; text-align: center; border-top: 1px solid var(--ink); }
-  .charge-table th, .charge-table td { padding: 16px 8px; border-bottom: 1px solid var(--line); }
-  .charge-table thead th { background: var(--bg-soft); font-weight: 700; }
-  .charge-table tbody th { text-align: left; font-weight: 700; white-space: nowrap; }
-  .charge-table td { font-family: var(--font-en); font-weight: 600; }
+  .charge-table { width: 100%; min-width: 640px; border-collapse: collapse; font-size: 14px; text-align: right; border-top: 1px solid var(--ink); }
+  .charge-table th, .charge-table td { padding: 14px 12px; border-bottom: 1px solid var(--line); }
+  .charge-table thead th { background: var(--bg-soft); font-weight: 700; font-size: 12px; text-align: right; }
+  .charge-table thead th:first-child, .charge-table tbody th { text-align: left; }
+  .charge-table tbody th { font-weight: 700; white-space: nowrap; }
+  .charge-table td { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .charge-table td:nth-child(3) { font-weight: 700; font-size: 16px; }
+  .charge-table td[colspan] { text-align: center; color: var(--ink-sub); font-size: 13px; font-weight: 400; }
+  .charge__more { margin-top: 28px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .charge__more summary { cursor: pointer; padding: 16px 4px; font-size: 14px; font-weight: 700; list-style: none; display: flex; justify-content: space-between; }
+  .charge__more summary::-webkit-details-marker { display: none; }
+  .charge__more summary::after { content: "+"; font-family: var(--font-en); font-size: 18px; line-height: 1; }
+  .charge__more[open] summary::after { content: "−"; }
+  .charge__more[open] { padding-bottom: 24px; }
+  .charge__more .charge-table td:nth-child(3) { font-size: 14px; }
   .charge__notes { margin: 20px 0 0; padding-left: 1.2em; font-size: 13px; color: var(--ink-sub); }
 
   /* ====== Flow ====== */
-  .flow { display: grid; grid-template-columns: repeat(4, 1fr); list-style: none; margin: 0; padding: 0; background: #fff; }
+  .flow { display: grid; grid-template-columns: repeat(4, 1fr); list-style: none; margin: 0; padding: 0; background: var(--bg-soft); }
   .flow li { padding: 44px 32px; border-right: 1px solid var(--line); }
   .flow li:last-child { border-right: 0; }
   .flow__step { font-family: var(--font-en); font-size: 11px; font-weight: 600; letter-spacing: .25em; color: var(--gray); }
@@ -198,23 +222,27 @@
   .news-wrap .sec-head { margin-bottom: 0; }
   .news-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
   .news-list a { display: grid; grid-template-columns: 110px 110px 1fr; gap: 16px; align-items: center; padding: 24px 8px; border-bottom: 1px solid var(--line); transition: background .2s, padding .2s; }
-  .news-list a:hover { background: var(--bg-soft); padding-left: 16px; }
+  .news-list a:hover { background: #fff; padding-left: 16px; }
   .news-list time { font-family: var(--font-en); font-size: 13px; color: var(--ink-sub); letter-spacing: .06em; }
   .news-cat { font-size: 11px; text-align: center; border: 1px solid var(--ink-sub); padding: 1px 0; color: var(--ink-sub); }
   .news-more { margin-top: 32px; }
 
   /* ====== Recruit ====== */
-  .recruit { position: relative; color: #fff; background: var(--charcoal-deep); overflow: hidden; }
-  .recruit__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 75%; opacity: .3; filter: grayscale(1); }
-  .recruit__inner { position: relative; padding: 140px 0; }
+  .recruit { color: #fff; background: var(--charcoal); }
+  .recruit__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; padding: 128px 0; }
   .recruit .sec-head { margin-bottom: 40px; }
   .recruit .sec-head__en { color: #fff; }
   .recruit .sec-head__ja { color: #c9ccce; }
   .recruit .sec-head__ja::before { background: #c9ccce; }
   .recruit h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 700; margin: 0 0 20px; line-height: 1.6; letter-spacing: .08em; }
-  .recruit p { color: #d3d6d8; margin: 0 0 32px; max-width: 34em; }
-  .recruit__jobs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+  .recruit p { color: #d3d6d8; margin: 0 0 28px; }
+  .recruit__jobs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
   .recruit__jobs span { border: 1px solid rgba(255,255,255,.4); padding: 3px 16px; font-size: 13px; }
+  .recruit__bonus { display: flex; align-items: center; gap: 20px; padding: 20px 24px; margin-bottom: 36px; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.04); }
+  .recruit__bonus b { font-size: 16px; white-space: nowrap; letter-spacing: .06em; }
+  .recruit__bonus em { font-style: normal; font-family: var(--font-en); font-weight: 800; font-size: 40px; line-height: 1; margin: 0 2px 0 8px; }
+  .recruit__bonus span { font-size: 12px; color: #c9ccce; line-height: 1.8; border-left: 1px solid rgba(255,255,255,.25); padding-left: 20px; }
+  .recruit__photo { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; object-position: center 70%; }
 
   /* ====== Company ====== */
   .company { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
@@ -226,13 +254,25 @@
 
   /* ====== Contact ====== */
   .contact { background: var(--bg-soft); padding: 120px 0; }
-  .contact__grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); background: #fff; }
-  .contact__item { padding: 48px 40px; text-align: center; }
-  .contact__item + .contact__item { border-left: 1px solid var(--line); }
+  .contact__grid { display: grid; grid-template-columns: 1fr 1.3fr; background: #fff; border-top: 1px solid var(--ink); }
+  .contact__info { padding: 48px 40px; border-right: 1px solid var(--line); }
   .contact__label { font-size: 14px; font-weight: 700; letter-spacing: .1em; margin-bottom: 12px; }
-  .contact__tel { font-family: var(--font-en); font-size: clamp(30px, 3.8vw, 42px); font-weight: 600; line-height: 1.3; letter-spacing: .04em; display: inline-block; }
+  .contact__tel { font-family: var(--font-en); font-size: clamp(30px, 3.4vw, 40px); font-weight: 600; line-height: 1.3; letter-spacing: .04em; display: inline-block; }
   .contact__sub { font-size: 13px; color: var(--ink-sub); margin: 4px 0 0; }
-  .contact__item .btn { margin-top: 20px; }
+  .contact__list { display: grid; grid-template-columns: 6.5em 1fr; margin: 32px 0 0; font-size: 13px; border-top: 1px solid var(--line); }
+  .contact__list dt, .contact__list dd { margin: 0; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .contact__list dt { font-weight: 700; }
+  .contact__list a { text-decoration: underline; text-underline-offset: 3px; }
+  .form { padding: 48px 40px; }
+  .form__row { display: block; margin-bottom: 20px; }
+  .form__row > span { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+  .form__row em { font-style: normal; font-size: 10px; font-weight: 500; color: #fff; background: var(--accent); padding: 0 6px; line-height: 1.8; }
+  .form input, .form select, .form textarea {
+    width: 100%; font: inherit; font-size: 15px; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-soft); color: var(--ink);
+  }
+  .form input:focus, .form select:focus, .form textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; background: #fff; }
+  .form__2col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form__submit { margin-top: 8px; cursor: pointer; font-family: inherit; }
 
   /* ====== Footer ====== */
   .footer { background: var(--charcoal); color: #e6e7e8; padding: 80px 0 32px; font-size: 14px; }
@@ -285,22 +325,23 @@
   @media (max-width: 900px) {
     .section { padding: 88px 0; }
     .sec-head { margin-bottom: 44px; }
-    .about, .feature-head, .company, .news-wrap, .footer__inner { grid-template-columns: 1fr; }
+    .about, .feature-head, .feature-head--rev, .company, .news-wrap, .footer__inner, .recruit__inner, .contact__grid { grid-template-columns: 1fr; }
+    .feature-head--rev .ph { order: -1; }
     .about, .feature-head { gap: 40px; }
     .about .ph { aspect-ratio: 4 / 3; }
     .services, .features { grid-template-columns: 1fr; }
     .services { gap: 24px; }
     .feature { padding: 36px 28px; }
     .timeline { grid-template-columns: repeat(3, 1fr); row-gap: 32px; }
-    .facility__grid { grid-template-columns: 1fr 1fr; }
+    .facility__grid, .facility__grid--4 { grid-template-columns: 1fr 1fr; gap: 16px; }
     .facility, .charge { margin-top: 72px; }
     .flow { grid-template-columns: 1fr 1fr; }
     .flow li:nth-child(2) { border-right: 0; }
     .flow li:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
-    .recruit__inner { padding: 96px 0; }
+    .recruit__inner { padding: 88px 0; gap: 40px; }
+    .recruit__photo { order: -1; }
     .contact { padding: 88px 0; }
-    .contact__grid { grid-template-columns: 1fr; }
-    .contact__item + .contact__item { border-left: 0; border-top: 1px solid var(--line); }
+    .contact__info { border-right: 0; border-bottom: 1px solid var(--line); }
     .footer__nav { grid-template-columns: 1fr 1fr; }
 
     .sp-cta { display: grid; grid-template-columns: 1fr 1fr; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; }
@@ -330,7 +371,8 @@
     .news-list a { grid-template-columns: 96px 100px; row-gap: 6px; }
     .news-list a > span:last-child { grid-column: 1 / -1; }
     .company-table th { width: 34%; }
-    .contact__item { padding: 40px 8px; }
+    .contact__info, .form { padding: 36px 20px; }
+    .form__2col { grid-template-columns: 1fr; gap: 0; }
     .footer__nav { grid-template-columns: 1fr; }
   }
 </style>
@@ -345,9 +387,9 @@
     <nav class="nav" id="nav" aria-label="メインメニュー">
       <ul class="nav__list">
         <li><a href="#about">私たちについて</a></li>
-        <li><a href="#services">事業内容</a></li>
-        <li><a href="#dayservice">デイサービス</a></li>
-        <li><a href="#charge">料金</a></li>
+        <li><a href="#services">事業所</a></li>
+        <li><a href="#charge">ご利用料金</a></li>
+        <li><a href="#flow">ご利用の流れ</a></li>
         <li><a href="#recruit">採用情報</a></li>
         <li><a href="#company">企業概要</a></li>
       </ul>
@@ -372,13 +414,13 @@
   <!-- ====== Intro ====== -->
   <section class="intro">
     <div class="container intro__inner">
-      <p class="intro__lead">鎌倉・大船で、<strong>リハビリ型デイサービス・訪問介護・介護タクシー</strong>を運営しています。<br>
-        通う、暮らす、出かける。その人らしい毎日を、ひとつのチームで支えます。</p>
+      <p class="intro__lead">鎌倉・大船で、<strong>リハビリ型デイサービスを2施設</strong>運営しています。<br>
+        いつまでも自分の足で歩き、その人らしく暮らせる毎日を支えます。</p>
       <ul class="points">
-        <li><b>徒歩5<small>分</small></b><span>大船駅西口から</span></li>
-        <li><b>定員18<small>名</small></b><span>少人数制のデイ</span></li>
+        <li><b>2<small>施設</small></b><span>大船西口・AXIS大船</span></li>
+        <li><b>大船駅</b><span>徒歩圏の通いやすさ</span></li>
         <li><b>専門職</b><span>理学療法士 在籍</span></li>
-        <li><b>3<small>事業</small></b><span>ワンストップ</span></li>
+        <li><b>送迎</b><span>ご自宅までお迎え</span></li>
       </ul>
     </div>
   </section>
@@ -393,8 +435,8 @@
         </div>
         <p class="about__catch"><span class="g">Libertaとは、</span><br>イタリア語で「自由」。</p>
         <p>年齢を重ねても、身体が思うように動かなくなっても、行きたい場所へ出かけ、やりたいことを続けられる。そんな“自由に生きる”毎日を、一人ひとりに届けたい。その想いから、私たちは鎌倉・大船の地で介護サービスを始めました。</p>
-        <p>リハビリで身体を整え、ご自宅での生活を支え、外出の足となる。地域に根ざした3つのサービスで、ご本人とご家族の「これから」に寄り添います。</p>
-        <p class="about__sign">株式会社Liberta 代表取締役<strong>福嶋 雄一朗</strong></p>
+        <p>専門職によるリハビリで「歩く」「立つ」といった毎日の動作を支え、行きたい場所へ出かけられる身体づくりをお手伝いする。大船の2つのデイサービスで、ご本人とご家族の「これから」に寄り添います。</p>
+        <p class="about__sign">株式会社Liberta 代表取締役<strong>福嶋 雄一朗</strong><strong>松原 佑樹</strong></p>
       </div>
       <div class="ph reveal"><span>PHOTO / 代表ポートレート</span></div>
     </div>
@@ -406,36 +448,26 @@
       <div class="sec-head reveal">
         <span class="sec-head__en">Service</span>
         <span class="sec-head__ja">事業内容</span>
-        <p class="sec-lead">通う・暮らす・出かける。ご利用者さまの生活全体を、ひとつの会社でサポートします。</p>
+        <p class="sec-lead">大船駅から通いやすい2つのリハビリ型デイサービスを運営しています。</p>
       </div>
       <div class="services">
         <a href="#dayservice" class="service reveal">
-          <div class="service__img"><div class="ph"><span>PHOTO / 機能訓練</span></div></div>
+          <div class="service__img"><div class="ph"><span>PHOTO / 大船西口</span></div></div>
           <div class="service__body">
-            <span class="service__no">01 — DAY SERVICE</span>
-            <h3 class="service__title">リハビリ型デイサービス</h3>
-            <div class="service__name">リハビリ型デイサービス大船西口</div>
-            <p class="service__text">理学療法士による個別の機能訓練と最新のリハビリマシンで、「歩く」「立つ」など日常生活に必要な力を維持・向上します。</p>
+            <span class="service__no">01 — OFUNA NISHIGUCHI</span>
+            <h3 class="service__title">リハビリ型デイサービス大船西口</h3>
+            <div class="service__name">JR大船駅 西口より徒歩5分／定員18名</div>
+            <p class="service__text">理学療法士・あん摩マッサージ指圧師による機能訓練と最新のリハビリマシンで、「歩く」「立つ」など日常生活に必要な力を維持・向上します。</p>
             <span class="service__more">VIEW MORE</span>
           </div>
         </a>
-        <a href="#services" class="service reveal">
-          <div class="service__img"><div class="ph"><span>PHOTO / 訪問介護</span></div></div>
+        <a href="#axis" class="service reveal">
+          <div class="service__img"><div class="ph"><span>PHOTO / AXIS大船</span></div></div>
           <div class="service__body">
-            <span class="service__no">02 — HOME CARE</span>
-            <h3 class="service__title">訪問介護・居宅介護</h3>
-            <div class="service__name">訪問介護 ALPHA</div>
-            <p class="service__text">ヘルパーがご自宅を訪問し、身体介護や生活援助を行います。住み慣れたご自宅での暮らしを、ご家族とともに支えます。</p>
-            <span class="service__more">VIEW MORE</span>
-          </div>
-        </a>
-        <a href="#services" class="service reveal">
-          <div class="service__img"><div class="ph"><span>PHOTO / 車両</span></div></div>
-          <div class="service__body">
-            <span class="service__no">03 — CARE TAXI</span>
-            <h3 class="service__title">介護タクシー</h3>
-            <div class="service__name">介護タクシー ALPHA</div>
-            <p class="service__text">車いすのまま乗車できる車両で、通院・入退院・お買い物などの外出をサポート。乗降時の介助も安心してお任せください。</p>
+            <span class="service__no">02 — AXIS OFUNA</span>
+            <h3 class="service__title">リハビリ型デイサービスAXIS大船</h3>
+            <div class="service__name">鎌倉市岡本／定員10名の少人数制</div>
+            <p class="service__text">病院のリハビリ基準の体操に加え、太極拳・ヨガ・ボールトレーニング・パワーリハビリなど、楽しみながら続けられる多彩なプログラムをご用意しています。</p>
             <span class="service__more">VIEW MORE</span>
           </div>
         </a>
@@ -447,22 +479,21 @@
   <section class="section" id="dayservice">
     <div class="container">
       <div class="sec-head reveal">
-        <span class="sec-head__en">Day Service</span>
+        <span class="sec-head__en">Ofuna Nishiguchi</span>
         <span class="sec-head__ja">リハビリ型デイサービス大船西口</span>
       </div>
       <div class="feature-head">
-        <div class="ph reveal"><span>PHOTO / フロア・リハビリマシン</span></div>
+        <div class="ph reveal" data-photo="ds-hero"><span>PHOTO / 自分の足で歩く</span></div>
         <div class="reveal">
-          <h2 class="feature-head__title">いつまでも、<br>自分の足で歩き続ける。</h2>
-          <p>「全ての利用者様がいつまでも自分の足で歩き続ける」ことを運営方針に、2019年8月に開所したリハビリ特化型のデイサービスです。専門職が一人ひとりの身体の状態と目標をお聞きし、無理なく続けられる個別プログラムをご提案します。</p>
+          <h2 class="feature-head__title"><span class="g">自分の足で</span>歩く。</h2>
+          <p>「全ての利用者様がいつまでも自分の足で歩き続ける」ことを目指す、リハビリ特化型のデイサービスです。マシンを使った運動と、専門スタッフによるボディケアを組み合わせ、歩く力を維持・向上します。</p>
           <dl class="spec">
             <dt>所在地</dt><dd>神奈川県鎌倉市岡本2-1-17</dd>
             <dt>アクセス</dt><dd>JR大船駅 西口より徒歩5分</dd>
-            <dt>営業日</dt><dd>月〜金曜日</dd>
-            <dt>営業時間</dt><dd>8:30〜17:30</dd>
+            <dt>提供時間</dt><dd>1日2部制<br>午前の部 9:00〜12:00／午後の部 13:30〜16:30</dd>
             <dt>定員</dt><dd>18名</dd>
-            <dt>送迎</dt><dd>あり（送迎車4台）</dd>
-            <dt>電話</dt><dd>0467-33-6161（デイサービス直通）</dd>
+            <dt>送迎</dt><dd>あり</dd>
+            <dt>電話</dt><dd>0467-33-6161（大船西口直通）</dd>
           </dl>
         </div>
       </div>
@@ -470,63 +501,156 @@
       <div class="features">
         <div class="feature reveal">
           <span class="feature__no">01</span>
-          <h3>専門職による機能訓練</h3>
-          <p>理学療法士・あん摩マッサージ指圧師が在籍。身体の状態を評価したうえで、目標に合わせた訓練を行います。</p>
+          <h3>マシンエクササイズ</h3>
+          <p>コキシアリンク・チェストリンク・ウォーキングマシンなどのマシンで、膝・股関節・肩まわりなど、歩くために必要な筋力を鍛えます。</p>
         </div>
         <div class="feature reveal">
           <span class="feature__no">02</span>
-          <h3>最新のリハビリマシン</h3>
-          <p>身体への負担が少ないマシンを導入。筋力やバランス能力を、安全に・効率よく高めていきます。</p>
+          <h3>ボディケア</h3>
+          <p>もみほぐし・ストレッチ・フットケアで身体を整えます。運動とボディケアを組み合わせることで、無理なく効果を高めます。</p>
         </div>
         <div class="feature reveal">
           <span class="feature__no">03</span>
-          <h3>ご自宅まで送迎</h3>
-          <p>送迎車4台でご自宅から施設まで送迎いたします。介護タクシーとの連携で、通院などの外出もまとめてご相談いただけます。</p>
+          <h3>1日2部制・送迎つき</h3>
+          <p>午前・午後の約3時間ずつの短時間型。ご自宅まで送迎しますので、お一人での通所が難しい方も安心してご利用いただけます。</p>
         </div>
       </div>
 
       <div class="schedule reveal">
-        <h3 class="schedule__title">1日の流れ（午前の部の例）</h3>
+        <h3 class="schedule__title">サービスの流れ</h3>
+        <p class="schedule__lead">午前の部 9:00〜12:00 ／ 午後の部 13:30〜16:30</p>
         <ol class="timeline">
-          <li><div class="timeline__time">9:00</div><div class="timeline__label">お迎え</div><div class="timeline__desc">ご自宅まで送迎します</div></li>
-          <li><div class="timeline__time">9:30</div><div class="timeline__label">バイタル測定</div><div class="timeline__desc">体温・血圧で体調を確認</div></li>
-          <li><div class="timeline__time">9:45</div><div class="timeline__label">準備体操</div><div class="timeline__desc">全身をほぐします</div></li>
-          <li><div class="timeline__time">10:00</div><div class="timeline__label">個別機能訓練</div><div class="timeline__desc">マシン・個別プログラム</div></li>
-          <li><div class="timeline__time">11:30</div><div class="timeline__label">脳トレ・休憩</div><div class="timeline__desc">お茶を飲みながら交流</div></li>
-          <li><div class="timeline__time">12:15</div><div class="timeline__label">お送り</div><div class="timeline__desc">ご自宅までお送りします</div></li>
+          <li><div class="timeline__time">01</div><div class="timeline__label">送迎</div><div class="timeline__desc">ご自宅までお迎えに伺います</div></li>
+          <li><div class="timeline__time">02</div><div class="timeline__label">バイタルチェック</div><div class="timeline__desc">体温・血圧で体調を確認</div></li>
+          <li class="timeline__loop"><div class="timeline__time">03</div><div class="timeline__label">運動</div><div class="timeline__desc">マシンエクササイズ</div></li>
+          <li class="timeline__loop"><div class="timeline__time">04</div><div class="timeline__label">ボディケア</div><div class="timeline__desc">もみほぐし・ストレッチ・フットケア</div></li>
+          <li><div class="timeline__time">05</div><div class="timeline__label">体操</div><div class="timeline__desc">全身をほぐして仕上げ</div></li>
+          <li><div class="timeline__time">06</div><div class="timeline__label">送迎</div><div class="timeline__desc">ご自宅までお送りします</div></li>
         </ol>
+        <p class="timeline__note">※ 運動とボディケアは、交互に繰り返し行います。</p>
       </div>
 
       <div class="facility reveal" id="facility">
-        <h3 class="schedule__title">施設紹介</h3>
-        <div class="facility__grid">
-          <figure><div class="ph"><span>PHOTO / 外観</span></div><figcaption>大船駅西口から徒歩5分の通いやすい立地</figcaption></figure>
-          <figure><div class="ph"><span>PHOTO / 訓練フロア</span></div><figcaption>明るく開放的な訓練フロア</figcaption></figure>
-          <figure><div class="ph"><span>PHOTO / リハビリマシン</span></div><figcaption>身体にやさしい最新のリハビリマシン</figcaption></figure>
-          <figure><div class="ph"><span>PHOTO / 送迎車</span></div><figcaption>送迎車4台でご自宅までお迎え</figcaption></figure>
+        <h3 class="schedule__title">設備紹介</h3>
+        <div class="facility__area">
+          <h4 class="facility__name"><span>BODY CARE AREA</span>ボディケアエリア</h4>
+          <div class="facility__grid">
+            <figure><div class="ph" data-photo="momihogushi"><span>PHOTO</span></div><figcaption>もみほぐし</figcaption></figure>
+            <figure><div class="ph" data-photo="stretch"><span>PHOTO</span></div><figcaption>ストレッチ</figcaption></figure>
+            <figure><div class="ph" data-photo="footcare"><span>PHOTO</span></div><figcaption>フットケア</figcaption></figure>
+          </div>
+        </div>
+        <div class="facility__area">
+          <h4 class="facility__name"><span>MACHINE EXERCISE AREA</span>マシンエクササイズエリア</h4>
+          <div class="facility__grid facility__grid--4">
+            <figure><div class="ph" data-photo="zenshin"><span>PHOTO</span></div><figcaption>全身運動・脳トレ</figcaption></figure>
+            <figure><div class="ph" data-photo="theraband"><span>PHOTO</span></div><figcaption>セラバンドトレーニング</figcaption></figure>
+            <figure><div class="ph" data-photo="heikobo"><span>PHOTO</span></div><figcaption>平行棒</figcaption></figure>
+            <figure><div class="ph" data-photo="coxia"><span>PHOTO</span></div><figcaption>コキシアリンク<small>膝・股関節・内腿</small></figcaption></figure>
+            <figure><div class="ph" data-photo="chest"><span>PHOTO</span></div><figcaption>チェストリンク<small>肩・胸・股関節・膝・足関節</small></figcaption></figure>
+            <figure><div class="ph" data-photo="walking"><span>PHOTO</span></div><figcaption>ウォーキングマシン</figcaption></figure>
+            <figure><div class="ph" data-photo="vibration"><span>PHOTO</span></div><figcaption>振動マシン</figcaption></figure>
+            <figure><div class="ph" data-photo="bike"><span>PHOTO</span></div><figcaption>バイク</figcaption></figure>
+          </div>
         </div>
       </div>
 
       <div class="charge reveal" id="charge">
         <h3 class="schedule__title">ご利用料金</h3>
-        <p class="charge__lead">介護保険が適用され、自己負担は1〜3割です（負担割合証に記載の割合）。下表は1割負担・1回あたりの目安です。</p>
+        <p class="charge__lead">介護保険が適用され、ご負担は負担割合証に記載の1〜3割です。</p>
+
+        <h4 class="charge__cat">要介護1〜5の方<small>地域密着型通所介護（1回あたり）</small></h4>
         <div class="charge__scroll">
           <table class="charge-table">
-            <thead><tr><th>区分</th><th>要支援1</th><th>要支援2</th><th>要介護1</th><th>要介護2</th><th>要介護3</th><th>要介護4</th><th>要介護5</th></tr></thead>
-            <tbody><tr><th>自己負担（1割）</th><td>—円/月</td><td>—円/月</td><td>—円</td><td>—円</td><td>—円</td><td>—円</td><td>—円</td></tr></tbody>
+            <thead><tr><th>介護度</th><th>基本単位／基本料金</th><th>1割負担</th><th>2割負担</th><th>3割負担</th></tr></thead>
+            <tbody>
+              <tr><th>要介護1</th><td>415単位／4,432円</td><td>444円</td><td>887円</td><td>1,330円</td></tr>
+              <tr><th>要介護2</th><td>476単位／5,083円</td><td>509円</td><td>1,017円</td><td>1,525円</td></tr>
+              <tr><th>要介護3</th><td>538単位／5,745円</td><td>575円</td><td>1,149円</td><td>1,724円</td></tr>
+              <tr><th>要介護4</th><td>598単位／6,386円</td><td>639円</td><td>1,278円</td><td>1,916円</td></tr>
+              <tr><th>要介護5</th><td>661単位／7,059円</td><td>706円</td><td>1,412円</td><td>2,118円</td></tr>
+            </tbody>
           </table>
         </div>
+
+        <h4 class="charge__cat">要支援1・2、事業対象者の方<small>通所型独自サービス（1か月あたり）</small></h4>
+        <div class="charge__scroll">
+          <table class="charge-table">
+            <thead><tr><th>介護度</th><th>基本単位／基本料金</th><th>1割負担</th><th>2割負担</th><th>3割負担</th></tr></thead>
+            <tbody>
+              <tr><th>要支援1・事業対象者</th><td>1,672単位／17,856円</td><td>1,786円</td><td>3,572円</td><td>5,357円</td></tr>
+              <tr><th>要支援2</th><td>3,428単位／36,611円</td><td>3,662円</td><td>7,323円</td><td>10,984円</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <details class="charge__more">
+          <summary>加算項目を見る</summary>
+          <h5 class="charge__sub">要介護1〜5の方</h5>
+          <div class="charge__scroll">
+            <table class="charge-table">
+              <thead><tr><th>加算項目</th><th>基本単位／料金</th><th>1割負担</th><th>2割負担</th><th>3割負担</th></tr></thead>
+              <tbody>
+                <tr><th>個別機能訓練加算Ⅰ2（ロ）</th><td>85単位／907円（日）</td><td>91円（日）</td><td>182円（日）</td><td>273円（日）</td></tr>
+                <tr><th>個別機能訓練加算Ⅱ</th><td>20単位／213円（月）</td><td>22円（月）</td><td>43円（月）</td><td>64円（月）</td></tr>
+                <tr><th>科学的介護推進体制加算</th><td>40単位／427円（月）</td><td>43円（月）</td><td>86円（月）</td><td>129円（月）</td></tr>
+                <tr><th>口腔機能向上加算Ⅱ（月2回限度）</th><td>160単位／1,708円（回）</td><td>171円（回）</td><td>342円（回）</td><td>513円（回）</td></tr>
+                <tr><th>介護職員処遇改善加算Ⅰ</th><td colspan="4">所定単位数×5.9％の1割または2割または3割相当額</td></tr>
+                <tr><th>介護職員特定処遇改善加算Ⅱ</th><td colspan="4">所定単位数×1.0％の1割または2割または3割相当額</td></tr>
+                <tr><th>介護職員ベースアップ等支援加算</th><td colspan="4">所定単位数×1.1％の1割または2割または3割相当額</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h5 class="charge__sub">要支援1・2、事業対象者の方</h5>
+          <div class="charge__scroll">
+            <table class="charge-table">
+              <thead><tr><th>加算項目</th><th>基本単位／料金</th><th>1割負担</th><th>2割負担</th><th>3割負担</th></tr></thead>
+              <tbody>
+                <tr><th>運動器機能向上加算</th><td>225単位／2,403円（月）</td><td>241円（月）</td><td>481円（月）</td><td>721円（月）</td></tr>
+                <tr><th>口腔機能向上加算Ⅱ</th><td>160単位／1,708円（月）</td><td>171円（月）</td><td>342円（月）</td><td>513円（月）</td></tr>
+                <tr><th>科学的介護推進体制加算</th><td>40単位／427円（月）</td><td>43円（月）</td><td>86円（月）</td><td>129円（月）</td></tr>
+                <tr><th>介護職員処遇改善加算Ⅰ</th><td colspan="4">所定単位数×5.9％の1割または2割または3割相当額</td></tr>
+                <tr><th>介護職員特定処遇改善加算Ⅱ</th><td colspan="4">所定単位数×1.0％の1割または2割または3割相当額</td></tr>
+                <tr><th>介護職員ベースアップ等支援加算</th><td colspan="4">所定単位数×1.1％の1割または2割または3割相当額</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
         <ul class="charge__notes">
-          <li>食費・日常生活費はいただいておりません。</li>
-          <li>各種加算により金額が変わる場合があります。詳しくはお問い合わせください。</li>
-          <li>キャンセルはご利用の24時間前までにご連絡ください。</li>
+          <li>この金額は、介護保険法の法定利用料に基づく金額です。</li>
+          <li>費用合計をもとに利用者負担額を算定する際の端数処理の結果、若干差異が生じる場合があります。</li>
+          <li>1単位10.68円で計算しています（鎌倉市：地域区分3級地）。</li>
         </ul>
       </div>
     </div>
   </section>
 
+  <!-- ====== AXIS ====== -->
+  <section class="section section--soft" id="axis">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="sec-head__en">AXIS Ofuna</span>
+        <span class="sec-head__ja">リハビリ型デイサービスAXIS大船</span>
+      </div>
+      <div class="feature-head feature-head--rev">
+        <div class="reveal">
+          <h2 class="feature-head__title">少人数だから、<br>一人ひとりに目が届く。</h2>
+          <p>定員10名の少人数制で、スタッフが一人ひとりの体調や目標に寄り添います。病院のリハビリ基準の体操に、太極拳・ヨガ・ボールトレーニング・パワーリハビリを組み合わせ、楽しみながら続けられるプログラムです。</p>
+          <dl class="spec">
+            <dt>所在地</dt><dd>神奈川県鎌倉市岡本1-21-24</dd>
+            <dt>定員</dt><dd>10名</dd>
+            <dt>プログラム</dt><dd>リハビリ体操／太極拳／ヨガ／ボールトレーニング／パワーリハビリ</dd>
+            <dt>電話</dt><dd>0467-80-2831（AXIS大船直通）</dd>
+          </dl>
+        </div>
+        <div class="ph reveal"><span>PHOTO / AXIS大船</span></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ====== Flow ====== -->
-  <section class="section section--soft" id="flow">
+  <section class="section" id="flow">
     <div class="container">
       <div class="sec-head reveal">
         <span class="sec-head__en">Flow</span>
@@ -543,7 +667,7 @@
   </section>
 
   <!-- ====== News ====== -->
-  <section class="section" id="news">
+  <section class="section section--soft" id="news">
     <div class="container news-wrap">
       <div class="reveal">
         <div class="sec-head">
@@ -563,16 +687,22 @@
 
   <!-- ====== Recruit ====== -->
   <section class="recruit" id="recruit">
-    <img class="recruit__bg" src="images/hero-team.jpg" alt="" aria-hidden="true">
-    <div class="container recruit__inner reveal">
-      <div class="sec-head">
-        <span class="sec-head__en">Recruit</span>
-        <span class="sec-head__ja">採用情報</span>
+    <div class="container recruit__inner">
+      <div class="reveal">
+        <div class="sec-head">
+          <span class="sec-head__en">Recruit</span>
+          <span class="sec-head__ja">採用情報</span>
+        </div>
+        <h2>私たちと一緒に<br>働きませんか？</h2>
+        <p>「自由に生きる」を、利用者さまにも、働く仲間にも。未経験の方やブランクのある方も歓迎します。一人ひとりが自分らしく長く働ける環境づくりに取り組んでいます。</p>
+        <div class="recruit__jobs"><span>理学療法士</span><span>機能訓練指導員</span></div>
+        <div class="recruit__bonus">
+          <b>入職支度金<em>5</em>万円</b>
+          <span>当サイト経由でご応募いただき、採用となった方限定。<br>応募時または面接時にお申し出ください。</span>
+        </div>
+        <a href="https://liberta-kanagawa.jbplt.jp/" class="btn btn--white" target="_blank" rel="noopener">採用情報詳細ページ</a>
       </div>
-      <h2>私たちも、自由に生きる。<br>一緒に働く仲間を募集しています。</h2>
-      <p>未経験の方もブランクのある方も歓迎します。資格取得支援など、一人ひとりが自分らしく長く働ける環境づくりに取り組んでいます。</p>
-      <div class="recruit__jobs"><span>理学療法士</span><span>機能訓練指導員</span><span>介護タクシー運転手</span></div>
-      <a href="https://liberta-kanagawa.jbplt.jp/" class="btn btn--white" target="_blank" rel="noopener">採用サイトを見る</a>
+      <img class="recruit__photo reveal" src="images/recruit-team.jpg" alt="株式会社Libertaのスタッフ">
     </div>
   </section>
 
@@ -586,12 +716,12 @@
       <div class="company">
         <table class="company-table reveal">
           <tr><th>会社名</th><td>株式会社Liberta</td></tr>
-          <tr><th>設立</th><td>2019年4月</td></tr>
-          <tr><th>代表者</th><td>代表取締役 福嶋 雄一朗</td></tr>
-          <tr><th>所在地</th><td>〒247-0072<br>神奈川県鎌倉市岡本2-1-17</td></tr>
-          <tr><th>連絡先</th><td>TEL 0467-80-2833<br>FAX 0467-33-6239<br>info@liberta-kanagawa.com</td></tr>
-          <tr><th>事業内容</th><td>リハビリ型デイサービス大船西口<br>訪問介護 ALPHA／居宅介護<br>介護タクシー ALPHA</td></tr>
-          <tr><th>サービス地域</th><td>鎌倉市、藤沢市の一部</td></tr>
+          <tr><th>設立</th><td>2019年（平成31年）4月</td></tr>
+          <tr><th>代表者</th><td>代表取締役 福嶋 雄一朗<br>代表取締役 松原 佑樹</td></tr>
+          <tr><th>本社所在地</th><td>〒247-0072<br>神奈川県鎌倉市岡本2-1-17</td></tr>
+          <tr><th>連絡先</th><td>TEL 0467-80-2833／FAX 0467-33-6239<br>info@liberta-kanagawa.com</td></tr>
+          <tr><th>運営施設</th><td>リハビリ型デイサービス大船西口<br>リハビリ型デイサービスAXIS大船</td></tr>
+          <tr><th>取引銀行</th><td>みずほ銀行 大船支店<br>湘南信用金庫 大船支店 鎌倉営業部<br>楽天銀行 第四営業支店</td></tr>
         </table>
         <div class="reveal">
           <div class="ph map"><span>GOOGLE MAP</span></div>
@@ -610,17 +740,31 @@
         <p class="sec-lead">ご本人さま、ご家族さま、ケアマネジャーさま、どなたからのご連絡も歓迎です。</p>
       </div>
       <div class="contact__grid reveal">
-        <div class="contact__item">
+        <div class="contact__info">
           <div class="contact__label">お電話でのお問い合わせ</div>
           <a href="tel:0467802833" class="contact__tel">0467-80-2833</a>
-          <p class="contact__sub">受付時間 平日 9:00〜18:00 ／ FAX 0467-33-6239</p>
-          <p class="contact__sub">デイサービス直通 <a href="tel:0467336161">0467-33-6161</a></p>
+          <p class="contact__sub">受付時間 平日 9:00〜18:00</p>
+          <dl class="contact__list">
+            <dt>大船西口</dt><dd><a href="tel:0467336161">0467-33-6161</a></dd>
+            <dt>AXIS大船</dt><dd><a href="tel:0467802831">0467-80-2831</a></dd>
+            <dt>FAX</dt><dd>0467-33-6239</dd>
+            <dt>E-MAIL</dt><dd><a href="mailto:info@liberta-kanagawa.com">info@liberta-kanagawa.com</a></dd>
+            <dt>所在地</dt><dd>〒247-0072 神奈川県鎌倉市岡本2-1-17</dd>
+          </dl>
         </div>
-        <div class="contact__item">
+        <form class="form" onsubmit="event.preventDefault(); alert('デザインカンプのため送信されません');">
           <div class="contact__label">メールフォーム（24時間受付）</div>
-          <p class="contact__sub">2営業日以内にご返信いたします</p>
-          <a href="#contact" class="btn btn--accent">お問い合わせフォーム</a>
-        </div>
+          <label class="form__row"><span>お問い合わせ種別<em>必須</em></span>
+            <select required><option value="">選択してください</option><option>見学・体験のお申し込み</option><option>ご利用についてのご相談</option><option>採用について</option><option>その他</option></select>
+          </label>
+          <label class="form__row"><span>お名前<em>必須</em></span><input type="text" required placeholder="例）鎌倉 太郎"></label>
+          <div class="form__2col">
+            <label class="form__row"><span>電話番号<em>必須</em></span><input type="tel" required placeholder="例）0467-00-0000"></label>
+            <label class="form__row"><span>メールアドレス</span><input type="email" placeholder="例）info@example.com"></label>
+          </div>
+          <label class="form__row"><span>お問い合わせ内容</span><textarea rows="5" placeholder="ご希望の施設や日時、ご相談内容などをご記入ください"></textarea></label>
+          <button type="submit" class="btn btn--accent form__submit">送信する</button>
+        </form>
       </div>
     </div>
   </section>
@@ -640,12 +784,10 @@
         <div>
           <h4>SERVICE</h4>
           <ul>
-            <li><a href="#dayservice">リハビリ型デイサービス</a></li>
-            <li><a href="#facility">施設紹介</a></li>
+            <li><a href="#dayservice">デイサービス大船西口</a></li>
+            <li><a href="#axis">デイサービスAXIS大船</a></li>
             <li><a href="#charge">ご利用料金</a></li>
             <li><a href="#flow">ご利用の流れ</a></li>
-            <li><a href="#services">訪問介護・居宅介護</a></li>
-            <li><a href="#services">介護タクシー</a></li>
           </ul>
         </div>
         <div>
