@@ -1,0 +1,53 @@
+<!--
+  lpppm.co.jp 問い合わせ計測コード（GA4）
+  設置場所: SWELL「外観」→「カスタマイズ」→「高度な設定」→「bodyタグ終了直前に出力するコード」
+
+  送るイベント:
+    contact_submit   … Snow Monkey Forms の送信完了時（smf.complete）
+                        inquiry_type = お問い合わせ種別（/contact/ は type、/contact-tenant/ は category）
+                        form_kind    = owner / tenant
+                        form_path    = フォームのURLパス
+    contact_cta_click … /contact/ へのリンクをクリックしたとき
+                        from_path    = クリックした記事のURLパス
+-->
+<script>
+(function () {
+  var selected = {};
+
+  // 送信前に選ばれていたラジオ/セレクトの値を覚えておく（送信完了時はフォームが消えているため）
+  document.addEventListener('change', function (e) {
+    var t = e.target;
+    if (!t || !t.closest || !t.closest('.snow-monkey-form')) return;
+    if (t.tagName === 'SELECT' || t.type === 'radio') selected[t.name] = t.value;
+  }, true);
+
+  function send(name, params) {
+    if (typeof gtag === 'function') {
+      gtag('event', name, params);
+    } else {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(Object.assign({ event: name }, params));
+    }
+  }
+
+  // Snow Monkey Forms の送信完了（成功時のみ発火）
+  document.addEventListener('smf.complete', function () {
+    var tenant = location.pathname.indexOf('contact-tenant') !== -1;
+    send('contact_submit', {
+      inquiry_type: selected['type'] || selected['category'] || '(none)',
+      form_kind: tenant ? 'tenant' : 'owner',
+      form_path: location.pathname
+    });
+  }, true);
+
+  // 記事などから /contact/ へのCTAクリック
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (/\/contact\/?(\?|#|$)/.test(href)) {
+      send('contact_cta_click', { from_path: location.pathname });
+    }
+  }, true);
+})();
+</script>
