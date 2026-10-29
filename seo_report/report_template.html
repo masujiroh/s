@@ -1,0 +1,402 @@
+<title>LPP SEO記事リサーチ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column (72ch) for findings; data tables widen to the full 1100px frame. */
+:root {
+  --bg: #f7f6f2;
+  --surface: #ffffff;
+  --surface-2: #efede6;
+  --line: #d9d6cc;
+  --fg: #1c1b18;
+  --fg-2: #5a5852;
+  --fg-3: #8a877e;
+  --accent: #1d4f91;
+  --accent-soft: #e3ebf7;
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --b-grow: #008300;
+  --b-rewrite: #eb6834;
+  --b-keep: #2a78d6;
+  --b-merge: #e34948;
+  --b-new: #6250d6;
+  --font-display: "Zen Kaku Gothic New", "Noto Sans JP", "Hiragino Sans", sans-serif;
+  --font-body: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #171716; --surface: #1f1f1d; --surface-2: #272724; --line: #3a3a36;
+    --fg: #f0efec; --fg-2: #c3c2b7; --fg-3: #8e8d85;
+    --accent: #7fb0f2; --accent-soft: #22314a; --series-1: #3987e5; --series-2: #d95926;
+    --b-grow: #2fae2f; --b-rewrite: #e8773f; --b-keep: #3987e5; --b-merge: #e66767; --b-new: #9085e9;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #171716; --surface: #1f1f1d; --surface-2: #272724; --line: #3a3a36;
+  --fg: #f0efec; --fg-2: #c3c2b7; --fg-3: #8e8d85;
+  --accent: #7fb0f2; --accent-soft: #22314a; --series-1: #3987e5; --series-2: #d95926;
+  --b-grow: #2fae2f; --b-rewrite: #e8773f; --b-keep: #3987e5; --b-merge: #e66767; --b-new: #9085e9;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.75;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 64px;
+}
+a { color: var(--accent); }
+.frame { max-width: 1100px; margin: 0 auto; }
+.prose { max-width: 72ch; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.3; margin: 0; }
+h1 { font-size: clamp(26px, 4vw, 38px); font-weight: 900; letter-spacing: -0.01em; }
+h2 { font-size: 22px; font-weight: 700; margin-block: 56px 16px; padding-top: 20px; border-top: 2px solid var(--fg); }
+h3 { font-size: 16px; font-weight: 700; margin-block: 24px 8px; }
+p { margin: 0 0 12px; }
+.eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-3); }
+header { padding-block: 40px 8px; border-bottom: 1px solid var(--line); }
+header .meta { display: flex; flex-wrap: wrap; gap: 6px 24px; color: var(--fg-2); font-size: 13px; margin-top: 12px; font-variant-numeric: tabular-nums; }
+.verdict { background: var(--surface); border-left: 4px solid var(--accent); padding: 20px 24px; margin-top: 28px; }
+.verdict h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 19px; }
+.verdict ol { margin: 8px 0 0; padding-left: 1.3em; }
+.verdict li { margin-bottom: 6px; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 24px; }
+.tile { background: var(--surface); border: 1px solid var(--line); padding: 14px 16px; min-width: 0; }
+.tile .k { font-size: 12px; color: var(--fg-2); }
+.tile .v { font-family: var(--font-display); font-size: 28px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.2; margin-top: 2px; }
+.tile .s { font-size: 12px; color: var(--fg-3); }
+.charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.chart { background: var(--surface); border: 1px solid var(--line); padding: 14px 16px 8px; position: relative; min-width: 0; }
+.chart h3 { margin: 0 0 4px; font-size: 14px; }
+.chart .sub { font-size: 12px; color: var(--fg-3); margin-bottom: 6px; }
+.chart svg { width: 100%; height: auto; display: block; }
+.chart .axis text, .chart .lab { font-family: var(--font-mono); font-size: 10px; fill: var(--fg-3); }
+.chart .grid line { stroke: var(--line); stroke-width: 1; }
+.tip { position: absolute; pointer-events: none; background: var(--fg); color: var(--bg); font-size: 12px; padding: 6px 9px; border-radius: 4px; white-space: nowrap; display: none; z-index: 2; font-variant-numeric: tabular-nums; }
+.buckets { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.bucket { background: var(--surface); border: 1px solid var(--line); padding: 14px 16px; border-top: 4px solid var(--bc); min-width: 0; }
+.bucket .n { font-family: var(--font-display); font-size: 30px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.bucket .t { font-weight: 700; }
+.bucket .d { font-size: 12.5px; color: var(--fg-2); margin-top: 4px; }
+.pill { display: inline-block; font-size: 11.5px; font-weight: 700; padding: 1px 8px; border-radius: 999px; color: #fff; background: var(--bc); white-space: nowrap; line-height: 1.6; }
+.pill.grow { --bc: var(--b-grow); } .pill.rewrite { --bc: var(--b-rewrite); } .pill.keep { --bc: var(--b-keep); } .pill.merge { --bc: var(--b-merge); } .pill.new { --bc: var(--b-new); }
+.tag { display: inline-block; font-size: 11px; padding: 0 6px; border: 1px solid var(--line); border-radius: 3px; color: var(--fg-2); white-space: nowrap; }
+.tag.tenant { border-color: var(--b-merge); color: var(--b-merge); }
+.tablewrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); }
+table { border-collapse: collapse; width: 100%; font-size: 13px; font-variant-numeric: tabular-nums; }
+th, td { padding: 8px 10px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+th { font-size: 11.5px; color: var(--fg-2); font-weight: 500; white-space: nowrap; background: var(--surface-2); position: sticky; top: 0; }
+th.sortable { cursor: pointer; user-select: none; }
+th.sortable:hover { color: var(--fg); }
+th.sorted::after { content: " ▾"; }
+th.sorted.asc::after { content: " ▴"; }
+td.num, th.num { text-align: right; }
+td.title { min-width: 260px; }
+td.title a { color: var(--fg); text-decoration: none; font-weight: 500; }
+td.title a:hover { text-decoration: underline; }
+td.title .path { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); display: block; }
+.spark { width: 84px; height: 22px; display: block; }
+.spark path { fill: none; stroke: var(--series-1); stroke-width: 1.5; }
+.spark .end { fill: var(--series-1); }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; font-size: 13px; }
+.controls label { display: inline-flex; gap: 4px; align-items: center; cursor: pointer; }
+.controls input[type=search] { font: inherit; padding: 4px 8px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); min-width: 180px; }
+tr.detail td { background: var(--surface-2); font-size: 12.5px; }
+tr.detail .q { display: grid; grid-template-columns: 1fr auto auto auto; gap: 2px 14px; max-width: 640px; }
+tr.detail .q .h { color: var(--fg-3); font-size: 11px; }
+button.exp { font: inherit; font-size: 12px; background: none; border: 1px solid var(--line); color: var(--fg-2); padding: 1px 7px; cursor: pointer; border-radius: 3px; }
+button.exp:focus-visible, input:focus-visible, th.sortable:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.cluster { background: var(--surface); border: 1px solid var(--line); padding: 14px 16px; margin-bottom: 12px; }
+.cluster h3 { margin: 0 0 6px; }
+.cluster .pages { display: grid; gap: 4px; font-size: 13px; margin: 6px 0 8px; }
+.cluster .pages div { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.cluster .pages code { font-family: var(--font-mono); font-size: 12px; }
+.cluster .qs { font-size: 12.5px; color: var(--fg-2); }
+.plan { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.plan .step { background: var(--surface); border: 1px solid var(--line); padding: 16px 18px; min-width: 0; }
+.plan .step .when { font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.08em; }
+.plan .step h3 { margin: 4px 0 8px; }
+.plan .step ul { margin: 0; padding-left: 1.2em; font-size: 13.5px; }
+.plan .step li { margin-bottom: 4px; }
+.note { font-size: 12.5px; color: var(--fg-2); }
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.compare > div { background: var(--surface); border: 1px solid var(--line); padding: 14px 16px; min-width: 0; }
+.compare h3 { margin: 0 0 6px; }
+.compare ul { margin: 0; padding-left: 1.2em; font-size: 13.5px; }
+dl.defs { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; font-size: 13px; margin: 0; }
+dl.defs dt { font-weight: 700; } dl.defs dd { margin: 0; color: var(--fg-2); }
+@media (max-width: 640px) {
+  .compare { grid-template-columns: 1fr; }
+  tr.detail .q { grid-template-columns: 1fr auto; }
+  tr.detail .q .h:nth-child(2), tr.detail .q .h:nth-child(3), tr.detail .q span.m { display: none; }
+  dl.defs { grid-template-columns: 1fr; gap: 2px; }
+}
+@media (prefers-reduced-motion: no-preference) { tr.detail { animation: fade .15s ease-out; } }
+@keyframes fade { from { opacity: 0 } }
+</style>
+
+<div class="frame">
+<header>
+  <div class="eyebrow">lpppm.co.jp / お役立ち記事 / Search Console × GA4</div>
+  <h1>LPP SEO記事リサーチ</h1>
+  <div class="meta" id="meta"></div>
+</header>
+
+<section class="verdict prose" id="verdict"></section>
+
+<div class="tiles" id="tiles"></div>
+
+<h2>1. サイト全体の推移</h2>
+<div class="prose" id="trend-text"></div>
+<div class="charts">
+  <div class="chart" id="c-clicks"></div>
+  <div class="chart" id="c-impr"></div>
+</div>
+
+<h2>2. 記事の分類</h2>
+<p class="prose">直近90日の実績（表示回数・クリック・順位）と公開からの経過日数で、43記事を5つに分けました。</p>
+<div class="buckets" id="buckets"></div>
+<div class="prose" id="bucket-text"></div>
+
+<h2>3. リライト優先リスト</h2>
+<div class="prose" id="rewrite-text"></div>
+<div class="tablewrap"><table id="rewrite-table"></table></div>
+<p class="note" style="margin-top:8px">「増加見込み」は、直近90日の表示回数に対し、検索結果3位相当（CTR 6%）に到達した場合のクリック数から現在のクリック数を引いた試算です。実際のCTRはキーワードやAI概要の有無で変わるため、優先順位付けの目安として使ってください。</p>
+
+<h2>4. 重複テーマ（カニバリゼーション）</h2>
+<div class="prose" id="cann-text"></div>
+<div id="clusters"></div>
+
+<h2>5. 新規記事の評価とキーワードギャップ</h2>
+<div class="prose" id="new-text"></div>
+<div class="tablewrap"><table id="gap-table"></table></div>
+
+<h2>6. 方向性の提案</h2>
+<div class="compare" id="compare"></div>
+<h3>次の90日の進め方</h3>
+<div class="plan" id="plan"></div>
+
+<h2>7. 全記事一覧</h2>
+<div class="controls" id="controls"></div>
+<div class="tablewrap"><table id="all-table"></table></div>
+
+<h2>8. 定義と算出方法</h2>
+<dl class="defs" id="defs"></dl>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+const BUCKET = {
+  grow:    { label: "伸ばす",     desc: "直近90日100クリック以上。すでに主力。上位3位入りと問い合わせ導線の強化で伸ばす" },
+  rewrite: { label: "リライト優先", desc: "表示回数は多い（1,000回以上）のにクリックが少ない。順位・タイトル改善の効果が最も出やすい" },
+  keep:    { label: "維持",       desc: "表示・クリックとも小さい。手を入れず推移を見る" },
+  merge:   { label: "統合・再構成", desc: "公開4か月以上で流入がほぼない。類似記事への統合か方向転換を検討" },
+  new:     { label: "新規（様子見）", desc: "公開60日未満。評価が定まるまで待つ" },
+};
+const AUD = { tenant: "入居者向け", owner: "オーナー向け", mixed: "混在", unknown: "不明" };
+const fmt = n => Number(n).toLocaleString("ja-JP");
+const pct = x => (x * 100).toFixed(1) + "%";
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const A = DATA.articles, M = DATA.meta, S = DATA.summary;
+const sumR = k => A.reduce((s, a) => s + a[k], 0);
+const totC = sumR("clicks_r"), totI = sumR("impressions_r");
+const topA = A[0];
+const owner = A.filter(a => a.audience !== "tenant");
+const potential = a => Math.max(0, Math.round(a.impressions_r * 0.06 - a.clicks_r));
+const jp = d => { const [y, m, dd] = d.split("-"); return `${y}年${+m}月${+dd}日`; };
+const jm = m => { const [y, mm] = m.split("-"); return `${y.slice(2)}/${+mm}`; };
+
+// ---- header ----
+document.getElementById("meta").innerHTML = [
+  `対象期間 ${jp(M.start)} 〜 ${jp(M.end)}`, `直近90日 = ${jp(M.recent_start)} 以降`,
+  `記事 ${M.article_count}本`, `取得日 ${M.fetched_at.slice(0, 10)}`
+].map(s => `<span>${s}</span>`).join("");
+
+// ---- verdict ----
+const rewriteN = S.rewrite, growN = S.grow;
+const pot12 = owner.filter(a => ["rewrite", "grow"].includes(a.bucket)).sort((x, y) => potential(y) - potential(x)).slice(0, 12);
+const pot12sum = pot12.reduce((s, a) => s + potential(a), 0);
+document.getElementById("verdict").innerHTML = `
+<div class="eyebrow">結論</div>
+<h2>次の90日は「リライト7：新規3」に配分を変える</h2>
+<ol>
+<li><b>流入は10か月で月1,500クリックまで伸びたが、6月以降は横ばい。</b>表示回数も月8〜9万回で止まっており、記事を増やすだけでは伸びない段階に入った。</li>
+<li><b>43記事のほぼ全てが検索結果6〜10位に並んでいる</b>（3位以内は0本、5位以内は1本）。この帯のCTRは0.8%で、同じ表示回数のまま3位に上がれば流入は数倍になる。優先12記事だけで直近90日換算 <b>+${fmt(pot12sum)}クリック</b>の余地がある。</li>
+<li><b>最も読まれている記事（${esc(topA.title.split("｜")[0])}）は検索の84%が入居者からの相談</b>で、オーナー獲得には直結しない。流入全体の${pct(topA.clicks_r / totC)}を占めるが、ここに追加投資はしない。</li>
+<li><b>「管理手数料」「管理会社の変更」「管理会社の選び方」で記事同士が競合</b>している。3クラスター計9記事を統合・役割分担するだけで、順位の底上げが見込める。</li>
+<li>新規記事は公開1〜2か月で6〜7位に入っており、サイトの評価は十分高い。<b>新規は月2本に絞り、オーナー意図のテーマに限定</b>して続ける。</li>
+</ol>`;
+
+// ---- tiles ----
+const wpos = A.reduce((s, a) => s + a.position_r * a.impressions_r, 0) / totI;
+document.getElementById("tiles").innerHTML = [
+  ["記事数", M.article_count, "お役立ち記事"],
+  ["クリック（直近90日）", fmt(totC), "記事のみ・検索流入"],
+  ["表示回数（直近90日）", fmt(totI), "記事のみ"],
+  ["CTR", pct(totC / totI), "記事平均"],
+  ["平均掲載順位", wpos.toFixed(1), "表示回数で加重"],
+  ["3位以内の記事", A.filter(a => a.position_r <= 3).length, "5位以内は " + A.filter(a => a.position_r <= 5).length + "本"],
+].map(([k, v, s]) => `<div class="tile"><div class="k">${k}</div><div class="v">${v}</div><div class="s">${s}</div></div>`).join("");
+
+// ---- trend charts ----
+const mo = DATA.monthly;
+const last3 = mo.slice(-3).reduce((s, m) => s + m.clicks, 0), prev3 = mo.slice(-6, -3).reduce((s, m) => s + m.clicks, 0);
+const peak = mo.reduce((p, m) => m.clicks > p.clicks ? m : p, mo[0]);
+document.getElementById("trend-text").innerHTML = `<p>Search Consoleのデータは${jm(mo[0].month)}月から。記事を毎月4本前後追加し、クリックは${jm(peak.month)}月に月${fmt(peak.clicks)}回でピーク。直近3か月（${fmt(last3)}）は前の3か月（${fmt(prev3)}）と比べ${((last3 / prev3 - 1) * 100).toFixed(0)}%で、成長が止まっている。表示回数（検索結果に出た回数）も同じ時期から横ばいで、新しい記事が加わっても検索結果に出る総量が増えていない。10月は26日までの集計。</p>`;
+
+function lineChart(el, title, sub, key, color, bars) {
+  const W = 520, H = 220, L = 44, R = 12, T = 14, B = 34;
+  const xs = mo.map((m, i) => L + i * (W - L - R) / (mo.length - 1));
+  const max = Math.max(...mo.map(m => m[key])) * 1.08;
+  const y = v => T + (H - T - B) * (1 - v / max);
+  const ticks = [0, 0.25, 0.5, 0.75, 1].map(f => Math.round(max * f));
+  const path = mo.map((m, i) => (i ? "L" : "M") + xs[i].toFixed(1) + " " + y(m[key]).toFixed(1)).join(" ");
+  const area = path + ` L${xs[xs.length - 1].toFixed(1)} ${y(0)} L${xs[0].toFixed(1)} ${y(0)} Z`;
+  const barMax = Math.max(...mo.map(m => m.articles_published)) || 1;
+  const barsSvg = bars ? mo.map((m, i) => { const h = (H - T - B) * 0.35 * m.articles_published / barMax; return `<rect x="${(xs[i] - 6).toFixed(1)}" y="${(y(0) - h).toFixed(1)}" width="12" height="${h.toFixed(1)}" rx="2" fill="var(--fg-3)" opacity="0.35"/>`; }).join("") : "";
+  const lastI = mo.length - 1;
+  el.innerHTML = `<h3>${title}</h3><div class="sub">${sub}</div>
+<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${title}">
+<g class="grid">${ticks.map(t => `<line x1="${L}" x2="${W - R}" y1="${y(t).toFixed(1)}" y2="${y(t).toFixed(1)}"/>`).join("")}</g>
+<g class="axis">${ticks.map(t => `<text x="${L - 6}" y="${(y(t) + 3).toFixed(1)}" text-anchor="end">${t >= 1000 ? (t / 1000).toFixed(t >= 10000 ? 0 : 1) + "k" : t}</text>`).join("")}
+${mo.map((m, i) => `<text x="${xs[i].toFixed(1)}" y="${H - 14}" text-anchor="middle">${jm(m.month)}</text>`).join("")}</g>
+${barsSvg}
+<path d="${area}" fill="${color}" opacity="0.12"/>
+<path d="${path}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="${xs[lastI].toFixed(1)}" cy="${y(mo[lastI][key]).toFixed(1)}" r="4" fill="${color}" stroke="var(--surface)" stroke-width="2"/>
+<text class="lab" x="${(xs[lastI] - 8).toFixed(1)}" y="${(y(mo[lastI][key]) - 9).toFixed(1)}" text-anchor="end">${fmt(mo[lastI][key])}</text>
+<text class="lab" x="${(xs[mo.indexOf(peak)]).toFixed(1)}" y="${(y(peak[key]) - 9).toFixed(1)}" text-anchor="middle">${key === "clicks" ? fmt(peak.clicks) : ""}</text>
+<g class="hit">${mo.map((m, i) => `<rect data-i="${i}" x="${(xs[i] - 18).toFixed(1)}" y="0" width="36" height="${H}" fill="transparent"/>`).join("")}</g>
+<line class="cross" x1="0" x2="0" y1="${T}" y2="${y(0)}" stroke="var(--fg-3)" stroke-dasharray="3 3" style="display:none"/>
+</svg><div class="tip"></div>`;
+  const svg = el.querySelector("svg"), tip = el.querySelector(".tip"), cross = el.querySelector(".cross");
+  svg.addEventListener("mousemove", e => {
+    const r = e.target.closest("rect[data-i]"); if (!r) return;
+    const i = +r.dataset.i, m = mo[i];
+    cross.setAttribute("x1", xs[i]); cross.setAttribute("x2", xs[i]); cross.style.display = "";
+    tip.style.display = "block";
+    tip.innerHTML = `${m.month}<br>${title}: ${fmt(m[key])}` + (bars ? `<br>公開記事: ${m.articles_published}本` : "");
+    const box = el.getBoundingClientRect();
+    let left = e.clientX - box.left + 12; if (left + 160 > box.width) left = e.clientX - box.left - 150;
+    tip.style.left = left + "px"; tip.style.top = (e.clientY - box.top - 40) + "px";
+  });
+  svg.addEventListener("mouseleave", () => { tip.style.display = "none"; cross.style.display = "none"; });
+}
+lineChart(document.getElementById("c-clicks"), "月間クリック数", "サイト全体・検索流入。灰色の棒は公開した記事数", "clicks", "var(--series-1)", true);
+lineChart(document.getElementById("c-impr"), "月間表示回数", "検索結果に表示された回数", "impressions", "var(--series-2)", false);
+
+// ---- buckets ----
+document.getElementById("buckets").innerHTML = Object.entries(BUCKET).map(([k, b]) =>
+  `<div class="bucket" style="--bc: var(--b-${k})"><div class="n">${S[k]}</div><div class="t">${b.label}</div><div class="d">${b.desc}</div></div>`).join("");
+const tenantA = A.filter(a => a.audience === "tenant");
+document.getElementById("bucket-text").innerHTML = `<p style="margin-top:16px">「伸ばす」${S.grow}本で直近90日クリックの${pct(A.filter(a => a.bucket === "grow").reduce((s, a) => s + a.clicks_r, 0) / totC)}を稼いでいる一方、「リライト優先」${S.rewrite}本は合計${fmt(A.filter(a => a.bucket === "rewrite").reduce((s, a) => s + a.impressions_r, 0))}回表示されてクリックは${fmt(A.filter(a => a.bucket === "rewrite").reduce((s, a) => s + a.clicks_r, 0))}回にとどまる。需要はすでに掴んでいて、取りこぼしているのが現状。</p>
+<p>読者層の推定（検索キーワードから判定）では、${tenantA.map(a => `「${esc(a.title.split(/[｜|？]/)[0])}」`).join("")}の${tenantA.length}本は入居者からの検索が中心。表示回数の${pct(1 - owner.reduce((s, a) => s + a.impressions_r, 0) / totI)}がこの層で、問い合わせにはつながりにくい。</p>`;
+
+// ---- sparkline ----
+function spark(vals) {
+  const w = 84, h = 22, max = Math.max(...vals, 1);
+  const pts = vals.map((v, i) => [2 + i * (w - 4) / (vals.length - 1), h - 2 - (h - 4) * v / max]);
+  const d = pts.map((p, i) => (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1)).join(" ");
+  const e = pts[pts.length - 1];
+  return `<svg class="spark" viewBox="0 0 ${w} ${h}" aria-hidden="true"><path d="${d}"/><circle class="end" cx="${e[0].toFixed(1)}" cy="${e[1].toFixed(1)}" r="2"/></svg>`;
+}
+const titleCell = a => `<td class="title"><a href="${a.url}" target="_blank" rel="noopener">${esc(a.title)}</a><span class="path">${a.path}</span></td>`;
+const pill = a => `<span class="pill ${a.bucket}">${BUCKET[a.bucket].label}</span>`;
+const audTag = a => `<span class="tag ${a.audience}">${AUD[a.audience]}</span>`;
+
+// ---- rewrite table ----
+document.getElementById("rewrite-text").innerHTML = `<p>オーナー向けの「リライト優先」「伸ばす」記事を、増加見込みの大きい順に並べた上位12本。いずれも検索結果6〜10位で大量に表示されながら、クリックを取りこぼしている。「狙うキーワード」は、その記事がすでに5〜20位に入っていて表示回数が多い検索語で、リライトで最初に上位を狙う対象。</p>`;
+document.getElementById("rewrite-table").innerHTML = `<thead><tr><th>#</th><th>記事</th><th>分類</th><th class="num">表示<br>(90日)</th><th class="num">クリック</th><th class="num">CTR</th><th class="num">順位</th><th class="num">増加見込み</th><th>月次推移</th><th>狙うキーワード（順位）</th><th>リライトの要点</th></tr></thead><tbody>` +
+  pot12.map((a, i) => `<tr><td class="num">${i + 1}</td>${titleCell(a)}<td>${pill(a)}</td><td class="num">${fmt(a.impressions_r)}</td><td class="num">${fmt(a.clicks_r)}</td><td class="num">${pct(a.ctr_r)}</td><td class="num">${a.position_r.toFixed(1)}</td><td class="num"><b>+${fmt(potential(a))}</b></td><td>${spark(a.monthly_clicks)}</td><td style="min-width:220px;font-size:12px">${a.striking.slice(0, 3).map(q => `${esc(q.query)} <span style="color:var(--fg-3)">(${q.position.toFixed(0)}位・${fmt(q.impressions)})</span>`).join("<br>")}</td><td style="min-width:220px;font-size:12px;color:var(--fg-2)">${esc(a.reason)}</td></tr>`).join("") + "</tbody>";
+
+// ---- cannibalization clusters ----
+const clusters = {};
+DATA.cannibalization.forEach(c => {
+  const key = c.pages.slice(0, 2).map(p => p.path).sort().join("|");
+  (clusters[key] = clusters[key] || { pages: new Set(), queries: [], impressions: 0 });
+  c.pages.forEach(p => clusters[key].pages.add(p.path));
+  clusters[key].queries.push(c); clusters[key].impressions += c.impressions;
+});
+const byPath = Object.fromEntries(A.map(a => [a.path, a]));
+const clusterName = paths => { const p = [...paths].join(" "); if (/tesuryo/.test(p)) return "賃貸管理手数料の相場"; if (/henkou|henko/.test(p)) return "管理会社の変更"; if (/erabikata/.test(p)) return "管理会社の選び方"; if (/itaku/.test(p)) return "管理委託費"; return "その他"; };
+const clist = Object.values(clusters).sort((x, y) => y.impressions - x.impressions);
+document.getElementById("cann-text").innerHTML = `<p>同じ検索語で複数の記事が交互に表示されると、評価が分散してどちらも上がりにくくなる。表示回数100回以上の検索語のうち、2本目の記事が表示の25%以上を取っているものを抽出した。</p>`;
+document.getElementById("clusters").innerHTML = clist.map(c => {
+  const pages = [...c.pages].map(p => byPath[p]).filter(Boolean).sort((x, y) => y.impressions_r - x.impressions_r);
+  const main = pages[0];
+  return `<div class="cluster"><h3>${clusterName(c.pages)} <span class="note">（${pages.length}記事 / 競合する検索語の表示 ${fmt(c.impressions)}回）</span></h3>
+<div class="pages">${pages.map((a, i) => `<div><code>${a.path}</code><span>${esc(a.title.slice(0, 34))}…</span><span class="note">表示${fmt(a.impressions_r)} / ${a.position_r.toFixed(1)}位</span>${i === 0 ? '<span class="tag">主記事に</span>' : ''}</div>`).join("")}</div>
+<div class="qs">競合する検索語: ${c.queries.slice(0, 6).map(q => esc(q.query)).join("、")}${c.queries.length > 6 ? ` ほか${c.queries.length - 6}件` : ""}</div>
+<div class="qs" style="margin-top:6px"><b>提案:</b> 表示回数が最も多い <code>${main.path}</code> を主記事にし、他の記事は切り口を変える（例: 区分マンション専用、手続きの時系列、チェックリスト）か、内容を主記事に統合して301リダイレクトする。</div></div>`;
+}).join("");
+
+// ---- new articles & gaps ----
+const newA = A.filter(a => a.bucket === "new");
+const newAvgPos = newA.filter(a => a.impressions_r >= 100).reduce((s, a) => s + a.position_r, 0) / newA.filter(a => a.impressions_r >= 100).length;
+document.getElementById("new-text").innerHTML = `<p>直近60日に公開した${newA.length}本は、すでに平均${newAvgPos.toFixed(1)}位に入っている（公開1か月の記事が5〜7位）。新しい記事がすぐ1ページ目に載るのは、サイト全体の評価が高い証拠で、テーマ選びが当たれば新規記事は引き続き有効。</p>
+<p>下の表は、表示回数150回以上ありながらサイトの最高順位が13位以下（2ページ目以降）の検索語。これが「取れていない需要」だが、ほぼ全てが既存記事の守備範囲にある。つまり足りないのは新しい記事ではなく、既存記事の強化。純粋な新規テーマとして残るのは「空室対策（築古に限らない一般的な対策）」「サブリースをやめたい・解約の違約金」程度。</p>`;
+document.getElementById("gap-table").innerHTML = `<thead><tr><th>検索語</th><th class="num">表示(16か月)</th><th class="num">最高順位</th><th>現在表示されている記事</th></tr></thead><tbody>` +
+  DATA.new_topics.slice(0, 20).map(t => `<tr><td>${esc(t.query)}</td><td class="num">${fmt(t.impressions)}</td><td class="num">${t.position.toFixed(0)}位</td><td><code style="font-family:var(--font-mono);font-size:12px">${t.landing}</code></td></tr>`).join("") + "</tbody>";
+
+// ---- direction ----
+document.getElementById("compare").innerHTML = `
+<div><h3>新規記事を増やし続けた場合</h3><ul>
+<li>月4本ペースで90日後に55本。1本あたり直近90日の中央値は${fmt(A.map(a => a.clicks_r).sort((x, y) => x - y)[Math.floor(A.length / 2)])}クリックで、12本追加しても+数百クリック程度</li>
+<li>テーマが重なる記事が増え、カニバリゼーションが悪化する</li>
+<li>表示回数の頭打ちは解消しない</li></ul></div>
+<div><h3>リライトに重心を移した場合</h3><ul>
+<li>優先12本で+${fmt(pot12sum)}クリック/90日の余地（現在の記事全体の${(pot12sum / totC * 100).toFixed(0)}%増）。1本あたりの効果が新規の10倍以上</li>
+<li>重複3クラスターの整理で評価の分散を解消</li>
+<li>オーナー向け記事に集中するため、問い合わせに直結する流入が増える</li></ul></div>`;
+document.getElementById("plan").innerHTML = [
+  ["11月", "重複の整理と主力の底上げ", ["「管理手数料」クラスター3本を主記事1本に統合", "「管理会社の変更」3本の役割分担を決め、重複部分を削る", "リライト優先1〜4位（立ち退き・管理手数料・代位弁済・家賃値上げ）のタイトル・見出し・導入を改訂", "新規2本（オーナー意図のテーマ）"]],
+  ["12月", "リライト第2弾", ["優先5〜8位（管理会社変更・管理委託契約書・サブリース解約・委託管理の基礎）を改訂", "「管理会社の選び方」クラスターを整理", "各記事のCTAを種別ごとに見直し（contact_cta_click で記事別に計測）", "新規2本"]],
+  ["1月", "効果測定と次の判断", ["11月改訂分の順位・CTRの変化を確認（反映に4〜8週間）", "問い合わせデータ（contact_submit）が2か月分溜まるので、記事別の問い合わせ貢献を加えて再評価", "効果が出た型を残りの「リライト優先」記事に横展開"]],
+].map(([w, t, items]) => `<div class="step"><div class="when">${w}</div><h3>${t}</h3><ul>${items.map(i => `<li>${i}</li>`).join("")}</ul></div>`).join("");
+
+// ---- all-articles table ----
+const COLS = [
+  ["title", "記事", "s"], ["bucket", "分類", "s"], ["audience", "読者層", "s"], ["published", "公開日", "s"],
+  ["impressions_r", "表示(90日)", "n"], ["clicks_r", "クリック(90日)", "n"], ["ctr_r", "CTR", "n"], ["position_r", "順位", "n"],
+  ["clicks_trend", "前90日比", "n"], ["clicks", "累計クリック", "n"], ["sessions", "GA4セッション", "n"], ["engagement_rate", "エンゲージ率", "n"], ["monthly_clicks", "推移", "x"], ["_", "", "x"],
+];
+let sortKey = "impressions_r", sortAsc = false, filterB = new Set(Object.keys(BUCKET)), q = "";
+const ctl = document.getElementById("controls");
+ctl.innerHTML = Object.entries(BUCKET).map(([k, b]) => `<label><input type="checkbox" id="f-${k}" data-b="${k}" checked> <span class="pill ${k}">${b.label}</span></label>`).join("") + ` <input type="search" id="q" placeholder="記事名・URLで絞り込み" aria-label="絞り込み">`;
+ctl.addEventListener("change", e => { if (e.target.dataset.b) { e.target.checked ? filterB.add(e.target.dataset.b) : filterB.delete(e.target.dataset.b); renderAll(); } });
+ctl.querySelector("#q").addEventListener("input", e => { q = e.target.value.trim().toLowerCase(); renderAll(); });
+const tbl = document.getElementById("all-table");
+function renderAll() {
+  const rows = A.filter(a => filterB.has(a.bucket) && (!q || a.title.toLowerCase().includes(q) || a.path.includes(q)))
+    .sort((x, y) => { const vx = x[sortKey], vy = y[sortKey]; const c = typeof vx === "number" ? vx - vy : String(vx).localeCompare(String(vy), "ja"); return sortAsc ? c : -c; });
+  tbl.innerHTML = `<thead><tr>${COLS.map(([k, l, t]) => `<th class="${t === "n" ? "num " : ""}${t !== "x" ? "sortable" : ""}${k === sortKey ? " sorted" + (sortAsc ? " asc" : "") : ""}" data-k="${t !== "x" ? k : ""}" tabindex="${t !== "x" ? 0 : -1}">${l}</th>`).join("")}</tr></thead><tbody>` +
+    rows.map(a => `<tr data-p="${a.path}">${titleCell(a)}<td>${pill(a)}</td><td>${audTag(a)}</td><td>${a.published}</td><td class="num">${fmt(a.impressions_r)}</td><td class="num">${fmt(a.clicks_r)}</td><td class="num">${pct(a.ctr_r)}</td><td class="num">${a.position_r ? a.position_r.toFixed(1) : "–"}</td><td class="num">${a.clicks_p ? (a.clicks_trend >= 0 ? "+" : "") + (a.clicks_trend * 100).toFixed(0) + "%" : "–"}</td><td class="num">${fmt(a.clicks)}</td><td class="num">${fmt(a.sessions)}</td><td class="num">${a.sessions ? pct(a.engagement_rate) : "–"}</td><td>${spark(a.monthly_clicks)}</td><td><button class="exp" data-p="${a.path}" aria-expanded="false">検索語</button></td></tr>`).join("") + "</tbody>";
+  tbl.querySelector("caption")?.remove();
+  const cap = document.createElement("caption"); cap.style.cssText = "caption-side:bottom;text-align:left;font-size:12px;color:var(--fg-3);padding:6px 10px"; cap.textContent = `${rows.length}本を表示。見出しをクリックで並べ替え。`; tbl.appendChild(cap);
+}
+tbl.addEventListener("click", e => {
+  const th = e.target.closest("th[data-k]"); if (th && th.dataset.k) { sortAsc = sortKey === th.dataset.k ? !sortAsc : false; sortKey = th.dataset.k; renderAll(); return; }
+  const b = e.target.closest("button.exp"); if (!b) return;
+  const tr = b.closest("tr"), a = byPath[b.dataset.p];
+  if (tr.nextElementSibling?.classList.contains("detail")) { tr.nextElementSibling.remove(); b.setAttribute("aria-expanded", "false"); return; }
+  const d = document.createElement("tr"); d.className = "detail";
+  d.innerHTML = `<td colspan="${COLS.length}"><div class="q"><span class="h">上位の検索語（16か月）</span><span class="h">表示</span><span class="h">クリック</span><span class="h">順位</span>${a.top_queries.map(x => `<span>${esc(x.query)}</span><span class="m">${fmt(x.impressions)}</span><span class="m">${fmt(x.clicks)}</span><span>${x.position.toFixed(1)}位</span>`).join("")}</div>
+  <div style="margin-top:8px;color:var(--fg-2)">判定理由: ${esc(a.reason)}　｜　最終更新 ${a.modified}　｜　平均滞在 ${a.duration}秒</div></td>`;
+  tr.after(d); b.setAttribute("aria-expanded", "true");
+});
+tbl.addEventListener("keydown", e => { if ((e.key === "Enter" || e.key === " ") && e.target.matches("th[data-k]")) { e.preventDefault(); e.target.click(); } });
+renderAll();
+
+// ---- definitions ----
+document.getElementById("defs").innerHTML = [
+  ["対象記事", "WordPressのカテゴリ「お役立ち記事」の投稿43本。お知らせ・固定ページは除外"],
+  ["直近90日", `${jp(M.recent_start)}〜${jp(M.end)}。前90日は${jp(M.prev_start)}〜${jp(M.prev_end)}`],
+  ["表示・クリック・順位", "Google Search Console（ウェブ検索）。順位は表示回数で加重した平均掲載順位。URLのパラメータ違いは同一記事に合算"],
+  ["GA4セッション・エンゲージ率", "GA4のランディングページ別・デフォルトチャネル「Organic Search」のみ。16か月合計"],
+  ["読者層", "記事の上位30検索語を「入居者らしい語（対応してくれない、退去費用 など）」「オーナーらしい語（管理委託、賃貸経営 など）」で判定し、入居者側が表示の40%以上なら入居者向け。機械的な推定で、個別の記事は検索語を見て判断してほしい"],
+  ["増加見込み", "直近90日の表示回数 × 6%（3位相当のCTR）− 現在のクリック数。優先順位付けの目安"],
+  ["カニバリゼーション", "16か月の表示回数100回以上の検索語で、2番目の記事が表示の25%以上を取っているもの"],
+  ["キーワードギャップ", "16か月の表示回数150回以上で、サイト内の最高順位が13位以下の検索語。社名・電話番号・イベント名は除外"],
+].map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("");
+</script>
