@@ -5,5 +5,6 @@ set -euo pipefail
 WORK="${1:?WORK_DIR required}"
 cd "$(dirname "$0")/.."
 python3 -m seo_report.fetch_data "$WORK/data"
-python3 -W ignore -m seo_report.analyze "$WORK/data" | head -1
+python3 -W ignore -m seo_report.analyze "$WORK/data" > "$WORK/analyze.log"
+head -1 "$WORK/analyze.log"
 python3 -m seo_report.build_report "$WORK/data" "$WORK/lpp-seo-research.html"
