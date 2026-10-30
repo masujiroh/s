@@ -57,7 +57,9 @@ p { margin: 0 0 12px; }
 .eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-3); }
 header { padding-block: 40px 8px; border-bottom: 1px solid var(--line); }
 header .meta { display: flex; flex-wrap: wrap; gap: 6px 24px; color: var(--fg-2); font-size: 13px; margin-top: 12px; font-variant-numeric: tabular-nums; }
-.verdict { background: var(--surface); border-left: 4px solid var(--accent); padding: 20px 24px; margin-top: 28px; }
+.howto { background: var(--surface-2); padding: 16px 20px; margin-top: 24px; }
+.howto .eyebrow { margin-bottom: 8px; }
+.verdict { background: var(--surface); border-left: 4px solid var(--accent); padding: 20px 24px; margin-top: 20px; }
 .verdict h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 19px; }
 .verdict ol { margin: 8px 0 0; padding-left: 1.3em; }
 .verdict li { margin-bottom: 6px; }
@@ -143,6 +145,16 @@ dl.defs dt { font-weight: 700; } dl.defs dd { margin: 0; color: var(--fg-2); }
   <div class="meta" id="meta"></div>
 </header>
 
+<section class="howto prose">
+  <div class="eyebrow">このレポートの読み方</div>
+  <dl class="defs">
+    <dt>表示回数</dt><dd>Googleの検索結果に記事が表示された回数。検索した人が記事を見たかどうかは関係ない</dd>
+    <dt>順位</dt><dd>検索結果の上から何番目に記事が出たか。1つの記事は何百ものキーワードで表示されるため、記事の順位はそれらを表示回数で重みづけした平均（Search Consoleの「平均掲載順位」）。クリック数の順位ではない</dd>
+    <dt>クリック・CTR</dt><dd>検索結果に表示されたうち、クリックされた回数と割合。記事の中のリンク（問い合わせなど）のクリックではない。検索結果では1〜3位なら10%以上、6〜10位では1〜2%が目安</dd>
+    <dt>読者層</dt><dd>記事にたどり着いた検索キーワードの内容から推定。「対応してくれない」「退去費用」のような言葉は入居者、「管理委託」「賃貸経営」のような言葉はオーナーの検索として数えた</dd>
+  </dl>
+</section>
+
 <section class="verdict prose" id="verdict"></section>
 
 <div class="tiles" id="tiles"></div>
@@ -222,8 +234,8 @@ document.getElementById("verdict").innerHTML = `
 <h2>次の90日は「リライト7：新規3」に配分を変える</h2>
 <ol>
 <li><b>流入は10か月で月1,500クリックまで伸びたが、6月以降は横ばい。</b>表示回数も月8〜9万回で止まっており、記事を増やすだけでは伸びない段階に入った。</li>
-<li><b>43記事のほぼ全てが検索結果6〜10位に並んでいる</b>（3位以内は0本、5位以内は1本）。この帯のCTRは0.8%で、同じ表示回数のまま3位に上がれば流入は数倍になる。優先12記事だけで直近90日換算 <b>+${fmt(pot12sum)}クリック</b>の余地がある。</li>
-<li><b>最も読まれている記事（${esc(topA.title.split("｜")[0])}）は検索の84%が入居者からの相談</b>で、オーナー獲得には直結しない。流入全体の${pct(topA.clicks_r / totC)}を占めるが、ここに追加投資はしない。</li>
+<li><b>43記事のほぼ全てが、Googleの検索結果で6〜10位に表示されている</b>（平均順位が3位以内の記事は0本、5位以内は1本）。この位置では表示されてもクリックされる割合（CTR）が0.8%しかなく、同じ表示回数のまま3位に上がれば流入は数倍になる。優先12記事だけで直近90日換算 <b>+${fmt(pot12sum)}クリック</b>の余地がある。</li>
+<li><b>最も読まれている記事（${esc(topA.title.split("｜")[0])}）にたどり着く検索キーワードの84%は入居者の悩み</b>（「管理会社 対応してくれない 消費者センター」「水漏れ 直してくれない」など）で、読んでいるのはオーナーではない。記事流入全体の${pct(topA.clicks_r / totC)}を占めるが、問い合わせにはつながりにくいため追加投資はしない。</li>
 <li><b>「管理手数料」「管理会社の変更」「管理会社の選び方」で記事同士が競合</b>している。3クラスター計9記事を統合・役割分担するだけで、順位の底上げが見込める。</li>
 <li>新規記事は公開1〜2か月で6〜7位に入っており、サイトの評価は十分高い。<b>新規は月2本に絞り、オーナー意図のテーマに限定</b>して続ける。</li>
 </ol>`;
